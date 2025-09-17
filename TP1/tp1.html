@@ -1,65 +1,73 @@
-<h1>Github pages</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Github Pages</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #1C1B25;
+      color: #EDEDED;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+      font-size: 64px;
+      text-align: center;
+      margin: 24px 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 32px;
+    }
+
+    .card {
+      background-color: #EDEDED;
+      width: 300px;
+      height: 150px;
+      border-radius: 16px;
+      color: #1C1B25;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      transition: all .5s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(.95);
+      color: #EC6C04;
+      background-color: #352D48;
+    }
+
+    .center-container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: 5%;
+      margin-top: 5%;
+    }
+
+    .head-li {
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid #EDEDED;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Github pages</h1>
   <h2>Opciones</h2>
-  <ul>
-    <li><a href="https://www.figma.com/design/48G46GFRNJyx1slvxlRy79/TP1?node-id=289-760&t=pNFOlC7wAfFZfQkJ-1" target="_blank">✏️ Versión editable</a></li>
-    <li><a href="https://www.figma.com/proto/48G46GFRNJyx1slvxlRy79/TP1?node-id=193-2109&p=f&t=7bY1dUcSwhyiZtlE-1&scaling=scale-down-width&content-scaling=fixed&page-id=289%3A760&starting-point-node-id=193%3A2109" target="_blank">🔍 Versión para ver</a></li>
-  </ul>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    background-color: #1C1B25;
-    color: #EDEDED;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-h1 {
-    font-size: 64px;
-    text-align: center;
-    margin: 24px 0;
-}
-
-h2 {
-    text-align: center;
-    font-size: 32px;
-}
-
-.card {
-    background-color: #EDEDED;
-    width: 300px;
-    height: 150px;
-    border-radius: 16px;
-    color: #1C1B25;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: all .5s ease-in-out;
-}
-
-.card:hover {
-    transform: scale(.95);
-    color: #EC6C04;
-    background-color: #352D48;
-}
-
-.center-container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    gap: 5%;
-    margin-top: 5%;
-}
-
-.head-li {
-    text-align: center;
-    font-weight: bold;
-    border-bottom: 1px solid #EDEDED;
-    margin-bottom: 12px;
-    padding-bottom: 4px;
-    list-style: none;
-}
-</style>
+  <div class="center-container">
+    <a href="https://www.figma.com/design/48G46GFRNJyx1slvxlRy79/TP1?node-id=289-760&t=pNFOlC7wAfFZfQkJ-1" target="_blank" class="card">✏️ Versión editable</a>
+    <a href="https://www.figma.com/proto/48G46GFRNJyx1slvxlRy79/TP1?node-id=193-2109&p=f&t=7bY1dUcSwhyiZtlE-1&scaling=scale-down-width&content-scaling=fixed&page-id=289%3A760&starting-point-node-id=193%3A2109" target="_blank" class="card">🔍 Versión para ver</a>
+  </div>
+</body>
+</html>
