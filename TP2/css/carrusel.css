@@ -1,5 +1,5 @@
 :root {
-    --primario_6: #1A002B;
+    --primario_6: #0e0c0f;
     --primario_5: #2D0047;
     --primario_4: #4B0082;
     --primario_3: #6A0DAD;
@@ -19,7 +19,7 @@
 }
 
 body {
-    background-color: var(--primario_6);
+    background-color: var(--primario_5);
     min-height: 100vh;
 }
 
@@ -47,7 +47,6 @@ body {
    width: 90px;
    height: 90px;
 }
-
 
 .header-center:hover {
     cursor: pointer;
@@ -268,61 +267,42 @@ body {
     display: none !important;
 }
 
-/* ============ CARRUSELES ============ */
-.carousels-wrapper {
-    padding: 40px 60px;
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.carousel-section {
-    width: 100%;
-}
-
-.carousel-title {
-    color: var(--blanco);
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    padding-left: 10px;
-    font-family: var(--font_montserrat);
-}
-
+/* ============ CARRUSEL ============ */
 .carousel-container {
     position: relative;
     width: 100%;
-    overflow: visible;
+    max-width: 1200px;
+    margin: 40px auto;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
+    padding: 0 20px;
 }
 
 .carousel-inner {
     flex: 1;
     overflow: hidden;
-    padding: 10px 0;
-    max-width: 900px;
+    padding: 20px 0;
 }
 
 .carousel-wrapper {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    gap: 15px;
+    gap: 20px;
 }
 
 .game-card {
-    min-width: 200px;
-    height: 250px;
-    background-color: var(--primario_6);
+    width: 250px;
+    height: 300px;
+    background-color: var(--primario_5);
     border-radius: 6px;
     overflow: hidden;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
     position: relative;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .game-card:hover {
@@ -331,40 +311,51 @@ body {
 
 .card-image {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
     display: block;
     background-color: #333;
+    flex-shrink: 0;
 }
 
 .card-body {
-    padding: 12px;
+    padding: 15px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
 }
 
 .card-title {
     color: var(--blanco);
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 10px;
-    min-height: 35px;
+    margin-bottom: 0;
+    line-height: 1.2;
 }
 
 .card-footer {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    gap: 8px;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 0 15px 15px 15px;
+    background-color: transparent;
 }
 
 .btn-free {
     position: absolute;
+    top: 10px;
+    left: 10px;
     z-index: 10;
     background-color: var(--acento_main);
     color: white;
     border: none;
-    padding: 4px 10px;
+    padding: 6px 14px;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -372,34 +363,40 @@ body {
 .price-container {
     display: flex;
     flex-direction: column;
-    margin-top: -5px;
+    gap: 0;
+    align-items: flex-start;
+    align-self: flex-end;
 }
 
 .price-old {
     color: #999;
     font-size: 14px;
     text-decoration: line-through;
+    line-height: 1.2;
 }
 
 .price-current {
     color: var(--acento_main);
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
+    line-height: 1.2;
 }
 
 .btn-add {
     background-color: transparent;
     border: 2px solid var(--blanco);
     color: var(--blanco);
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    font-size: 20px;
+    font-size: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    flex-shrink: 0;
+    align-self: flex-end;
     margin-left: auto;
 }
 
@@ -413,36 +410,37 @@ body {
     background-color: var(--secundario_main);
     border: none;
     color: white;
-    width: 45px;
-    height: 30px;
-    border-radius: 6px;
+    width: 50px;
+    height: 40px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 6px #145014;
+    box-shadow: 0 4px 6px rgba(20, 80, 20, 0.4);
+    flex-shrink: 0;
+    align-self: flex-end;
 }
 
-.btn-cart svg {
-    width: 20px;
-    height: 20px;
-    fill: white;
+.btn-cart img {
+    width: 24px;
+    height: 24px;
 }
 
 .btn-cart:hover {
     background-color: #28a428;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .carousel-btn {
     background-color: var(--blanco);
     border: none;
     color: var(--primario_6);
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    font-size: 22px;
+    font-size: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -472,24 +470,18 @@ footer {
     color: white;
     padding: 40px 60px;
     font-family: var(--font_roboto);
-    margin-top: 60px; /* Separación de los carruseles */
-}
-
-/* Layout de columnas */
-footer {
+    margin-top: 60px;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 40px;
 }
 
-/* Títulos */
 footer h3 {
     font-size: 16px;
     margin-bottom: 10px;
     font-weight: 600;
 }
 
-/* Listas */
 footer ul {
     list-style: none;
     padding: 0;
@@ -512,7 +504,6 @@ footer ul li a:hover {
     text-decoration: underline;
 }
 
-/* Redes sociales */
 footer section:nth-child(5) ul {
     display: flex;
     gap: 15px;
@@ -529,7 +520,6 @@ footer section:nth-child(5) ul li a img:hover {
     transform: scale(1.1);
 }
 
-/* Copyright */
 footer p {
     grid-column: 1 / -1;
     text-align: center;
@@ -549,7 +539,6 @@ footer p a:hover {
     text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     footer {
         grid-template-columns: repeat(3, 1fr);

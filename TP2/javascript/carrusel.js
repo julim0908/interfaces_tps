@@ -4,8 +4,8 @@ const nextBtn = document.getElementById('nextBtn');
 
 const cards = document.querySelectorAll('.game-card');
 const cardsPerView = 4;
-const cardWidth = 250;
-const gap = 20;
+const cardWidth = 250; // Ancho exacto de cada card
+const gap = 20; // Gap entre cards
 const totalCards = cards.length;
 const maxPosition = totalCards - cardsPerView;
 
@@ -48,10 +48,11 @@ document.addEventListener('keydown', (e) => {
         nextBtn.click();
     }
 });
+
+// ============ SIDEBAR ============
 let isOpen = false;
 let isRegistered = false;
 
-// Elementos del DOM
 const menuToggle = document.getElementById('menuToggle');
 const menuIcon = document.getElementById('menuIcon');
 const overlay = document.getElementById('overlay');
@@ -59,7 +60,6 @@ const sidebarMenu = document.getElementById('sidebarMenu');
 const userProfile = document.getElementById('userProfile');
 const registerBtn = document.getElementById('registerBtn');
 const logoutBtn = document.getElementById('logoutBtn');
-
 
 function toggleMenu() {
     isOpen = !isOpen;
@@ -75,25 +75,18 @@ function toggleMenu() {
     }
 }
 
-
 function handleRegister() {
-    // Aquí va tu lógica de redirección al formulario
     console.log('Redirigir a formulario de registro');
-    // window.location.href = '/registro';
-    
-    // Simulamos el registro para la demo
     isRegistered = true;
     updateUI();
     toggleMenu();
 }
-
 
 function handleLogout() {
     isRegistered = false;
     updateUI();
     toggleMenu();
 }
-
 
 function updateUI() {
     const menuNav = document.querySelector('.menu-nav');
@@ -111,13 +104,11 @@ function updateUI() {
     }
 }
 
-
 menuToggle.addEventListener('click', toggleMenu);
 overlay.addEventListener('click', toggleMenu);
 registerBtn.addEventListener('click', handleRegister);
 logoutBtn.addEventListener('click', handleLogout);
 
-
-updateUI();
 // Inicializar
+updateUI();
 updateButtons();

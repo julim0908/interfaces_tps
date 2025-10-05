@@ -4,76 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/carrusel.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Play Forge</title>
 </head>
 <body>
 
 <header class="header">
-        <div id="menuToggle" class="menu-toggle">
-            <span class="menu-icon" id="menuIcon">☰</span>
-        </div>
-        
-        <div class="header-center">
-            <img src="./img/lsldl.png" alt="">
-            <p class="logo-text">PlayForge</p>
-        </div>
-        
-        <div class="header-right">
-            <div class="search-input">
-                <input type="text" placeholder="Buscar un juego">
-                <img src="./img/lupa.png" class="logo_buscador"alt="logo_buscador">
-            </div>
-        </div>
-    </header>
-
-    <div id="overlay" class="overlay"></div>
-
-    <div id="sidebarMenu" class="sidebar">
-        <div id="userProfile" class="user-profile hidden">
-            <div class="avatar">
-                <span class="avatar-icon">👤</span>
-            </div>
-            <span class="username">Usuario</span>
-            <button class="edit-profile">Editar perfil</button>
-        </div>
-
-        <nav class="menu-nav">
-            <ul>
-                <li><a href="#"><span class="icon">🏠</span> Inicio</a></li>
-                <li><a href="#"><span class="icon">📚</span> Mi biblioteca</a></li>
-                <li><a href="#"><span class="icon">🏆</span> Deportes</a></li>
-                <li><a href="#"><span class="icon">🎯</span> Estrategia</a></li>
-                <li><a href="#"><span class="icon">⚡</span> Acción</a></li>
-                <li><a href="#"><span class="icon">🎁</span> Ofertas</a></li>
-                <li><a href="#"><span class="icon">🎮</span> Gratuitos</a></li>
-                <li><a href="#"><span class="icon">⭐</span> Destacados</a></li>
-                <li><a href="#"><span class="icon">🛒</span> Carrito</a></li>
-            </ul>
-        </nav>
-
-        <div class="action-buttons">
-            <button id="registerBtn" class="btn-register">Registrate</button>
-            <button id="logoutBtn" class="btn-logout hidden">
-                <span class="icon">🚪</span> Cerrar sesión
-            </button>
-        </div>
-
-        <div class="logo-section">
-            <span class="logo-text">PlayForge</span>
-            <img src="../iconos/logo_64x64.png" alt="">
+    <div id="menuToggle" class="menu-toggle">
+        <span class="menu-icon" id="menuIcon">☰</span>
+    </div>
+    
+    <div class="header-center">
+        <img src="./img/lsldl.png" alt="">
+        <p class="logo-text">PlayForge</p>
+    </div>
+    
+    <div class="header-right">
+        <div class="search-input">
+            <input type="text" placeholder="Buscar un juego">
+            <img src="./img/lupa.png" class="logo_buscador" alt="logo_buscador">
         </div>
     </div>
+</header>
 
+<div id="overlay" class="overlay"></div>
 
- <div class="carousel-container">
+<div id="sidebarMenu" class="sidebar">
+    <div id="userProfile" class="user-profile hidden">
+        <div class="avatar">
+            <span class="avatar-icon">👤</span>
+        </div>
+        <span class="username">Usuario</span>
+        <button class="edit-profile">Editar perfil</button>
+    </div>
+
+    <nav class="menu-nav">
+        <ul>
+            <li><a href="#"><span class="icon">🏠</span> Inicio</a></li>
+            <li><a href="#"><span class="icon">📚</span> Mi biblioteca</a></li>
+            <li><a href="#"><span class="icon">🏆</span> Deportes</a></li>
+            <li><a href="#"><span class="icon">🎯</span> Estrategia</a></li>
+            <li><a href="#"><span class="icon">⚡</span> Acción</a></li>
+            <li><a href="#"><span class="icon">🎁</span> Ofertas</a></li>
+            <li><a href="#"><span class="icon">🎮</span> Gratuitos</a></li>
+            <li><a href="#"><span class="icon">⭐</span> Destacados</a></li>
+            <li><a href="#"><span class="icon">🛒</span> Carrito</a></li>
+        </ul>
+    </nav>
+
+    <div class="action-buttons">
+        <button id="registerBtn" class="btn-register">Registrate</button>
+        <button id="logoutBtn" class="btn-logout hidden">
+            <span class="icon">🚪</span> Cerrar sesión
+        </button>
+    </div>
+
+    <div class="logo-section">
+        <span class="logo-text">PlayForge</span>
+        <img src="./img/lsldl.png" alt="">
+    </div>
+</div>
+
+<div class="carousel-container">
     <button class="carousel-btn prev" id="prevBtn">‹</button>
+    
     <div class="carousel-inner">
-        <!-- Wrapper del carrusel -->
         <div class="carousel-wrapper" id="carouselWrapper">
+            
             <!-- Card 1: Juego Gratuito -->
             <article class="game-card">
                 <button class="btn-free">Gratuito</button>
-                <img src="./img/APEX.png" alt="8 Ball Pool" class="card-image">
+                <img src="./img/flickgoal.png" alt="8 Ball Pool" class="card-image">
                 <section class="card-body">
                     <h3 class="card-title">8 Ball Pool</h3>
                     <footer class="card-footer">
@@ -84,7 +86,7 @@
 
             <!-- Card 2: Juego con Precio -->
             <article class="game-card">
-                <img src="./img/APEX.png" alt="Call of Duty" class="card-image">
+                <img src="./img/football.jpg" alt="Call of Duty" class="card-image">
                 <section class="card-body">
                     <h3 class="card-title">Call Of Duty Black Ops II</h3>
                     <footer class="card-footer">
@@ -92,9 +94,7 @@
                             <span class="price-current">$24,99</span>
                         </div>
                         <button class="btn-cart">
-                            <svg xmlns="http://www.w3.org/2000/sv" viewBox="0 0 24 24">
-                                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                            </svg>
+                            <img src="./img/carrito-de-compras (1).png" alt="Agregar al carrito">
                         </button>
                     </footer>
                 </section>
@@ -102,7 +102,7 @@
 
             <!-- Card 3: Juego en Oferta -->
             <article class="game-card">
-                <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=400&h=300&fit=crop" alt="Score Hero" class="card-image">
+                <img src="./img/Arte-oficial-de-Minecraft.jpg" alt="Score Hero" class="card-image">
                 <section class="card-body">
                     <h3 class="card-title">Score Hero</h3>
                     <footer class="card-footer">
@@ -111,9 +111,7 @@
                             <span class="price-current">$2,99</span>
                         </div>
                         <button class="btn-cart">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                            </svg>
+                            <img src="./img/carrito-de-compras (1).png" alt="Agregar al carrito">
                         </button>
                     </footer>
                 </section>
@@ -122,7 +120,7 @@
             <!-- Card 4: Juego Gratuito -->
             <article class="game-card">
                 <button class="btn-free">Gratuito</button>
-                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&h=300&fit=crop" alt="Apex Legends" class="card-image">
+                <img src="./img/APEX.png" alt="Apex Legends" class="card-image">
                 <section class="card-body">
                     <h3 class="card-title">Apex Legends</h3>
                     <footer class="card-footer">
@@ -141,9 +139,7 @@
                             <span class="price-current">$19,99</span>
                         </div>
                         <button class="btn-cart">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                            </svg>
+                            <img src="./img/carrito-de-compras (1).png" alt="Agregar al carrito">
                         </button>
                     </footer>
                 </section>
@@ -172,9 +168,7 @@
                             <span class="price-current">$29,99</span>
                         </div>
                         <button class="btn-cart">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                            </svg>
+                            <img src="./img/carrito-de-compras (1).png" alt="Agregar al carrito">
                         </button>
                     </footer>
                 </section>
@@ -190,72 +184,66 @@
                             <span class="price-current">$34,99</span>
                         </div>
                         <button class="btn-cart">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-                            </svg>
+                            <img src="./img/carrito-de-compras (1).png" alt="Agregar al carrito">
                         </button>
                     </footer>
                 </section>
             </article>
+
         </div>
-    </div> <!-- Cierre de carousel-inner -->
-    <!-- Botón siguiente -->
+    </div>
+    
     <button class="carousel-btn next" id="nextBtn">›</button>
 </div>
 
 <footer>
     <section>
-      <h3>Sobre nosotros</h3>
-      <ul>
-        <li><a href="#">Contáctanos</a></li>
-        <li><a href="#">Nuestro equipo</a></li>
-      </ul>
+        <h3>Sobre nosotros</h3>
+        <ul>
+            <li><a href="#">Contáctanos</a></li>
+            <li><a href="#">Nuestro equipo</a></li>
+        </ul>
     </section>
     <section>
-      <h3>Ayuda</h3>
-      <ul>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Soporte</a></li>
-      </ul>
+        <h3>Ayuda</h3>
+        <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Soporte</a></li>
+        </ul>
     </section>
     <section>
-      <h3>Categorías</h3>
-      <ul>
-        <li><a href="#">Destacados</a></li>
-        <li><a href="#">Ofertas</a></li>
-        <li><a href="#">Gratuitos</a></li>
-        <li><a href="#">Deportes</a></li>
-        <li><a href="#">Estrategia</a></li>
-        <li><a href="#">Acción</a></li>
-      </ul>
+        <h3>Categorías</h3>
+        <ul>
+            <li><a href="#">Destacados</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Gratuitos</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Estrategia</a></li>
+            <li><a href="#">Acción</a></li>
+        </ul>
     </section>
     <section>
-      <h3>Unite</h3>
-      <ul>
-        <li><a href="#">Registrarse</a></li>
-        <li><a href="#">Iniciar sesión</a></li>
-      </ul>
+        <h3>Unite</h3>
+        <ul>
+            <li><a href="#">Registrarse</a></li>
+            <li><a href="#">Iniciar sesión</a></li>
+        </ul>
     </section>
     <section>
-      <h3>Nuestras redes</h3>
-      <ul>
-        <li><a href="#"><img src="./img/instagram-circle (1).png" alt="Instagram"></a></li>
-        <li><a href="#"><img src="./img/twitter-alt-circle.png" alt="X"></a></li>
-        <li><a href="#"><img src="./img/facebook.png" alt="Facebook"></a></li>
-      </ul>
+        <h3>Nuestras redes</h3>
+        <ul>
+            <li><a href="#"><img src="./img/instagram-circle (1).png" alt="Instagram"></a></li>
+            <li><a href="#"><img src="./img/twitter-alt-circle.png" alt="X"></a></li>
+            <li><a href="#"><img src="./img/facebook.png" alt="Facebook"></a></li>
+        </ul>
     </section>
     <p>
-      Copyright © | Todos los derechos reservados |
-      <a href="#">Términos y condiciones</a> |
-      <a href="#">Política de privacidad</a> |
-      Agosto 2025
+        Copyright © | Todos los derechos reservados |
+        <a href="#">Términos y condiciones</a> |
+        <a href="#">Política de privacidad</a> |
+        Agosto 2025
     </p>
 </footer>
-
-
-
-
-
 
 <script src="./js/carrusel.js"></script>
 </body>
