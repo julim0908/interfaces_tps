@@ -100,6 +100,7 @@ initCarousel("carouselWrapper2", "prevBtn2", "nextBtn2", 4, 250)
 initCarousel("carouselWrapper4", "prevBtn4", "nextBtn4", 4, 250)
 initCarousel("carouselWrapper5", "prevBtn5", "nextBtn5", 4, 250)
 initCarousel("carouselWrapper6", "prevBtn6", "nextBtn6", 4, 250)
+initCarousel("carouselWrapper7", "prevBtn7", "nextBtn7", 4, 250)
 
 // ============ SIDEBAR ============
 let isOpen = false

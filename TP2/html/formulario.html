@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="script.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
+    <div class="conteiner-principle">
+        <header>
+             
+            <img src="/img/playforge.png.jpg" alt="Logo de PlayForce" class="logo">
+            <p class="linea">-----------------------------------------------------------------------------------------</p>
+            <h1>Registrarse</h1>
+             <p class="linea">-----------------------------------------------------------------------------------------</p>
+        </header>
+        <div class="login">
+            <button type="button" class="btn-facebook">
+                <img src="/img/Facebook_logo.png " alt="Facebook icon" class="facebook-logo"> Continuar con facebook
+            </button>
+            <button type="button" class="btn-google">
+                <img src="/img/google-logo.png" alt="Google Icon" class="google-logo"> Continuar con google
+            </button>
+        </div>
+
+        <form action="/registro" method="POST" class="formulario">
+            <h2>Datos del usuario</h2>
+            <div class="form">
+                <label for="name">Nombre</label>
+                <input type="text" id="nombre" name="name" required>
+            </div>
+
+            <div class="form">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" required>
+            </div>
+            <div class="form">
+                <label for="nickname">Nickname *</label>
+                <input type="text" id="nickname" name="nickname">
+            </div>
+            <div class="form">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form">
+                <label for="edad">Edad</label>
+                <input type="number" id="edad" name="edad" min="13" max="120" required>
+            </div>
+            <div class="form">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+            </div>
+     <div class=btns-iniciar>
+
+            <button type="button" class="bts-inicio"><b>Volver al inicio</b></button>
+            <button type="button" class="bts-inicio"><a href="paginaprincipal.html"> Registrarse</a></button>
+
+        </div>
+        </form>
+   
+      
+        <div class="recaptcha-box">
+
+            <div class="recaptcha-check">
+                <input type="checkbox" id="robot-check" name="robot-check">
+                <label for="robot-check">I'm not a robot.</label>
+            </div>
+
+            <div class="recaptcha-logo">
+                <img src="recaptcha-icon.png" alt="reCAPTCHA" class="logo-recaptcha">
+                <span class="recaptcha-text">reCAPTCHA</span>
+            </div>
+
+        </div>
+        <p class="linea">-----------------------------------------------------------------------------------------</p>
+        <div class="enlace-second">
+            <p class="cuenta"><b>¿Tienes una cuenta?</b> </p>
+            <a href="iniciar-sesion.html" class="enlace-inicio"><b>Iniciar sesión</b></a>
+        </div>
+    </div>
+
+    <footer>
+        <section>
+            <h3>Sobre nosotros</h3>
+            <ul>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Nuestro equipo</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Ayuda</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Soporte</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="#">Destacados</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Gratuitos</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Estrategia</a></li>
+                <li><a href="#">Acción</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Unite</h3>
+            <ul>
+                <li><a href="#">Registrarse</a></li>
+                <li><a href="#">Iniciar sesión</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Nuestras redes</h3>
+            <ul>
+                <li><a href="#"><img src="./img/instagram-circle (1).png" alt="Instagram"></a></li>
+                <li><a href="#"><img src="./img/twitter-alt-circle.png" alt="X"></a></li>
+                <li><a href="#"><img src="./img/facebook.png" alt="Facebook"></a></li>
+            </ul>
+        </section>
+        <p>
+            Copyright © | Todos los derechos reservados |
+            <a href="#">Términos y condiciones</a> |
+            <a href="#">Política de privacidad</a> |
+            Agosto 2025
+              
+        </p>
+    </footer>
+    </body>
+</html>
