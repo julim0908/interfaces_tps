@@ -38,7 +38,7 @@ body {
     background-color: var(--primario_6);
 }
 
-/*@media (width: 1920px) { */
+@media (min-width: 1440px) {
     .header {
         background-color: var(--primario_5);
         height: 60px;
@@ -71,6 +71,10 @@ body {
         display: flex;
         align-items: center;
         gap: 32px;
+    }
+    .header-right img {
+        width: 25px;
+        height: 25px;
     }
 
     .search-input {
@@ -341,8 +345,8 @@ body {
     }
 
     .img-juego {
-        width: 100%;
-        height: auto;
+        width: 650px;
+        height: 650px;
         display: block;
     }
 
@@ -922,4 +926,4 @@ body {
     .menu a:hover{
     background-color: grey;
     }
-/* } */
+}
