@@ -1027,3 +1027,803 @@ footer p a {
 footer p a:hover {
     text-decoration: underline;
 }
+
+/* ========================================
+   MEDIA QUERIES PARA RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablets grandes y laptops pequeñas (hasta 1200px) */
+@media (max-width: 1200px) {
+    .banner-lanzamiento {
+        padding: 0 8%;
+    }
+    
+    .carousel-header,
+    .destacados-container {
+        padding: 0 8%;
+    }
+    
+    .publicity-container {
+        display: none;
+    }
+    
+    .lanzamiento {
+        justify-content: center;
+    }
+    
+    /* Footer ajustado */
+    footer {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 35px 50px;
+        gap: 35px;
+    }
+    
+    footer section:nth-child(4) {
+        grid-column: 1;
+    }
+    
+    footer section:nth-child(5) {
+        grid-column: 2;
+    }
+    
+    footer p {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Tablets (hasta 992px) */
+@media (max-width: 992px) {
+    /* Header */
+    .logo-text {
+        font-size: 20px;
+    }
+    
+    .search-input {
+        width: 180px;
+    }
+    
+    /* Banner de lanzamiento */
+    .banner-lanzamiento {
+        padding: 0 5%;
+    }
+    
+    .container {
+        flex-direction: column;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .image-section {
+        min-height: 350px;
+        width: 100%;
+    }
+    
+    .content-section {
+        padding: 30px;
+        text-align: left;
+    }
+    
+    .title-banner {
+        font-size: 28px;
+        text-align: left;
+    }
+    
+    .description {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    
+    .cta-button {
+        width: 100%;
+    }
+    
+    /* Carruseles */
+    .game-card {
+        width: 180px;
+        height: 230px;
+    }
+    
+    .card-image {
+        height: 120px;
+    }
+    
+    .card-title {
+        font-size: 16px;
+    }
+    
+    .price-current {
+        font-size: 18px;
+    }
+    
+    /* Carrusel destacados */
+    .carousel-large .game-card-large {
+        width: 220px;
+        height: 280px;
+    }
+    
+    .carousel-large .card-image {
+        height: 160px;
+    }
+    
+    .carousel-large .card-title {
+        font-size: 20px;
+    }
+    
+    /* Footer */
+    footer {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px 40px;
+        gap: 30px;
+    }
+    
+    footer section:nth-child(1) {
+        grid-column: 1;
+    }
+    
+    footer section:nth-child(2) {
+        grid-column: 2;
+    }
+    
+    footer section:nth-child(3) {
+        grid-column: 1;
+    }
+    
+    footer section:nth-child(4) {
+        grid-column: 2;
+    }
+    
+    footer section:nth-child(5) {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+    
+    footer section:nth-child(5) ul {
+        justify-content: center;
+    }
+    
+    footer p {
+        grid-column: 1 / -1;
+    }
+}
+
+/* Tablets verticales y móviles grandes (hasta 768px) */
+@media (max-width: 768px) {
+    /* Header */
+    .header {
+        height: 55px;
+        padding: 0 12px;
+    }
+    
+    .logo-text {
+        font-size: 18px;
+    }
+    
+    .header img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .search-input {
+        width: 150px;
+        padding: 0 12px;
+    }
+    
+    .search-input input {
+        height: 28px;
+        font-size: 11px;
+    }
+    
+    .logo_buscador {
+        width: 18px;
+        height: 18px;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        width: 250px;
+    }
+    
+    /* Banner de lanzamiento */
+    .banner-lanzamiento {
+        padding: 0 5%;
+    }
+    
+    .banner-lanzamiento h1 {
+        font-size: 20px;
+    }
+    
+    .image-section {
+        min-height: 280px;
+    }
+    
+    .content-section {
+        padding: 25px;
+    }
+    
+    .title-banner {
+        font-size: 24px;
+    }
+    
+    .description {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+    
+    .category,
+    .preorder-info {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+    
+    /* Carruseles */
+    .carousel-header,
+    .destacados-container {
+        padding: 0 5%;
+    }
+    
+    .carousel-header h2 {
+        font-size: 18px;
+    }
+    
+    .carousel-container {
+        gap: 15px;
+        padding: 0 10px;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 24px;
+    }
+    
+    .game-card {
+        width: 160px;
+        height: 220px;
+    }
+    
+    .card-image {
+        height: 110px;
+    }
+    
+    .card-body {
+        padding: 12px;
+    }
+    
+    .card-title {
+        font-size: 15px;
+    }
+    
+    .price-current {
+        font-size: 16px;
+    }
+    
+    .price-old {
+        font-size: 12px;
+    }
+    
+    .btn-add {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+    
+    .btn-cart {
+        width: 45px;
+        height: 32px;
+    }
+    
+    .btn-cart img {
+        width: 26px;
+        height: 24px;
+    }
+    
+    /* Carrusel destacados */
+    .carousel-large .game-card-large {
+        width: 200px;
+        height: 260px;
+    }
+    
+    .carousel-large .card-image {
+        height: 150px;
+    }
+    
+    .carousel-large .card-title {
+        font-size: 18px;
+    }
+    
+    .carousel-large .price-current {
+        font-size: 22px;
+    }
+    
+    /* Footer */
+    footer {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 30px 35px;
+        gap: 25px;
+    }
+    
+    footer h3 {
+        font-size: 15px;
+    }
+    
+    footer ul li a {
+        font-size: 13px;
+    }
+    
+    footer section:nth-child(5) ul li a img {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+/* Móviles (hasta 576px) */
+@media (max-width: 576px) {
+    /* Header */
+    .header {
+        height: 50px;
+        padding: 0 8px;
+    }
+    
+    .logo-text {
+        font-size: 16px;
+    }
+    
+    .header-center img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .header-right {
+        gap: 8px;
+    }
+    
+    .search-input {
+        width: 120px;
+        padding: 0 10px;
+    }
+    
+    .search-input input {
+        height: 26px;
+        font-size: 10px;
+    }
+    
+    .menu-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+        margin-right: 8px;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        width: 220px;
+    }
+    
+    .user-profile {
+        padding: 2rem;
+    }
+    
+    .menu-nav li a {
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+    }
+    
+    .icon-sidebar {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+    
+    /* Banner de lanzamiento */
+    .banner-lanzamiento {
+        padding: 0 3%;
+        margin-top: 20px;
+    }
+    
+    .banner-lanzamiento h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .container {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .image-section {
+        min-height: 250px;
+    }
+    
+    .release-date {
+        font-size: 11px;
+        padding: 5px 10px;
+        bottom: 10px;
+        left: 10px;
+    }
+    
+    .content-section {
+        padding: 20px;
+    }
+    
+    .title-banner {
+        font-size: 22px;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    
+    .description {
+        font-size: 13px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .category,
+    .preorder-info {
+        font-size: 12px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 14px;
+        width: 100%;
+    }
+    
+    /* Carruseles */
+    .carousel-header,
+    .destacados-container {
+        padding: 0 3%;
+    }
+    
+    .destacados-container h2,
+    .carousel-header h2 {
+        font-size: 16px;
+        padding-left: 0;
+    }
+    
+    .carousel-header {
+        margin-top: 20px;
+    }
+    
+    .carousel-container {
+        gap: 10px;
+        padding: 0 5px;
+    }
+    
+    .carousel-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+    
+    .carousel-inner {
+        padding: 15px 0;
+    }
+    
+    .carousel-wrapper {
+        gap: 12px;
+    }
+    
+    .game-card {
+        width: 140px;
+        height: 200px;
+    }
+    
+    .card-image {
+        height: 100px;
+    }
+    
+    .card-body {
+        padding: 10px;
+    }
+    
+    .card-title {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+    
+    .card-footer {
+        padding: 0 10px 10px 10px;
+    }
+    
+    .price-current {
+        font-size: 15px;
+    }
+    
+    .price-old {
+        font-size: 11px;
+    }
+    
+    .btn-free {
+        padding: 5px 8px;
+        font-size: 14px;
+    }
+    
+    .btn-add {
+        width: 26px;
+        height: 26px;
+        font-size: 18px;
+    }
+    
+    .btn-cart {
+        width: 40px;
+        height: 28px;
+    }
+    
+    .btn-cart img {
+        width: 22px;
+        height: 20px;
+    }
+    
+    .discount-icon {
+        width: 25px;
+        height: 25px;
+        right: -3px;
+        top: -8px;
+    }
+    
+    .hover-icon {
+        width: 40px;
+        height: 40px;
+        top: 35px;
+    }
+    
+    .game-card:hover .hover-icon {
+        top: 50px;
+    }
+    
+    /* Carrusel destacados */
+    .carousel-large {
+        max-width: 100%;
+    }
+    
+    .carousel-large .game-card-large {
+        width: 170px;
+        height: 230px;
+    }
+    
+    .carousel-large .card-image {
+        height: 130px;
+    }
+    
+    .carousel-large .game-card::before {
+        height: 130px;
+    }
+    
+    .carousel-large .card-title {
+        font-size: 16px;
+    }
+    
+    .carousel-large .price-current {
+        font-size: 18px;
+    }
+    
+    .carousel-large .price-old {
+        font-size: 14px;
+    }
+    
+    .carousel-large .btn-free {
+        font-size: 16px;
+    }
+    
+    .carousel-large .btn-add {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .carousel-large .btn-cart {
+        width: 50px;
+        height: 35px;
+    }
+    
+    .carousel-large .btn-cart img {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .carousel-large .discount-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .carousel-large .hover-icon {
+        width: 50px;
+        height: 50px;
+        top: 40px;
+    }
+    
+    .carousel-large .game-card:hover .hover-icon {
+        top: 65px;
+    }
+    
+    /* Footer */
+    footer {
+        grid-template-columns: 1fr;
+        padding: 25px 20px;
+        gap: 25px;
+        margin-top: 40px;
+        text-align: center;
+    }
+    
+    footer section {
+        width: 100%;
+    }
+    
+    footer section:nth-child(5) {
+        order: -1;
+        margin-bottom: 10px;
+    }
+    
+    footer section:nth-child(5) ul {
+        justify-content: center;
+        gap: 30px;
+    }
+    
+    footer section:nth-child(5) ul li a img {
+        width: 32px;
+        height: 32px;
+    }
+    
+    footer h3 {
+        font-size: 15px;
+        text-align: center;
+        margin-bottom: 12px;
+    }
+    
+    footer ul {
+        text-align: center;
+    }
+    
+    footer ul li {
+        margin-bottom: 10px;
+    }
+    
+    footer ul li a {
+        font-size: 13px;
+    }
+    
+    footer p {
+        font-size: 12px;
+        padding-top: 20px;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+}
+
+/* Móviles muy pequeños (hasta 375px) */
+@media (max-width: 375px) {
+    /* Header */
+    .header {
+        height: 48px;
+    }
+    
+    .logo-text {
+        font-size: 14px;
+    }
+    
+    .header-center img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .search-input {
+        width: 100px;
+    }
+    
+    .search-input input {
+        font-size: 9px;
+    }
+    
+    /* Banner */
+    .banner-lanzamiento h1 {
+        font-size: 16px;
+    }
+    
+    .image-section {
+        min-height: 220px;
+    }
+    
+    .content-section {
+        padding: 15px;
+    }
+    
+    .title-banner {
+        font-size: 20px;
+    }
+    
+    .description {
+        font-size: 12px;
+    }
+    
+    .category,
+    .preorder-info {
+        font-size: 11px;
+    }
+    
+    .cta-button {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+    
+    /* Carruseles */
+    .game-card {
+        width: 130px;
+        height: 190px;
+    }
+    
+    .card-image {
+        height: 90px;
+    }
+    
+    .card-title {
+        font-size: 13px;
+    }
+    
+    .price-current {
+        font-size: 14px;
+    }
+    
+    .btn-cart {
+        width: 38px;
+        height: 26px;
+    }
+    
+    .btn-cart img {
+        width: 20px;
+        height: 18px;
+    }
+    
+    /* Carrusel destacados */
+    .carousel-large .game-card-large {
+        width: 150px;
+        height: 210px;
+    }
+    
+    .carousel-large .card-image {
+        height: 120px;
+    }
+    
+    .carousel-large .card-title {
+        font-size: 15px;
+    }
+    
+    .carousel-large .price-current {
+        font-size: 16px;
+    }
+    
+    /* Footer */
+    footer {
+        padding: 20px 15px;
+        gap: 20px;
+    }
+    
+    footer h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    footer ul li a {
+        font-size: 12px;
+    }
+    
+    footer section:nth-child(5) ul {
+        gap: 25px;
+    }
+    
+    footer section:nth-child(5) ul li a img {
+        width: 28px;
+        height: 28px;
+    }
+    
+    footer p {
+        font-size: 11px;
+        padding-top: 15px;
+        margin-top: 15px;
+    }
+}
