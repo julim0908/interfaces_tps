@@ -37,7 +37,6 @@ body {
     background-color: var(--primario_6);
 }
 
-<<<<<<< HEAD
 
     .header {
         background-color: var(--primario_5);
@@ -50,19 +49,6 @@ body {
         position: relative;
         z-index: 60;
     }
-=======
-.header {
-    background-color: var(--primario_5);
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 60;
-}
->>>>>>> c3ec0d76d246e8878b0b6c02414c227aa39f5fa6
 
 .header-center {
     display: flex;
