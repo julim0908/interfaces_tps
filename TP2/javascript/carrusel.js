@@ -4,8 +4,8 @@ const nextBtn = document.getElementById("nextBtn")
 
 const cards = document.querySelectorAll(".game-card")
 const cardsPerView = 4
-const cardWidth = 250 // Ancho exacto de cada card
-const gap = 20 // Gap entre cards
+const cardWidth = 250
+const gap = 20
 const totalCards = cards.length
 const maxPosition = totalCards - cardsPerView
 
@@ -101,5 +101,3 @@ initCarousel("carouselWrapper4", "prevBtn4", "nextBtn4", 4, 250)
 initCarousel("carouselWrapper5", "prevBtn5", "nextBtn5", 4, 250)
 initCarousel("carouselWrapper6", "prevBtn6", "nextBtn6", 4, 250)
 initCarousel("carouselWrapper7", "prevBtn7", "nextBtn7", 4, 250)
-
-// ============ SIDEBAR ============

@@ -499,7 +499,6 @@ body {
     animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Efecto de brillo que recorre el botón */
 .cta-button::before {
     content: '';
     position: absolute;
@@ -548,7 +547,6 @@ body {
     animation: pulse-glow 2s ease-in-out infinite;
 }
 
-/* Efecto de brillo que recorre el botón */
 .cta-button::before {
     content: '';
     position: absolute;
@@ -653,8 +651,23 @@ body {
 
 .carousel-wrapper {
     display: flex;
-    transition: transform 0.5s ease-in-out;
     gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.carousel-wrapper .game-card,
+.carousel-wrapper .game-card-large {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-wrapper .game-card:hover,
+.carousel-wrapper .game-card-large:hover {
+    transform: translateY(-5px);
+}
+.carousel-wrapper,
+#carouselWrapper3 {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .game-card {
