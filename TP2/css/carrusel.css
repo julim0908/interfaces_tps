@@ -239,8 +239,18 @@ body {
   background-color: var(--primario_4);
 }
 
-.menu-nav .icon {
-  font-size: 1.25rem;
+.icon-sidebar{
+  width: 30px;
+  height: 30px;
+}
+.avatar{
+  margin-top: 40px;
+  width: 30px;
+  height: 30px;
+}
+.avatar img{
+  width: 40px;
+  height: 40px;
 }
 
 .action-buttons {
@@ -277,9 +287,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   gap: 8px;
   border-top: 1px solid white;
   margin-top: auto;
+}
+.logo-section img{
+  margin-top: -20px;
+  width: 90px;
+  height: 90px;
 }
 
 .hidden {

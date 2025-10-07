@@ -38,7 +38,7 @@ body {
     background-color: var(--primario_6);
 }
 
-@media (min-width: 1440px) {
+
     .header {
         background-color: var(--primario_5);
         height: 60px;
@@ -926,4 +926,3 @@ body {
     .menu a:hover{
     background-color: grey;
     }
-}
