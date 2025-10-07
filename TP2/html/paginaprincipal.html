@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>PlayForge</title>
+    <link rel="icon" href="/img/lsldl.png">
+</head>
+<body>
+<!-- Header-->
+<header class="header">
+    <div id="menuToggle" class="menu-toggle">
+        <span class="menu-icon" id="menuIcon">☰</span>
+    </div>
+    
+    <div class="header-center">
+        <img src="/img/logo_64x64.png" alt="">
+        <p class="logo-text">PlayForge</p>
+    </div>
+    
+    <div class="header-right">
+        <div class="search-input">
+            <input type="text" placeholder="Buscar un juego">
+            <img src="/img/lupa.png" class="logo_buscador" alt="logo_buscador">
+        </div>
+    </div>
+</header>
+<!-- Sidebar-->
+<div id="overlay" class="overlay"></div>
+
+<div id="sidebarMenu" class="sidebar">
+    <div id="userProfile" class="user-profile hidden">
+        <div class="avatar">
+            <img class="icon-sidebar" src="/img/usuario.png"></img>
+        </div>
+        <span class="username">Usuario</span>
+        <button class="edit-profile">Editar perfil</button>
+    </div>
+
+    <nav class="menu-nav">
+        <ul>
+            <li><a href="#"><img class="icon-sidebar" src="/img/hogar.png"></img> Inicio</a></li>
+            <li><a href="#"><img class="icon-sidebar" src="/img/aplicaciones.png"></img> Mi biblioteca</a></li>
+            <li><a href="#"><img class="icon-sidebar" src="/img/deportes.png"></img> Deportes</a></li>
+            <li><a href="#"><img class="icon-sidebar" src="/img/estrategia.png"></img> Estrategia</a></li>
+            <li><a href="#"><img class="icon-sidebar" src="/img/escudo-espada.png"></img> Acción</a></li>
+            <li><a href="#"><img class="icon-sidebar" src="/img/descuento.png"></img> Ofertas</a></li>
+            <li><a href="#"><img class="icon-sidebar" src="/img/regalo.png"></img> Gratuitos</a></li>
+            <li><a href="#"><img class="icon-sidebar" src="/img/favorito.png"></img> Destacados</a></li>
+            <li><a href="#"><img class="icon-sidebar" src="/img/carrito-de-compras (1).png"></img> Carrito</a></li>
+        </ul>
+    </nav>
+
+    <div class="action-buttons">
+        <button id="registerBtn" class="btn-register">Registrate</button>
+        <button id="logoutBtn" class="btn-logout hidden">
+            <img class="icon-sidebar" src="/img/cerrar-sesion-de-usuario.png">Cerrar sesión</img> 
+        </button>
+    </div>
+
+    <div class="logo-section">
+        <span class="logo-text">PlayForge</span>
+        <img src="/img/logo_64x64.png" alt="">
+    </div>
+</div>
+
+
+<!-- Banner de proximos lanzamientos-->
+    <h2 class="section-title">Proximamente</h2>
+    <div class="container">
+            <div class="image-section">
+                <img src="/img/Diseno-sin-titulo30.png" alt="Rematch Gameplay" class="game-image">
+                <div class="image-overlay">
+                    <img src="/img/candado (2).png" alt="Locked" class="lock-icon">
+                </div>
+                <div class="release-date">Disponible el 12/10/25</div>
+            </div>
+            
+            <div class="content-section">
+                <h2 class="title-banner">Rematch</h2>
+                <p class="description">
+                    Rematch es un juego de fútbol multijugador online. Controla un jugador de tu equipo y compite en veloces partidos 5 contra 5 desde una perspectiva inmersiva en tercera persona. Forma equipo con tus amigos y disfrutad de la acción.
+                </p>
+                
+                <p class="category"><strong>Categoría:</strong> Deportes.</p>
+                
+                <p class="preorder-info">¡26.611 personas adquirieron la preventa!</p>
+                
+                <button class="cta-button">Adquirir preventa</button>
+            </div>
+    </div>
+<!-- Fin del banner-->
+    <aside class="publicity_container-home">
+        <img src="/img/publicity_1.png" alt="">
+        <img src="/img/publicity_2.png" alt="">
+    </aside>
+
+
+<!-- Carrusel de juegos destacados (3 CARDS)-->
+    <h2 class="title-destacados">Destacados</h2>
+
+    <div class="carousel-container carousel-large">
+        <button class="carousel-btn prev" id="prevBtn3">‹</button>
+        
+        <div class="carousel-inner">
+            <div class="carousel-wrapper" id="carouselWrapper3">
+                
+                <article class="game-card game-card-large">
+                    <button class="btn-free">Gratuito</button>
+                    <img src="/img/flickgoal.png" alt="Flick Goal" class="card-image">
+                    <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                    <section class="card-body">
+                        <h3 class="card-title">Flick Goal</h3>
+                        <footer class="card-footer">
+                            <button class="btn-add">+</button>
+                        </footer>
+                    </section>
+                </article>
+
+                <article class="game-card game-card-large">
+                    <img src="/img/football.jpg" alt="FIFA 24" class="card-image">
+                    <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                    <section class="card-body">
+                        <h3 class="card-title">FIFA 24</h3>
+                        <footer class="card-footer">
+                            <div class="price-container">
+                                <span class="price-current">$49,99</span>
+                            </div>
+                            <button class="btn-cart">
+                                <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                            </button>
+                        </footer>
+                    </section>
+                </article>
+
+                <article class="game-card game-card-large">
+                    <img src="/img/Arte-oficial-de-Minecraft.jpg" alt="Minecraft" class="card-image">
+                    <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                    <!-- Icono de descuento -->
+                    <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                    <section class="card-body">
+                        <h3 class="card-title">Minecraft</h3>
+                        <footer class="card-footer">
+                            <div class="price-container">
+                                <span class="price-old">$29,99</span>
+                                <span class="price-current">$19,99</span>
+                            </div>
+                            <button class="btn-cart">
+                                <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                            </button>
+                        </footer>
+                    </section>
+                </article>
+
+                <article class="game-card game-card-large">
+                    <button class="btn-free">Gratuito</button>
+                    <img src="/img/APEX.png" alt="Apex Legends" class="card-image">
+                    <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                    <section class="card-body">
+                        <h3 class="card-title">Apex Legends</h3>
+                        <footer class="card-footer">
+                            <button class="btn-add">+</button>
+                        </footer>
+                    </section>
+                </article>
+
+                <article class="game-card game-card-large">
+                    <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=400&h=300&fit=crop" alt="Valorant" class="card-image">
+                    <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                    <section class="card-body">
+                        <h3 class="card-title">Valorant</h3>
+                        <footer class="card-footer">
+                            <div class="price-container">
+                                <span class="price-current">$0,00</span>
+                            </div>
+                            <button class="btn-cart">
+                                <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                            </button>
+                        </footer>
+                    </section>
+                </article>
+
+            </div>
+        </div>
+        
+        <button class="carousel-btn next" id="nextBtn3">›</button>
+    </div>
+<!-- Fin del carrusel 1-->
+
+
+<!-- Inicio del carrusel 2 -->
+<div class="carousel-header">
+    <h2 class="carousel-header-title">Podrian gustarte</h2>
+     <div class="carousel-header-logo"><img src="/img/angulo-doble-pequeno-derecho.png"></div>
+</div>
+<div class="carousel-container">
+    <button class="carousel-btn prev" id="prevBtn">‹</button>
+    
+    <div class="carousel-inner">
+        <div class="carousel-wrapper" id="carouselWrapper">
+            
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="8 Ball Pool" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">8 Ball Pool</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/football.jpg" alt="Call of Duty" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Call Of Duty Black Ops II</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$24,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/Arte-oficial-de-Minecraft.jpg" alt="Score Hero" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Score Hero</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$9,99</span>
+                            <span class="price-current">$2,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/APEX.png" alt="Apex Legends" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Apex Legends</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=400&h=300&fit=crop" alt="Fortnite" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Fortnite</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$19,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="League of Legends" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">League of Legends</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop" alt="Cyberpunk 2077" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Cyberpunk 2077</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$59,99</span>
+                            <span class="price-current">$29,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop" alt="GTA V" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Grand Theft Auto V</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$34,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+        </div>
+    </div>
+    <button class="carousel-btn next" id="nextBtn">›</button>
+</div>
+
+<div class="carousel-header">
+    <h2 class="carousel-header-title">Gratuitos</h2>
+     <div class="carousel-header-logo"><img src="/img/angulo-doble-pequeno-derecho.png"></div>
+</div>
+
+<div class="carousel-container">
+    <button class="carousel-btn prev" id="prevBtn2">‹</button>
+        <div class="carousel-inner">
+            <div class="carousel-wrapper" id="carouselWrapper2">
+                
+        <article class="game-card">
+            <button class="btn-free">Gratuito</button>
+            <img src="/img/flickgoal.png" alt="Rocket League" class="card-image">
+            <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+            <section class="card-body">
+                <h3 class="card-title">Rocket League</h3>
+                <footer class="card-footer">
+                    <button class="btn-add">+</button>
+                </footer>
+            </section>
+        </article>
+
+        <article class="game-card">
+            <img src="/img/football.jpg" alt="Battlefield" class="card-image">
+              <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+            <section class="card-body">
+                <h3 class="card-title">Battlefield 2042</h3>
+                <footer class="card-footer">
+                    <div class="price-container">
+                        <span class="price-current">$39,99</span>
+                    </div>
+                    <button class="btn-cart">
+                        <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                    </button>
+                </footer>
+            </section>
+        </article>
+
+        <article class="game-card">
+            <img src="/img/Arte-oficial-de-Minecraft.jpg" alt="Terraria" class="card-image">
+              <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+            <!-- Icono de descuento -->
+            <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+            <section class="card-body">
+                <h3 class="card-title">Terraria</h3>
+                <footer class="card-footer">
+                    <div class="price-container">
+                        <span class="price-old">$14,99</span>
+                        <span class="price-current">$4,99</span>
+                    </div>
+                    <button class="btn-cart">
+                        <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                    </button>
+                </footer>
+            </section>
+        </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/APEX.png" alt="Warzone" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Call of Duty Warzone</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=400&h=300&fit=crop" alt="Overwatch" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Overwatch 2</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$29,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="Dota 2" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Dota 2</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="Elden Ring" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Elden Ring</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$59,99</span>
+                            <span class="price-current">$44,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="Red Dead" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Red Dead Redemption 2</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$39,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+        </div>
+    </div>
+    
+    <button class="carousel-btn next" id="nextBtn2">›</button>
+</div>
+ <section class="publicidad">
+    <img src="/img/publicidadMC.jpg" alt="">
+     <img src="/img/publicidadMC.jpg" alt="">
+ </section>
+<!-- Fin del carrusel 2-->
+
+<!-- Inicio del carrusel 3 -->
+<div class="carousel-header">
+    <h2 class="carousel-header-title">Ofertas</h2>
+     <div class="carousel-header-logo"><img src="/img/angulo-doble-pequeno-derecho.png"></div>
+</div>
+
+<div class="carousel-container">
+    <button class="carousel-btn prev" id="prevBtn4">‹</button>
+        <div class="carousel-inner">
+            <div class="carousel-wrapper" id="carouselWrapper4">
+            
+        <article class="game-card">
+            <button class="btn-free">Gratuito</button>
+            <img src="/img/flickgoal.png" alt="Counter Strike" class="card-image">
+            <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+            <section class="card-body">
+                <h3 class="card-title">Counter Strike 2</h3>
+                <footer class="card-footer">
+                    <button class="btn-add">+</button>
+                </footer>
+            </section>
+        </article>
+
+            <article class="game-card">
+                <img src="/img/football.jpg" alt="Halo" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Halo Infinite</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$29,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/Arte-oficial-de-Minecraft.jpg" alt="Stardew Valley" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Stardew Valley</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$14,99</span>
+                            <span class="price-current">$9,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/APEX.png" alt="Genshin Impact" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Genshin Impact</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=400&h=300&fit=crop" alt="Destiny 2" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Destiny 2</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$19,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="Path of Exile" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Path of Exile</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop" alt="Dark Souls" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Dark Souls III</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$39,99</span>
+                            <span class="price-current">$19,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop" alt="Witcher 3" class="card-image">
+                 <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">The Witcher 3</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$29,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+        </div>
+    </div>
+    
+    <button class="carousel-btn next" id="nextBtn4">›</button>
+</div>
+<!-- Fin del carrusel 3-->
+<!-- Inicio del carrusel 4 -->
+<div class="carousel-header">
+    <h2 class="carousel-header-title">Deportes</h2>
+     <div class="carousel-header-logo"><img src="/img/angulo-doble-pequeno-derecho.png"></div>
+</div>
+
+<div class="carousel-container">
+    <button class="carousel-btn prev" id="prevBtn5">‹</button>
+    
+    <div class="carousel-inner">
+        <div class="carousel-wrapper" id="carouselWrapper5">
+            
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="Fall Guys" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Fall Guys</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/football.jpg" alt="Rainbow Six" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Rainbow Six Siege</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$19,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/Arte-oficial-de-Minecraft.jpg" alt="Hollow Knight" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Hollow Knight</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$14,99</span>
+                            <span class="price-current">$7,49</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/APEX.png" alt="Smite" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Smite</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop" alt="Legends of Runeterra" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Legends of Runeterra</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop" alt="God of War" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">God of War</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$49,99</span>
+                            <span class="price-current">$29,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop" alt="Horizon" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Horizon Zero Dawn</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$49,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+        </div>
+    </div>
+    
+    <button class="carousel-btn next" id="nextBtn5">›</button>
+</div>
+<!-- Fin del carrusel 4 -->
+
+<!-- Inicio del carrusel 5 -->
+<div class="carousel-header">
+    <h2 class="carousel-header-title">Estrategia</h2>
+     <div class="carousel-header-logo"><img src="/img/angulo-doble-pequeno-derecho.png"></div>
+</div>
+
+<div class="carousel-container">
+    <button class="carousel-btn prev" id="prevBtn6">‹</button>
+    
+    <div class="carousel-inner">
+        <div class="carousel-wrapper" id="carouselWrapper6">
+            
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="Among Us" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Among Us</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/football.jpg" alt="Resident Evil" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Resident Evil Village</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$39,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/Arte-oficial-de-Minecraft.jpg" alt="Celeste" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Celeste</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$19,99</span>
+                            <span class="price-current">$4,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/APEX.png" alt="Brawlhalla" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Brawlhalla</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=400&h=300&fit=crop" alt="Monster Hunter" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Monster Hunter World</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$29,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop" alt="Hearthstone" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Hearthstone</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop" alt="Bloodborne" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Bloodborne</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$39,99</span>
+                            <span class="price-current">$19,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop" alt="Fallout" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Fallout 4</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$19,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+        </div>
+    </div>
+<!-- Fin del carrusel 5-->
+<!-- Inicio del carrusel 6 -->
+    <button class="carousel-btn next" id="nextBtn6">›</button>
+</div>
+<div class="carousel-header">
+    <h2 class="carousel-header-title">Acción</h2>
+     <div class="carousel-header-logo"><img src="/img/angulo-doble-pequeno-derecho.png"></div>
+</div>
+
+<div class="carousel-container">
+    <button class="carousel-btn prev" id="prevBtn7">‹</button>
+    
+    <div class="carousel-inner">
+        <div class="carousel-wrapper" id="carouselWrapper7">
+            
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/flickgoal.png" alt="Team Fortress 2" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Team Fortress 2</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/football.jpg" alt="Doom Eternal" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Doom Eternal</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$39,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="/img/Arte-oficial-de-Minecraft.jpg" alt="Hades" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <!-- Icono de descuento -->
+                <img src="/img/descuento.png" alt="Descuento" class="discount-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Hades</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$24,99</span>
+                            <span class="price-current">$12,49</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="/img/APEX.png" alt="Roblox" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Roblox</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?w=400&h=300&fit=crop" alt="Spider-Man" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Spider-Man Remastered</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$59,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop" alt="Legends of Runeterra" class="card-image">
+                <img src="/img/tocar (2).png" alt="Play" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Legends of Runeterra</h3>
+                    <footer class="card-footer">
+                        <button class="btn-add">+</button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <button class="btn-free">Gratuito</button>
+                <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&h=300&fit=crop" alt="God of War" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">God of War</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-old">$49,99</span>
+                            <span class="price-current">$29,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+            <article class="game-card">
+                <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=400&h=300&fit=crop" alt="Horizon" class="card-image">
+                  <img src="/img/candado (2).png" alt="Locked" class="hover-icon">
+                <section class="card-body">
+                    <h3 class="card-title">Horizon Zero Dawn</h3>
+                    <footer class="card-footer">
+                        <div class="price-container">
+                            <span class="price-current">$49,99</span>
+                        </div>
+                        <button class="btn-cart">
+                            <img src="/img/carrito-de-compras (1).png" alt="Agregar al carrito">
+                        </button>
+                    </footer>
+                </section>
+            </article>
+
+        </div>
+    </div>
+    
+    <button class="carousel-btn next" id="nextBtn7">›</button>
+</div>
+<!-- fin del carrusel 6 -->
+<!-- Footer -->
+<footer>
+    <section>
+        <h3>Sobre nosotros</h3>
+        <ul>
+            <li><a href="#">Contáctanos</a></li>
+            <li><a href="#">Nuestro equipo</a></li>
+        </ul>
+    </section>
+    <section>
+        <h3>Ayuda</h3>
+        <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Soporte</a></li>
+        </ul>
+    </section>
+    <section>
+        <h3>Categorías</h3>
+        <ul>
+            <li><a href="#">Destacados</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Gratuitos</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Estrategia</a></li>
+            <li><a href="#">Acción</a></li>
+        </ul>
+    </section>
+    <section>
+        <h3>Unite</h3>
+        <ul>
+            <li><a href="#">Registrarse</a></li>
+            <li><a href="#">Iniciar sesión</a></li>
+        </ul>
+    </section>
+    <section>
+        <h3>Nuestras redes</h3>
+        <ul>
+            <li><a href="#"><img src="/img/instagram-circle (1).png" alt="Instagram"></a></li>
+            <li><a href="#"><img src="/img/twitter-alt-circle.png" alt="X"></a></li>
+            <li><a href="#"><img src="/img/facebook.png" alt="Facebook"></a></li>
+        </ul>
+    </section>
+    <p>
+        Copyright © | Todos los derechos reservados |
+        <a href="#">Términos y condiciones</a> |
+        <a href="#">Política de privacidad</a> |
+        Agosto 2025
+    </p>
+</footer>
+<script src="/javascript/carrusel.js"></script>
+</body>
+</html>
