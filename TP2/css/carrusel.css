@@ -60,10 +60,6 @@ body {
   flex: 1;
   justify-content: center;
 }
-.header-center img {
-  width: 90px;
-  height: 90px;
-}
 
 .header-center:hover {
   cursor: pointer;

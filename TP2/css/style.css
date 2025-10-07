@@ -32,12 +32,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-    
+} 
 body {
     background-color: var(--primario_6);
 }
 
+<<<<<<< HEAD
 
     .header {
         background-color: var(--primario_5);
@@ -50,42 +50,55 @@ body {
         position: relative;
         z-index: 60;
     }
+=======
+.header {
+    background-color: var(--primario_5);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 60;
+}
+>>>>>>> c3ec0d76d246e8878b0b6c02414c227aa39f5fa6
 
-    .header-center {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex: 1;
-        justify-content: center;
-    }
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
+}
 
-    .header-center:hover {
-        cursor: pointer;
-    }
-    .logo-text {
-        color: var(--blanco);
-        font-family: var(--font_roboto);
-    }
+.header-center:hover {
+    cursor: pointer;
+}
+.logo-text {
+    color: var(--blanco);
+    font-family: var(--font_roboto);
+}
 
-    .header-right {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-    }
-    .header-right img {
-        width: 25px;
-        height: 25px;
-    }
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.header-right img {
+    width: 25px;
+    height: 25px;
+}
 
-    .search-input {
-        background-color: var(--blanco);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-left: 10px;
-        border-radius: 40px;
-        padding: 0 16px;
-    }
+.search-input {
+    background-color: var(--blanco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    border-radius: 40px;
+    padding: 0 16px;
+}
 
     .search-input input {
         background-color: transparent;
@@ -193,7 +206,9 @@ body {
     .edit-profile:hover {
         color: var(--primario_3);
     }
-
+    .prueba {
+        display: flex;
+    }
     .avatar {
         width: 3rem;
         height: 3rem;
@@ -301,7 +316,7 @@ body {
         flex-direction: column;
         gap: 16px;
         position: absolute;
-        right: calc(100% + 300px);
+        right: 800px;
     }
 
     .publicity_container img {
@@ -487,7 +502,7 @@ body {
         margin-top: 32px;
         height: fit-content;
         position: absolute;
-        left: calc(100% + 200px);
+        margin-left: 800px;
     }
     .similares-title {
         color: var(--blanco);
