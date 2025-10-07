@@ -26,6 +26,7 @@
 
     --font_roboto: "Roboto", sans-serif;
     --font_montserrat: "Montserrat", sans-serif;
+    --font_title: "Montserrat Alternates", sans-serif;
 }
 
 /*Estilos generales*/
@@ -40,7 +41,6 @@ body {
     background-color: var(--primario_6);
     min-height: 100vh;
 }
-
 /*HEADER*/
 .header {
     background-color: var(--primario_5);
@@ -53,14 +53,20 @@ body {
     position: relative;
     z-index: 60;
 }
-
 .header-center {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.header-center a {
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 8px;
-    flex: 1;
-    justify-content: center;
+    color: white;
 }
+
 
 .header-center:hover {
     cursor: pointer;
@@ -68,7 +74,8 @@ body {
 
 .logo-text {
     color: var(--blanco);
-    font-family: var(--font_roboto);
+    font-family: var(--font_title);
+    font-size: 24px;
 }
 
 .header-right {
@@ -744,7 +751,9 @@ body {
 .game-card-large {
     flex-shrink: 0;
 }
-
+.game-card-large a {
+    text-decoration: none;
+}
 .carousel-large .card-image {
     height: 180px;
 }
@@ -800,50 +809,6 @@ body {
     top: 90px;
 }
 
-/* Contenedor de publicidades con carrusel */
-.content-with-ads {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px;
-    max-width: 1600px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.ad-left,
-.ad-right {
-    width: 200px;
-    flex-shrink: 0;
-    position: sticky;
-    top: 80px;
-}
-
-.ad-left img,
-.ad-right img {
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.carousel-section {
-    flex: 1;
-    max-width: 1200px;
-}
-
-/* Ocultar publicidades en pantallas pequeñas */
-@media (max-width: 1400px) {
-    .ad-left,
-    .ad-right {
-        display: none;
-    }
-
-    .content-with-ads {
-        justify-content: center;
-    }
-}
 
 /* PÁGINA DE JUEGO */
 .contenido-principal {
@@ -860,25 +825,6 @@ body {
     padding: 30px;
     margin-top: 20px;
     width: 747px;
-}
-
-.publicity-container {
-    padding-left: 1%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.publicity-container img {
-    width: 200px;
-    padding: 10px;
-    border-radius: 12px;
-}
-
-.publicity-container img:hover {
-    transform: scale(1.05);
-    transition: transform 0.5s ease;
-    cursor: pointer;
 }
 .estructura {
     display: flex;
@@ -1464,7 +1410,214 @@ ul.slider img:target {
 .menu a:hover {
     background-color: grey;
 }
+/* FORMULARIO */
+/* FORMULARIO */
+.formulario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.container-form {
+    background: rgba(74, 26, 127, 0.6);
+    border-radius: 12px;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
 
+.header-form {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-space {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.social-btn:hover {
+    opacity: 0.9;
+}
+
+.facebook-btn {
+    background: #1877f2;
+    color: white;
+}
+
+.google-btn {
+    background: white;
+    color: #333;
+}
+
+.section-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+    color: #333;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+    outline: 2px solid #7c3aed;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 45px;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0;
+    padding: 12px;
+    background: white;
+    border-radius: 6px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    margin: 0;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.moon-icon {
+    width: 24px;
+    height: 24px;
+    background: #1e293b;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fbbf24;
+    font-size: 16px;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background: #22c55e;
+    color: white;
+}
+
+.btn-primary {
+    background: #16a34a;
+    color: white;
+}
+
+.footer-form {
+    text-align: center;
+    margin-top: 25px;
+    color: white;
+    font-size: 14px;
+}
+
+.footer-form a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-form a:hover {
+    text-decoration: underline;
+}
 /* FOOTER */
 footer {
     background-color: #2b0040;

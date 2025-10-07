@@ -26,15 +26,12 @@ function toggleMenu() {
 }
 
 
-function handleRegister() {
-    // Aquí va tu lógica de redirección al formulario
-    console.log('Redirigir a formulario de registro');
-    // window.location.href = '/registro';
+function handleRegister(event) {
+    event.preventDefault();
+    event.stopPropagation();
     
-    // Simulamos el registro para la demo
-    isRegistered = true;
-    updateUI();
-    toggleMenu();
+    console.log('Intentando redirigir...'); // Para verificar que se ejecuta
+    window.location.href = 'formulario.html';
 }
 
 
