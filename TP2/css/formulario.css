@@ -661,3 +661,70 @@ footer p a:hover {
         grid-template-columns: 1fr;
     }
 }
+/* Animación de salida del formulario */
+@keyframes slideOutFade {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+
+/* Clase que se agrega al hacer submit exitoso */
+.form-exit {
+  animation: slideOutFade 0.8s forwards;
+}
+
+/* Animación de bienvenida */
+@keyframes welcomeFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.welcome-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 2rem;
+  color: white;
+  animation: welcomeFade 1s ease forwards;
+}
+/* Animación de salida del formulario */
+@keyframes slideOutFade {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-50px); }
+}
+
+.form-exit {
+  animation: slideOutFade 0.8s forwards;
+}
+
+/* Animación de bienvenida */
+@keyframes welcomeFade {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.auth-container .welcome-message {
+  display: none; /* Oculto al inicio */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 2rem;
+  color: white;
+  animation: welcomeFade 1s ease forwards;
+}
+
+.auth-container .welcome-message.show {
+  display: flex; /* Mostrar al agregar clase "show" */
+}

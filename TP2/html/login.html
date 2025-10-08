@@ -11,95 +11,104 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header-->
-<header class="header">
-    <div id="menuToggle" class="menu-toggle">
-        <span class="menu-icon" id="menuIcon">☰</span>
-    </div>
-    
-    <div class="header-center">
-        <img src="/img/logo_64x64.png" alt="">
-        <p class="logo-text">PlayForge</p>
-    </div>
-    
-    <div class="header-right">
-        <div class="search-input">
-            <input type="text" placeholder="Buscar un juego">
-            <img src="/img/lupa.png" class="logo_buscador" alt="logo_buscador">
+    <!-- Header -->
+    <header class="header">
+        <div id="menuToggle" class="menu-toggle">
+            <span class="menu-icon" id="menuIcon">☰</span>
+        </div>
+
+        <div class="header-center">
+            <img src="/img/logo_64x64.png" alt="">
+            <p class="logo-text">PlayForge</p>
+        </div>
+
+        <div class="header-right">
+            <div class="search-input">
+                <input type="text" placeholder="Buscar un juego">
+                <img src="/img/lupa.png" class="logo_buscador" alt="logo_buscador">
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="overlay" class="overlay"></div>
+
+    <div id="sidebarMenu" class="sidebar">
+        <div id="userProfile" class="user-profile hidden">
+            <div class="avatar">
+                <img class="icon-sidebar" src="/img/usuario.png" alt="usuario">
+            </div>
+            <span class="username">Usuario</span>
+            <button class="edit-profile">Editar perfil</button>
+        </div>
+
+        <nav class="menu-nav">
+            <ul>
+                <li><a href="#"><img class="icon-sidebar" src="/img/hogar.png"> Inicio</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/aplicaciones.png"> Mi biblioteca</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/deportes.png"> Deportes</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/estrategia.png"> Estrategia</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/escudo-espada.png"> Acción</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/descuento.png"> Ofertas</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/regalo.png"> Gratuitos</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/favorito.png"> Destacados</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/carrito-de-compras (1).png"> Carrito</a></li>
+            </ul>
+        </nav>
+
+        <div class="action-buttons">
+            <button id="registerBtn" class="btn-register">Registrate</button>
+            <button id="logoutBtn" class="btn-logout hidden">
+                <img class="icon-sidebar" src="/img/cerrar-sesion-de-usuario.png" alt="">Cerrar sesión
+            </button>
+        </div>
+
+        <div class="logo-section">
+            <span class="logo-text">PlayForge</span>
+            <img src="/img/logo_64x64.png" alt="">
         </div>
     </div>
-</header>
-<!-- Sidebar-->
-<div id="overlay" class="overlay"></div>
 
-<div id="sidebarMenu" class="sidebar">
-    <div id="userProfile" class="user-profile hidden">
-        <div class="avatar">
-            <img class="icon-sidebar" src="/img/usuario.png" alt="usuario">
-        </div>
-        <span class="username">Usuario</span>
-        <button class="edit-profile">Editar perfil</button>
-    </div>
+    <!-- Main -->
+    <main class="auth-container">
+        <section class="auth-card">
+            <figure class="auth-logo">
+                <img src="/img/logo_64x64.png" alt="Logo PlayForge">
+                <figcaption>PlayForge</figcaption>
+            </figure>
 
-    <nav class="menu-nav">
-        <ul>
-            <li><a href="#"><img class="icon-sidebar" src="/img/hogar.png"> Inicio</a></li>
-            <li><a href="#"><img class="icon-sidebar" src="/img/aplicaciones.png"> Mi biblioteca</a></li>
-            <li><a href="#"><img class="icon-sidebar" src="/img/deportes.png"> Deportes</a></li>
-            <li><a href="#"><img class="icon-sidebar" src="/img/estrategia.png"> Estrategia</a></li>
-            <li><a href="#"><img class="icon-sidebar" src="/img/escudo-espada.png"> Acción</a></li>
-            <li><a href="#"><img class="icon-sidebar" src="/img/descuento.png"> Ofertas</a></li>
-            <li><a href="#"><img class="icon-sidebar" src="/img/regalo.png"> Gratuitos</a></li>
-            <li><a href="#"><img class="icon-sidebar" src="/img/favorito.png"> Destacados</a></li>
-            <li><a href="#"><img class="icon-sidebar" src="/img/carrito-de-compras (1).png"> Carrito</a></li>
-        </ul>
-    </nav>
+            <h1 class="auth-title">Iniciar sesión</h1>
 
-    <div class="action-buttons">
-        <button id="registerBtn" class="btn-register">Registrate</button>
-        <button id="logoutBtn" class="btn-logout hidden">
-            <img class="icon-sidebar" src="/img/cerrar-sesion-de-usuario.png" alt="">Cerrar sesión
-        </button>
-    </div>
+            <!-- Botones sociales -->
+            <div class="auth-social">
+                <button class="btn-social facebook">
+                    <img src="/img/facebook.png" alt="">
+                    <p>Continuar con Facebook</p>
+                </button>
+                <button class="btn-social google">
+                    <img src="/img/google.png" alt="">
+                    <p>Continuar con Google</p>
+                </button>
+            </div>
 
-    <div class="logo-section">
-        <span class="logo-text">PlayForge</span>
-        <img src="/img/logo_64x64.png" alt="">
-    </div>
-</div>
-<main class="auth-container">
-  <section class="auth-card">
-    <figure class="auth-logo">
-      <img src="/img/logo_64x64.png" alt="Logo PlayForge">
-      <figcaption>PlayForge</figcaption>
-    </figure>
+            <!-- Formulario de login -->
+            <form action="#" method="post" class="auth-form">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
 
-    <h1 class="auth-title">Iniciar sesión</h1>
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
 
-    <!-- Botones sociales -->
-    <div class="auth-social">
-      <button class="btn-social facebook"><img src="/img/facebook.png" alt="" srcset=""><p>Continuar con Facebook</p></button>
-      <button class="btn-social google"><img src="/img/google.png" alt="" srcset=""><p>Continuar con Google</p></button>
-    </div>
+                <a href="home.html" class="btn-submit">Iniciar sesión</a>
+            </form>
 
-    <!-- Formulario de login -->
-    <form action="#" method="post" class="auth-form">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+            <p class="auth-register">
+                ¿No tienes una cuenta?
+                <a href="registro.html">Regístrate</a>
+            </p>
+        </section>
+    </main>
 
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" name="password" required>
-
-      <button type="submit" class="btn-submit">Iniciar sesión</button>
-    </form>
-
-
-    <p class="auth-register">
-      ¿No tienes una cuenta?
-      <a href="registro.html">Regístrate</a>
-    </p>
-  </section>
-</main>
     <!-- Footer -->
     <footer>
         <section>
@@ -149,6 +158,7 @@
             Agosto 2025
         </p>
     </footer>
-<script src="/javascript/menu.js"></script>
+
+    <script src="/javascript/menu.js"></script>
 </body>
 </html>
