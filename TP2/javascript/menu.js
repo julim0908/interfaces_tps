@@ -1,7 +1,7 @@
 let isOpen = false;
 let isRegistered = false;
 
-// Elementos del DOM
+
 const menuToggle = document.getElementById('menuToggle');
 const menuIcon = document.getElementById('menuIcon');
 const overlay = document.getElementById('overlay');
@@ -30,7 +30,7 @@ function handleRegister(event) {
     event.preventDefault();
     event.stopPropagation();
     
-    console.log('Intentando redirigir...'); // Para verificar que se ejecuta
+    console.log('Intentando redirigir...');
     window.location.href = 'formulario.html';
 }
 
