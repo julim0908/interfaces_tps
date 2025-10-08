@@ -17,38 +17,36 @@
     </div>
     <div id="content" >
 <!-- Header-->
-        <header class="header">
-            <div id="menuToggle" class="menu-toggle">
-                <span class="menu-icon" id="menuIcon">☰</span>
+	<header class="header">
+        <div id="menuToggle" class="menu-toggle">
+            <span class="menu-icon" id="menuIcon">☰</span>
+        </div>
+        
+        <div class="header-center">
+            <a href="/html/home.html"><img src="/img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
+        </div>
+        
+        <div class="header-right">
+            <div class="search-input">
+                <input type="text" placeholder="Buscar un juego">
+                <img src="/img/lupa.png" class="logo_buscador" alt="logo_buscador">
             </div>
-            
-            <div class="header-center">
-                <a href="/html/home.html"><img src="/img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
-            </div>
-            
-            <div class="header-right">
-                <div class="search-input">
-                    <input type="text" placeholder="Buscar un juego">
-                    <img src="/img/lupa.png" class="logo_buscador" alt="logo_buscador">
-                </div>
-            </div>
-        </header>
-       
-           
-<!-- Sidebar-->
-        <div id="overlay" class="overlay"></div>
+        </div>
+    </header>
 
-        <div id="sidebarMenu" class="sidebar">
-            <div id="userProfile" class="user-profile hidden">
+    <div id="overlay" class="overlay"></div>
+
+    <div id="sidebarMenu" class="sidebar">
+        <div id="userProfile" class="user-profile hidden">
                 <div class="avatar">
                     <img class="icon-sidebar" src="/img/usuario.png"></img>
                 </div>
                 <span class="username">Usuario</span>
-                <button class="edit-profile">Editar perfil</button>
-            </div>
+            <button class="edit-profile">Editar perfil</button>
+        </div>
 
-            <nav class="menu-nav">
-                <ul>
+        <nav class="menu-nav">
+            <ul>
                     <li><a href="#"><img class="icon-sidebar" src="/img/hogar.png"></img> Inicio</a></li>
                     <li><a href="#"><img class="icon-sidebar" src="/img/aplicaciones.png"></img> Mi biblioteca</a></li>
                     <li><a href="#"><img class="icon-sidebar" src="/img/deportes.png"></img> Deportes</a></li>
@@ -58,18 +56,21 @@
                     <li><a href="#"><img class="icon-sidebar" src="/img/regalo.png"></img> Gratuitos</a></li>
                     <li><a href="#"><img class="icon-sidebar" src="/img/favorito.png"></img> Destacados</a></li>
                     <li><a href="#"><img class="icon-sidebar" src="/img/carrito-de-compras (1).png"></img> Carrito</a></li>
-                </ul>
-            </nav>
+            </ul>
+        </nav>
 
-            <div class="action-buttons">
-                <button id="registerBtn" class="btn-register"><a href="formulario.html"> Cerrar sesión</a></button>
-            </div>
-
-            <div class="logo-section">
-                <span class="logo-text">PlayForge</span>
-                <img src="/img/logo_64x64.png" alt="">
-            </div>
+        <div class="action-buttons">
+            <button id="registerBtn" class="btn-register">Registrate</button>
+            <button id="logoutBtn" class="btn-logout hidden">
+                 Cerrar sesión
+            </button>
         </div>
+
+        <div class="logo-section">
+            <span class="logo-text">PlayForge</span>
+            <img src="/img/logo_64x64.png" alt="">
+        </div>
+    </div>
 
 
     <!-- Banner de proximos lanzamientos + publicidad-->

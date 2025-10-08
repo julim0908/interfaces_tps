@@ -5,7 +5,6 @@ const welcomeMsg = document.getElementById('welcomeMessage');
 form.addEventListener('submit', function(e) {
   e.preventDefault();
 
-  // Validación básica (puedes reemplazarla con la tuya)
   const nombre = document.getElementById('nombre').value;
   const apellido = document.getElementById('apellido').value;
   const usuario = document.getElementById('usuario').value;

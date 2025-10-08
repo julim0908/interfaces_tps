@@ -293,9 +293,10 @@ body {
     padding: 0.8rem;
     justify-content: center;
 }
+
 .btn-register a {
     text-decoration: none;
-    color: inherit;
+    color: inherit; /* Hereda el color del padre */
     width: 100%;
     display: flex;
     align-items: center;
@@ -303,7 +304,8 @@ body {
     gap: 0.5rem;
 }
 
-.btn-register {
+.btn-register,
+.btn-logout {
     width: 100%;
     padding: 0.5rem;
     border: none;
@@ -321,12 +323,13 @@ body {
 }
 
 .btn-register:hover,
-.btn-register:hover a {
+.btn-register:hover a,
+.btn-logout:hover {
     color: var(--secundario_main);
 }
 
 .hidden {
-    display: none !important;
+    display: none;
 }
 
 .logo-section {
@@ -344,7 +347,6 @@ body {
     background: linear-gradient(135deg, #34d399, #3b82f6, #a855f7);
     border-radius: 0.5rem;
 }
-
 /* PUBLICIDAD */
 .publicity-container {
     padding-left: 1%;
