@@ -259,6 +259,16 @@ body {
     justify-content: center;
 }
 
+.btn-register a {
+    text-decoration: none;
+    color: inherit; /* Hereda el color del padre */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
 .btn-register,
 .btn-logout {
     width: 100%;
@@ -267,7 +277,7 @@ body {
     border-radius: 0.5rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
     font-size: 1rem;
     display: flex;
     align-items: center;
@@ -278,6 +288,7 @@ body {
 }
 
 .btn-register:hover,
+.btn-register:hover a,
 .btn-logout:hover {
     color: var(--secundario_main);
 }
