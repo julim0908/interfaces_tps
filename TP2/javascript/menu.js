@@ -31,7 +31,7 @@ function handleRegister(event) {
     event.stopPropagation();
     
     console.log('Intentando redirigir...');
-    window.location.href = 'formulario.html';
+    window.location.href = 'index.html';
 }
 
 

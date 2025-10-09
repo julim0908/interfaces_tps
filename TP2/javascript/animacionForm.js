@@ -23,18 +23,15 @@ form.addEventListener('submit', function(e) {
     return;
   }
 
-  // ✅ Todo bien: aplicamos animación
   authCard.classList.add('form-exit');
 
-  // Mostramos mensaje de bienvenida después de animación
   setTimeout(() => {
     authCard.style.display = 'none';
     welcomeMsg.classList.remove('hidden');
 
-    // Después de 2s, redirigimos al home
     setTimeout(() => {
-      window.location.href = "home.html"; // Cambiá por tu home real
+      window.location.href = "home.html";
     }, 2000);
 
-  }, 800); // coincide con la duración de la animación
+  }, 800);
 });
