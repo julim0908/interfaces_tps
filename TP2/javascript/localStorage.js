@@ -15,6 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     logoutBtn.addEventListener('click', () => {
         localStorage.removeItem('usuarioLogueado');
-        window.location.href = 'index.html';
+        window.location.href = '../index.html';
     });
 });

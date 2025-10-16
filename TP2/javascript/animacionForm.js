@@ -1,37 +1,53 @@
-const form = document.querySelector('.auth-form');
-const authCard = document.querySelector('.auth-card');
-const welcomeMsg = document.getElementById('welcomeMessage');
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
+(function() {
+    const form = document.querySelector('.auth-form'); 
+    
+    // Si no existe el formulario, salimos.
+    if (!form) return; 
 
-  const nombre = document.getElementById('nombre').value;
-  const apellido = document.getElementById('apellido').value;
-  const usuario = document.getElementById('usuario').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const confirmPassword = document.getElementById('confirm-password').value;
-  const robotCheck = document.getElementById('robot-check').checked;
+    const authCard = document.querySelector('.auth-card');
+    const welcomeMsg = document.getElementById('welcomeMessage');
 
-  if (!robotCheck) {
-    alert("Por favor confirma que no eres un robot.");
-    return;
-  }
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-  if (password !== confirmPassword) {
-    alert("Las contraseñas no coinciden.");
-    return;
-  }
+        // 1. Obtener datos
+        const nombre = document.getElementById('nombre').value;
+        const apellido = document.getElementById('apellido').value;
+        const usuario = document.getElementById('usuario').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+        const robotCheck = document.getElementById('robot-check').checked;
 
-  authCard.classList.add('form-exit');
+        // 2. Validación
+        if (!robotCheck) {
+            alert("Por favor confirma que no eres un robot.");
+            return;
+        }
 
-  setTimeout(() => {
-    authCard.style.display = 'none';
-    welcomeMsg.classList.remove('hidden');
+        if (password !== confirmPassword) {
+            alert("Las contraseñas no coinciden.");
+            return;
+        }
 
-    setTimeout(() => {
-      window.location.href = "home.html";
-    }, 2000);
+        // 3. Éxito: Guardar y Animar
+        
+        // Guardar el nombre de usuario
+        localStorage.setItem('usuarioLogueado', usuario);
 
-  }, 800);
-});
+        if (authCard) authCard.classList.add('form-exit');
+
+        setTimeout(() => {
+            if (authCard) authCard.style.display = 'none';
+            if (welcomeMsg) welcomeMsg.classList.remove('hidden');
+
+            // 4. Redirección final
+            setTimeout(() => {
+                // REDIRECCION A home.html
+                window.location.href = "../html/home.html"; 
+            }, 2000); // Espera 2 segundos después del mensaje de bienvenida
+
+        }, 800); // Espera 0.8 segundos (duración de la animación)
+    });
+})();

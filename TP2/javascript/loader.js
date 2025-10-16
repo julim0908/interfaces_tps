@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let percentage = 0;
     const duration = 5000;
-    const interval = 50;
+    const interval = 50; /*milisegundos*/
     const increment = (100 / duration) * interval;
     
     const progressInterval = setInterval(function() {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loaderPercentage.textContent = '100%';
             
 
-            setTimeout(function() {
+            setTimeout(function() { /*pausa visual*/ 
                 loader.style.display = 'none';
                 content.style.display = 'block';
             }, 300);

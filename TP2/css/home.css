@@ -42,16 +42,16 @@ body {
     min-height: 100vh;
 }
 #loader {
-    position: fixed;
+    position:fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(70, 23, 105, 0.336);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px); /*Genera un blur de 5px dentras del elemento*/
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content:center;
+    align-items:center;
     flex-direction: column;
     z-index: 9999;
 }
@@ -61,7 +61,10 @@ body {
     border: 8px solid white;
     border-top: 8px solid var(--acento_main);
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;   /*spin es una regla de keyframe*/ 
+                                           /*En un 1segundo dara una vuelta completa*/ 
+                                           /*linear indica velocidad constante*/
+                                            /*infinite indica que el giro nunca termina*/  
 }
 #loader-percentage {
     margin-top: 20px;
@@ -70,8 +73,8 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg); } /*rota a partir de los 0 grados*/
+    100% { transform: rotate(360deg); }/*Termina de rotar en 360 grados*/
 }
 #content {
     display: block;
@@ -395,7 +398,7 @@ body {
     flex: 1;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
+    cursor: pointer; /*el pointer indica que cuando el cursor pase sera interactivo*/
     min-height: 400px;
 }
 
@@ -417,7 +420,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease; /*toda la transicion de la animacion va a tener 3 milisegundos suave*/
     opacity: 0;
     z-index: 2;
 }
@@ -431,7 +434,7 @@ body {
 }
 
 .image-section:hover .game-image {
-    filter: brightness(0.4);
+    filter: brightness(0.4); /*los colores que incluya la imagen se*/
 }
 
 .image-section:hover .image-overlay {
