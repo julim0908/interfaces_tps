@@ -45,7 +45,7 @@
             // 4. Redirección final
             setTimeout(() => {
                 // REDIRECCION A home.html
-                window.location.href = "../html/home.html"; 
+                window.location.href = "./html/home.html";
             }, 2000); // Espera 2 segundos después del mensaje de bienvenida
 
         }, 800); // Espera 0.8 segundos (duración de la animación)

@@ -34,7 +34,7 @@
         
         console.log('Intentando redirigir...');
         // Redirige al index para login/registro si el usuario no está registrado
-        window.location.href = '../index.html'; 
+        window.location.href = './index.html'; 
     }
 
 
