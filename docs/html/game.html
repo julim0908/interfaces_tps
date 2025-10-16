@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PlayForge - Peg Solitaire</title>
+    <link rel="icon" href="/img/logo_64x64.png">
+    <link rel="stylesheet" href="../css/game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="header">
+        <div id="menuToggle" class="menu-toggle">
+            <span class="menu-icon" id="menuIcon">☰</span>
+        </div>
+        
+        <div class="header-center">
+            <a href="../html/home.html"><img src="../img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
+        </div>
+        
+        <div class="header-right">
+            <div class="search-input">
+                <input type="text" placeholder="Buscar un juego">
+                <img src="../img/lupa.png" class="logo_buscador" alt="logo_buscador">
+            </div>
+        </div>
+    </header>
+
+    <div id="overlay" class="overlay"></div>
+
+    <div id="sidebarMenu" class="sidebar">
+        <div id="userProfile" class="user-profile hidden">
+                <div class="avatar">
+                    <img class="icon-sidebar" src="../img/usuario.png"></img>
+                </div>
+                <span class="username">Usuario</span>
+            <button class="edit-profile">Editar perfil</button>
+        </div>
+
+        <nav class="menu-nav">
+            <ul>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/hogar.png"></img> Inicio</a></li>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/aplicaciones.png"></img> Mi biblioteca</a></li>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/deportes.png"></img> Deportes</a></li>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/estrategia.png"></img> Estrategia</a></li>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/escudo-espada.png"></img> Acción</a></li>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/descuento.png"></img> Ofertas</a></li>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/regalo.png"></img> Gratuitos</a></li>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/favorito.png"></img> Destacados</a></li>
+                    <li><a href="#"><img class="icon-sidebar" src="../img/carrito-de-compras (1).png"></img> Carrito</a></li>
+            </ul>
+        </nav>
+
+        <div class="action-buttons">
+            <button id="registerBtn" class="btn-register">Registrate</button>
+            <button id="logoutBtn" class="btn-logout hidden">
+                 Cerrar sesión
+            </button>
+        </div>
+
+        <div class="logo-section">
+            <span class="logo-text">PlayForge</span>
+            <img src="../img/logo_64x64.png" alt="">
+        </div>
+    </div>
+    <section class="contenido-principal">
+        <article class="content">
+            <aside class="publicidad">
+                <img src="../img/publicity_1.png" alt="">
+                <img src="../img/publicity_2.png" alt="">
+            </aside>
+            <div class="breadcrumbs">
+                    <p>Destacados > Peg Solitaire</p>
+                </div>
+            <div class="juego-container">
+                <h1 class="juego-title">Peg Solitaire</h1>
+                <div class="juego">
+                    <div class="game-cover">
+                        <img src="../img/pegSolitaireFB.png" class="img-juego" alt="Peg Solitaire Game Board">
+                        <div class="play-button">
+                            <img src="../img/tocar (2).png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="game-actions">
+                    <button class="btn-volver">Volver al inicio</button>
+                    <div class="game-icons">
+                        <img src="../img/icono_compartir.png" class="icono-game" alt="">
+                        <img src="../img/icono_fullscreen.png" class="icono-game" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <aside class="similares-section">
+                <h2 class="similares-title">Similares</h2>
+                    <div class="game-similar">
+                        <img src="../img/solitario-spider.png" alt="Solitario Spider">
+                        <div class="game-overlay">
+                            <div class="play-button-small">
+                                <div class="play-icon-small"></div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="game-similar">
+                        <img src="../img/super-puzzle-rpg.jpg" alt="Super Puzzle RPG">
+                        <div class="game-overlay">
+                            <div class="play-button-small">
+                                <div class="play-icon-small"></div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="game-similar">
+                        <img src="../img/tetris.png" alt="Tetris">
+                        <div class="game-overlay">
+                            <div class="play-button-small">
+                                <div class="play-icon-small"></div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="game-similar">
+                        <img src="../img/bubble-shooter.png" alt="Bubble Shooter">
+                        <div class="game-overlay">
+                            <div class="play-button-small">
+                                <div class="play-icon-small"></div>
+                            </div>
+                        </div>
+                    </div>
+            </aside>
+            <div class="info-juego">
+                <div class="reglas-juego">
+                    <h2>¿Cómo jugar Peg Solitaire?</h2>
+                    <p>El objetivo del juego es dejar solo una ficha en el tablero.</p>
+                    <p>1. Seleccioná una ficha y hacela saltar sobre otra ficha (arriba, abajo, izquierda o derecha) hacia un espacio vacío.</p>
+                    <p>2. La ficha sobre la que saltaste se elimina del tablero.</p>
+                    <p>3. Solo podés saltar una ficha a la vez y siempre en línea recta, nunca en diagonal.</p>
+                    <p>4. Seguí moviendo fichas hasta que no haya más movimientos posibles.</p>
+                    <p>5. Ganás si lográs que quede solo una ficha en el tablero, preferentemente en el centro.</p>
+                    <p>Es un juego de lógica y estrategia: pensá bien cada movimiento para no quedarte sin opciones antes de tiempo.</p>
+                </div>
+                <div class="controles-juego">
+                    <h2>Controles</h2>
+                    <div class="control-mouse"">
+                        <img src="../img/raton-de-computadora.png" alt="">
+                        <p>Seleccionar</p>
+                    </div>
+                </div>
+            </div>
+            <div class="content-multimedia">
+                <h2>Contenido multimedia</h2>
+                <div class="multimedia-files">
+                    <div class="media"><img src="../img/content-1.gif" alt=""></div>
+                    <div class="media"><img src="../img/french-peg-solitaire.png" alt=""></div>
+                    <div class="media"><img src="../img/content-2.jpg" alt=""></div>
+                </div>
+            </div>
+
+            <div class="section-opiniones">
+                <div class="rating">
+                    <img src="../img/logo_estrella_vacia.svg" id="star-1" class="star" alt="Star">
+                    <img src="../img/logo_estrella_vacia.svg" id="star-2" class="star" alt="Star">
+                    <img src="../img/logo_estrella_vacia.svg" id="star-3" class="star" alt="Star">
+                    <img src="../img/logo_estrella_vacia.svg" id="star-4" class="star" alt="Star">
+                    <img src="../img/logo_estrella_vacia.svg" id="star-5" class="star" alt="Star">
+                </div>
+                <p class="texto-opinion">¡Contanos tu experiencia!</p>
+                <form class="form-opinion">
+                    <textarea placeholder="Dejá tu comentario..." class="input-opinion" required></textarea>
+                    <button class="btn-enviar-comentario">Enviar comentario</button>
+                </form>
+                
+                <div class="reviews-container">
+                        <div class="review-header">
+                            <img src="../img/mujer.png" alt="Usuario" class="user-avatar">
+                            <div class="user-info">
+                                <span class="usuario">TostyXD</span>
+                                <span class="time">40 minutos</span>
+                            </div>
+                            <div class="stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            Nunca había jugado al Peg Solitaire, está buenísimo😁. Lo mejor es que cada partida es diferente, ¡te obliga a pensar bien cada movimiento!
+                        </div>
+                        <div class="review-actions">
+                            <button class="action-btn">
+                                <img src="../img/me-gusta.png" alt="">
+                                <span class="count">126</span>
+                            </button>
+                            <button class="action-btn">
+                                <img class="no-like" src="../img/me-gusta.png" alt="">
+                                <span class="count">16</span>
+                            </button>
+                            <button class="action-btn">
+                                <img src="../img/volver-a-publicar.png" alt="">
+                                <span class="count">30</span>
+                            </button>
+                        </div>
+                    
+                        <div class="review-header">
+                            <img src="../img/mujer.png" alt="Usuario" class="user-avatar">
+                            <div class="user-info">
+                                <span class="usuario">CactusLoco</span>
+                                <span class="time">2 horas</span>
+                            </div>
+                            <div class="stars">
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star filled">★</span>
+                                <span class="star">★</span>
+                            </div>
+                        </div>
+                        <div class="review-text">
+                            Nunca pensé que un juego tan simple pudiera ser tan adictivo😅. Cada partida me hace pensar más la estrategia, y cuando logro dejar una sola ficha me siento un genio. Recomendado para ejercitar la mente👌
+                        </div>
+                        <div class="review-actions">
+                            <button class="action-btn">
+                                <img src="../img/me-gusta.png" alt="">
+                                <span class="count">126</span>
+                            </button>
+                            <button class="action-btn">
+                                <img class="no-like" src="../img/me-gusta.png" alt="">
+                                <span class="count">16</span>
+                            </button>
+                            <button class="action-btn">
+                                <img src="../img/volver-a-publicar.png" alt="">
+                                <span class="count">30</span>
+                            </button>
+                        </div>
+
+                    <button class="btn-ver-mas">Ver más</button>
+                </div>
+            </div>
+        </article>
+    </section>
+    <footer>
+        <section>
+        <h3>Sobre nosotros</h3>
+        <ul>
+            <li><a href="#">Contáctanos</a></li>
+            <li><a href="#">Nuestro equipo</a></li>
+        </ul>
+        </section>
+        <section>
+        <h3>Ayuda</h3>
+        <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Soporte</a></li>
+        </ul>
+        </section>
+        <section>
+        <h3>Categorías</h3>
+        <ul>
+            <li><a href="#">Destacados</a></li>
+            <li><a href="#">Ofertas</a></li>
+            <li><a href="#">Gratuitos</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Estrategia</a></li>
+            <li><a href="#">Acción</a></li>
+        </ul>
+        </section>
+        <section>
+        <h3>Unite</h3>
+        <ul>
+            <li><a href="#">Registrarse</a></li>
+            <li><a href="#">Iniciar sesión</a></li>
+        </ul>
+        </section>
+        <section>
+        <h3>Nuestras redes</h3>
+        <ul>
+            <li><a href="#"><img src="../img/instagram-circle (1).png" alt="Instagram"></a></li>
+            <li><a href="#"><img src="../img/twitter-alt-circle.png" alt="X"></a></li>
+            <li><a href="#"><img src="../img/facebook.png" alt="Facebook"></a></li>
+        </ul>
+        </section>
+        <p>
+        Copyright © | Todos los derechos reservados |
+        <a href="#">Términos y condiciones</a> |
+        <a href="#">Política de privacidad</a> |
+        Agosto 2025
+        </p>
+    </footer>
+    <script src="../javascript/localStorage.js"></script>
+    <script src="../javascript/menu.js"></script>
+    <script src="../javascript/estrellas.js"></script>
+</body>
+</html>
+
