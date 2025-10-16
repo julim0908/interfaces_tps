@@ -445,12 +445,12 @@ body {
     border: none;
     padding: 12px;
     border-radius: 25px;
-    font-size: 18px;
+    font-size: 15px;
     cursor: pointer;
     transition: all 0.3s;
     box-shadow: 0 4px 12px rgba(50, 205, 50, 0.3);
     flex: 1;
-    max-width: 160px;
+    max-width: 130px;
 }
 
 .btn-volver:hover {
@@ -459,6 +459,44 @@ body {
     box-shadow: 0 6px 16px rgba(50, 205, 50, 0.4);
 }
 
+.btn-start {
+    background-color: var(--secundario_main);
+    color: var(--blanco);
+    border: none;
+    padding: 12px;
+    margin-left: 10px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(50, 205, 50, 0.3);
+    flex: 1;
+    max-width: 130px;   
+}
+.btn-start:hover {
+    background-color: var(--secundario_1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(50, 205, 50, 0.4);
+}
+.btn-nextlvl {
+    background-color: var(--secundario_main);
+    color: var(--blanco);
+    border: none;
+    padding: 12px;
+    margin-left: 10px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(50, 205, 50, 0.3);
+    flex: 1;
+    max-width: 130px; 
+}
+.btn-nextlvl:hover {
+    background-color: var(--secundario_1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(50, 205, 50, 0.4);
+}
 .game-icons {
     display: flex;
     gap: 20px;
