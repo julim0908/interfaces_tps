@@ -356,6 +356,12 @@ body {
 .game-title {
     color: white;
 }
+.game-full {
+    background-color: var(--primario_5);
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: var(--primario_2) 0px 0px 4px;
+}
 /*Pantalla juego*/
 .screen {
     animation: fadeIn 0.5s ease-in;
@@ -379,7 +385,6 @@ body {
     display: block;
     margin: 0 auto 2rem;
     border-radius: 1rem;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
@@ -447,8 +452,11 @@ body {
     padding: 12px;
     margin-top: 10px;
     border-radius: 25px;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     transition: all 0.3s;
     box-shadow: 0 4px 12px rgba(50, 205, 50, 0.3);
 }
@@ -477,6 +485,7 @@ body {
 .animation-title {
     font-size: 2rem;
     margin-bottom: 2rem;
+    color: white;
 }
 /* Game Screen */
 .game-container {
@@ -485,9 +494,6 @@ body {
 }
 
 .game-info {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
     display: flex;
@@ -504,6 +510,7 @@ body {
 .level-name {
     font-size: 1.75rem;
     font-weight: bold;
+    color: white;
 }
 
 .timer-container {
@@ -514,7 +521,7 @@ body {
 
 .timer {
     font-size: 1.5rem;
-    font-family: 'Courier New', monospace;
+    color: var(--acento_main);
 }
 
 .time-limit {
@@ -528,9 +535,10 @@ body {
 }
 
 .btn-help {
-    background: #fbbf24;
+    background: var(--secundario_main);
     border: none;
-    color: #1f2937;
+    color: white;
+    font-size: 16px;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     font-weight: bold;
@@ -539,7 +547,7 @@ body {
 }
 
 .btn-help:hover:not(:disabled) {
-    background: #f59e0b;
+    background: var(--secundario_2);
     transform: translateY(-2px);
 }
 
@@ -550,18 +558,18 @@ body {
 }
 
 .btn-home {
-    background: #ef4444;
+    background: var(--acento_main);
     border: none;
     color: white;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: all 0.3s;
-    font-size: 1.25rem;
+    font-size: 16px;
 }
 
 .btn-home:hover {
-    background: #dc2626;
+    background: var(--acento_1);
     transform: translateY(-2px);
 }
 
@@ -593,20 +601,21 @@ body {
 }
 
 .completed-card {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    border-radius: 2rem;
+    background: var(--primario_1);
+    border-radius: 20px;
     padding: 3rem;
     max-width: 600px;
     text-align: center;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 15px var(--primario_3);
 }
 .completed-title {
-    font-size: 2.5rem;
+    font-size: 32px;
+    color: white;
     margin-bottom: 1rem;
 }
 
 .completed-time {
-    font-size: 1.75rem;
+    font-size: 26px;
     margin-bottom: 2rem;
 }
 
@@ -636,7 +645,7 @@ body {
 
 .btn-menu {
     background: white;
-    color: #1f2937;
+    color: black;
 }
 
 .btn-menu:hover {
@@ -645,12 +654,12 @@ body {
 }
 
 .btn-next {
-    background: #3b82f6;
+    background: var(--secundario_main);
     color: white;
 }
 
 .btn-next:hover {
-    background: #2563eb;
+    background: var(--secundario_1);
     transform: translateY(-2px);
 }
 

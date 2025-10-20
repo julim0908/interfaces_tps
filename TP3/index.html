@@ -72,6 +72,7 @@
                     <p>Destacados > Blocka</p>
                 </div>
             <h1 class="game-title">Blocka</h1>
+            <div class="game-full">
                 <div id="menuScreen" class="menu-screen">
                     <canvas id="menuCanvas" class="menu-canvas"></canvas>
 
@@ -88,32 +89,32 @@
 
                     <button id="btnStart" class="btn-start">Comenzar</button>
                 </div>
-
-            <div id="imageAnimation" class="image-animation hidden">
-                <div class="animation-content">
-                    <h3 class="animation-title">Seleccionando imagen...</h3>
-                    <canvas id="animationCanvas" class="animation-canvas"></canvas>
+                <div id="imageAnimation" class="image-animation hidden">
+                    <div class="animation-content">
+                        <h3 class="animation-title">Seleccionando imagen...</h3>
+                        <canvas id="animationCanvas" class="animation-canvas"></canvas>
+                    </div>
                 </div>
-            </div>
 
-            <div id="gameScreen" class="screen hidden">
-                <div class="game-container">
-                    <div class="game-info">
-                        <div class="info-left">
-                            <h3 id="levelName" class="level-name">Nivel 1</h3>
-                            <div class="timer-container">
-                                <span id="timer" class="timer">0:00</span>
-                                <span id="timeLimit" class="time-limit"></span>
+                <div id="gameScreen" class="screen hidden">
+                    <div class="game-container">
+                        <div class="game-info">
+                            <div class="info-left">
+                                <h3 id="levelName" class="level-name">Nivel 1</h3>
+                                <div class="timer-container">
+                                    <span id="timer" class="timer">0:00</span>
+                                    <span id="timeLimit" class="time-limit"></span>
+                                </div>
+                            </div>
+                            <div class="info-right">
+                                <button id="btnHelp" class="btn-help">Ayudita</button>
+                                <button id="btnHome" class="btn-home">Inicio</button>
                             </div>
                         </div>
-                        <div class="info-right">
-                            <button id="btnHelp" class="btn-help">Ayudita</button>
-                            <button id="btnHome" class="btn-home">Inicio</button>
-                        </div>
-                    </div>
 
-                    <div class="canvas-container">
-                        <canvas id="gameCanvas" class="game-canvas"></canvas>
+                        <div class="canvas-container">
+                            <canvas id="gameCanvas" class="game-canvas"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
