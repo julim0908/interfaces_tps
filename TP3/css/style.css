@@ -306,13 +306,6 @@ body {
     margin-top: auto;
 }
 
-.logo-icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    background: linear-gradient(135deg, #34d399, #3b82f6, #a855f7);
-    border-radius: 0.5rem;
-}
-
 .publicidad {
     display: flex;
     flex-direction: column;

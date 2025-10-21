@@ -1,5 +1,4 @@
 // ==================== CONFIGURACIÓN DEL JUEGO ====================
-
 const imageBank = [
     'img/messi.jpg',
     'img/r9.jpg',
