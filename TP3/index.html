@@ -1,340 +1,183 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PlayForge - Blocka</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayForge - Registro</title>
     <link rel="icon" href="/img/logo_64x64.png">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/formulario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header class="header">
+     <!-- Header principal -->
+    <header class="header">
         <div id="menuToggle" class="menu-toggle">
             <span class="menu-icon" id="menuIcon">☰</span>
         </div>
+        
         <div class="header-center">
-            <a href="../html/home.html"><img src="../img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
+            <a href="./html/home.html"><img src="./img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
         </div>
         
         <div class="header-right">
             <div class="search-input">
                 <input type="text" placeholder="Buscar un juego">
-                <img src="../img/lupa.png" class="logo_buscador" alt="logo_buscador">
+                <img src="./img/lupa.png" class="logo_buscador" alt="logo_buscador">
             </div>
         </div>
     </header>
 
+    <!-- Sidebar-->
     <div id="overlay" class="overlay"></div>
 
     <div id="sidebarMenu" class="sidebar">
         <div id="userProfile" class="user-profile hidden">
-                <div class="avatar">
-                    <img class="icon-sidebar" src="../img/usuario.png"></img>
-                </div>
-                <span class="username">Usuario</span>
+            <div class="avatar">
+                <img class="icon-sidebar" src="./img/usuario.png" alt="usuario">
+            </div>
+            <span class="username">Usuario</span>
             <button class="edit-profile">Editar perfil</button>
         </div>
 
         <nav class="menu-nav">
             <ul>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/hogar.png"></img> Inicio</a></li>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/aplicaciones.png"></img> Mi biblioteca</a></li>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/deportes.png"></img> Deportes</a></li>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/estrategia.png"></img> Estrategia</a></li>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/escudo-espada.png"></img> Acción</a></li>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/descuento.png"></img> Ofertas</a></li>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/regalo.png"></img> Gratuitos</a></li>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/favorito.png"></img> Destacados</a></li>
-                    <li><a href="#"><img class="icon-sidebar" src="../img/carrito-de-compras (1).png"></img> Carrito</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/hogar.png"> Inicio</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/aplicaciones.png"> Mi biblioteca</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/deportes.png"> Deportes</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/estrategia.png"> Estrategia</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/escudo-espada.png"> Acción</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/descuento.png"> Ofertas</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/regalo.png"> Gratuitos</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/favorito.png"> Destacados</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/carrito-de-compras (1).png"> Carrito</a></li>
             </ul>
         </nav>
 
         <div class="action-buttons">
             <button id="registerBtn" class="btn-register">Registrate</button>
             <button id="logoutBtn" class="btn-logout hidden">
-                 Cerrar sesión
+                <img class="icon-sidebar" src="./img/cerrar-sesion-de-usuario.png" alt="">Cerrar sesión
             </button>
         </div>
 
         <div class="logo-section">
             <span class="logo-text">PlayForge</span>
-            <img src="../img/logo_64x64.png" alt="">
+            <img src="./img/logo_64x64.png" alt="">
         </div>
     </div>
-    <section class="contenido-principal">
-        <article class="content">
-            <aside class="publicidad">
-                <img src="../img/publicity_1.png" alt="">
-                <img src="../img/publicity_2.png" alt="">
-            </aside>
-            <div class="breadcrumbs">
-                    <p>Destacados > Blocka</p>
-                </div>
-            <h1 class="game-title">Blocka</h1>
-            <div class="game-full">
-                <div id="menuScreen" class="menu-screen">
-                    <canvas id="menuCanvas" class="menu-canvas"></canvas>
 
-                    <div class="config-menu">
-                        <div class="config-row">
-                            <label class="config-label">N° de piezas:</label>
-                            <select id="gridSizeSelect" class="config-select">
-                                <option value="4">4 piezas</option>
-                                <option value="6">6 piezas</option>
-                                <option value="8">8 piezas</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button id="btnStart" class="btn-start">Comenzar</button>
-                </div>
-                <div id="imageAnimation" class="image-animation hidden">
-                    <div class="animation-content">
-                        <h3 class="animation-title">Seleccionando imagen...</h3>
-                        <canvas id="animationCanvas" class="animation-canvas"></canvas>
-                    </div>
-                </div>
-
-                <div id="gameScreen" class="screen hidden">
-                    <div class="game-container">
-                        <div class="game-info">
-                            <div class="info-left">
-                                <h3 id="levelName" class="level-name">Nivel 1</h3>
-                                <div class="timer-container">
-                                    <span id="timer" class="timer">0:00</span>
-                                    <span id="timeLimit" class="time-limit"></span>
-                                </div>
-                            </div>
-                            <div class="info-right">
-                                <button id="btnHelp" class="btn-help">Ayudita</button>
-                                <button id="btnHome" class="btn-home">Inicio</button>
-                            </div>
-                        </div>
-
-                        <div class="canvas-container">
-                            <canvas id="gameCanvas" class="game-canvas"></canvas>
-                        </div>
-                    </div>
-                </div>
+    <main class="auth-container">
+        <section class="auth-card">
+            <div id="welcomeMessage" class="welcome-message hidden">
+                ¡Registro exitoso! Bienvenido a PlayForge.
             </div>
 
-            <!--nivel completado-->
-            <div id="completedScreen" class="completed-screen hidden">
-                <div class="completed-card">
-                    <h2 class="completed-title">¡Nivel Completado!</h2>
-                    <p id="completedTime" class="completed-time">Tiempo: 0:00</p>
+            <figure class="auth-logo">
+                <img src="./img/logo_64x64.png" alt="Logo PlayForge">
+                <figcaption>PlayForge</figcaption>
+            </figure>
 
-                    <div class="completed-image-container">
-                        <canvas id="completedCanvas" class="completed-canvas"></canvas>
-                    </div>
+            <h1 class="auth-title">Regístrate</h1>
 
-                    <div class="completed-buttons">
-                        <button id="btnMenuCompleted" class="btn-menu">Volver al Inicio</button>
-                        <button id="btnNextLevel" class="btn-next">Ir al Siguiente Nivel</button>
-                    </div>
-                </div>
+            <!-- Botones sociales -->
+            <div class="auth-social">
+                <button class="btn-social facebook"><img src="./img/facebook.png" alt=""><p>Continuar con Facebook</p></button>
+                <button class="btn-social google"><img src="./img/google.png" alt=""><p>Continuar con Google</p></button>
             </div>
 
-            <aside class="similares-section">
-                <h2 class="similares-title">Similares</h2>
-                    <div class="game-similar">
-                        <img src="../img/solitario-spider.png" alt="Solitario Spider">
-                        <div class="game-overlay">
-                            <div class="play-button-small">
-                                <div class="play-icon-small"></div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="game-similar">
-                        <img src="../img/super-puzzle-rpg.jpg" alt="Super Puzzle RPG">
-                        <div class="game-overlay">
-                            <div class="play-button-small">
-                                <div class="play-icon-small"></div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="game-similar">
-                        <img src="../img/tetris.png" alt="Tetris">
-                        <div class="game-overlay">
-                            <div class="play-button-small">
-                                <div class="play-icon-small"></div>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="game-similar">
-                        <img src="../img/bubble-shooter.png" alt="Bubble Shooter">
-                        <div class="game-overlay">
-                            <div class="play-button-small">
-                                <div class="play-icon-small"></div>
-                            </div>
-                        </div>
-                    </div>
-            </aside>
-            <div class="info-juego">
-                <div class="reglas-juego">
-                    <h2>¿Cómo jugar Blocka?</h2>
-                    <p>El objetivo del juego es rearmar la imagen original rotando las piezas a su posición correcta.</p>
-                    <p><span class="bold">1. Observá la imagen dividida.</span> Al comenzar, la imagen se dividirá en varias piezas y cada una estará girada al azar.</p>
-                    <p><span class="bold">2. Alineá todas las piezas.</span> Seguí girando cada pieza hasta que todas estén en su orientación correcta y formen la imagen completa.</p>
-                    <p><span class="bold">3. Atento a los niveles.</span> A medida que avances, se aplicarán filtros a la imagen y tendrás un tiempo límite para resolver el rompecabezas.</p>
-                    <p><span class="bold">4. Ganá si lográs armar la imagen.</span> Si todas las piezas están en la posición correcta antes de que se acabe el tiempo, ¡ganaste el nivel!</p>
-                    <p>Es un juego de percepción y lógica: ¡prestá atención a los detalles de cada pieza para resolverlo más rápido!</p>
-                </div>
-                <div class="controles-juego">
-                    <h2>Controles</h2>
-                    <div class="control-mouse"">
-                        <p><span class="bold">Clic izquierdo:</span> Gira la pieza 90 grados hacia la izquierda.</p>
-                        <p><span class="bold">Clic derecho:</span> Gira la pieza 90 grados hacia la derecha.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="content-multimedia">
-                <h2>Contenido multimedia</h2>
-                <div class="multimedia-files">
-                    <div class="media"><img src="../img/contenido3.jpeg" alt=""></div>
-                    <div class="media"><img src="../img/contenido2.jpeg" alt=""></div>
-                    <div class="media"><img src="../img/contenido.jpeg" alt=""></div>
-                </div>
-            </div>
+            <!-- Formulario de registro -->
+            <form id="registroForm" class="auth-form">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
 
-            <div class="section-opiniones">
-                <div class="rating">
-                    <img src="../img/logo_estrella_vacia.svg" id="star-1" class="star" alt="Star">
-                    <img src="../img/logo_estrella_vacia.svg" id="star-2" class="star" alt="Star">
-                    <img src="../img/logo_estrella_vacia.svg" id="star-3" class="star" alt="Star">
-                    <img src="../img/logo_estrella_vacia.svg" id="star-4" class="star" alt="Star">
-                    <img src="../img/logo_estrella_vacia.svg" id="star-5" class="star" alt="Star">
-                </div>
-                <p class="texto-opinion">¡Contanos tu experiencia!</p>
-                <form class="form-opinion">
-                    <textarea placeholder="Dejá tu comentario..." class="input-opinion" required></textarea>
-                    <button class="btn-enviar-comentario">Enviar comentario</button>
-                </form>
-                
-                <div class="reviews-container">
-                        <div class="review-header">
-                            <img src="../img/mujer.png" alt="Usuario" class="user-avatar">
-                            <div class="user-info">
-                                <span class="usuario">TostyXD</span>
-                                <span class="time">40 minutos</span>
-                            </div>
-                            <div class="stars">
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star">★</span>
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            Nunca había jugado al Blocka, está buenísimo😁. Lo mejor es que cada partida es diferente, ¡te obliga a pensar bien cada movimiento!
-                        </div>
-                        <div class="review-actions">
-                            <button class="action-btn">
-                                <img src="../img/me-gusta.png" alt="">
-                                <span class="count">126</span>
-                            </button>
-                            <button class="action-btn">
-                                <img class="no-like" src="../img/me-gusta.png" alt="">
-                                <span class="count">16</span>
-                            </button>
-                            <button class="action-btn">
-                                <img src="../img/volver-a-publicar.png" alt="">
-                                <span class="count">30</span>
-                            </button>
-                        </div>
-                    
-                        <div class="review-header">
-                            <img src="../img/mujer.png" alt="Usuario" class="user-avatar">
-                            <div class="user-info">
-                                <span class="usuario">CactusLoco</span>
-                                <span class="time">2 horas</span>
-                            </div>
-                            <div class="stars">
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star filled">★</span>
-                                <span class="star">★</span>
-                            </div>
-                        </div>
-                        <div class="review-text">
-                            Nunca pensé que un juego tan simple pudiera ser tan adictivo😅. Recomendado para ejercitar la mente👌
-                        </div>
-                        <div class="review-actions">
-                            <button class="action-btn">
-                                <img src="../img/me-gusta.png" alt="">
-                                <span class="count">126</span>
-                            </button>
-                            <button class="action-btn">
-                                <img class="no-like" src="../img/me-gusta.png" alt="">
-                                <span class="count">16</span>
-                            </button>
-                            <button class="action-btn">
-                                <img src="../img/volver-a-publicar.png" alt="">
-                                <span class="count">30</span>
-                            </button>
-                        </div>
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" required>
 
-                    <button class="btn-ver-mas">Ver más</button>
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario"  required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="confirm-password">Confirmar contraseña</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+
+                <div class="recaptcha-box">
+                    <div class="recaptcha-check">
+                        <input type="checkbox" id="robot-check" name="robot-check">
+                        <label for="robot-check" id="robot-label">I'm not a robot.</label>
+                    </div>
+                    <div class="recaptcha-logo">
+                        <img src="./img/RecaptchaLogo.svg.png" alt="reCAPTCHA" class="logo-recaptcha">
+                        <span class="recaptcha-text">reCAPTCHA</span>
+                    </div>
                 </div>
-            </div>
-        </article>
-    </section>
+                <button type="submit" class="btn-submit">Crear cuenta</button>
+            </form>
+
+            <p class="auth-register">
+                ¿Ya tienes una cuenta?
+                <a href="./html/login.html">Inicia sesión</a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
     <footer>
         <section>
-        <h3>Sobre nosotros</h3>
-        <ul>
-            <li><a href="#">Contáctanos</a></li>
-            <li><a href="#">Nuestro equipo</a></li>
-        </ul>
+            <h3>Sobre nosotros</h3>
+            <ul>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Nuestro equipo</a></li>
+            </ul>
         </section>
         <section>
-        <h3>Ayuda</h3>
-        <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Soporte</a></li>
-        </ul>
+            <h3>Ayuda</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Soporte</a></li>
+            </ul>
         </section>
         <section>
-        <h3>Categorías</h3>
-        <ul>
-            <li><a href="#">Destacados</a></li>
-            <li><a href="#">Ofertas</a></li>
-            <li><a href="#">Gratuitos</a></li>
-            <li><a href="#">Deportes</a></li>
-            <li><a href="#">Estrategia</a></li>
-            <li><a href="#">Acción</a></li>
-        </ul>
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="#">Destacados</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Gratuitos</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Estrategia</a></li>
+                <li><a href="#">Acción</a></li>
+            </ul>
         </section>
         <section>
-        <h3>Unite</h3>
-        <ul>
-            <li><a href="#">Registrarse</a></li>
-            <li><a href="#">Iniciar sesión</a></li>
-        </ul>
+            <h3>Unite</h3>
+            <ul>
+                <li><a href="#">Registrarse</a></li>
+                <li><a href="#">Iniciar sesión</a></li>
+            </ul>
         </section>
         <section>
-        <h3>Nuestras redes</h3>
-        <ul>
-            <li><a href="#"><img src="../img/instagram-circle (1).png" alt="Instagram"></a></li>
-            <li><a href="#"><img src="../img/twitter-alt-circle.png" alt="X"></a></li>
-            <li><a href="#"><img src="../img/facebook.png" alt="Facebook"></a></li>
-        </ul>
+            <h3>Nuestras redes</h3>
+            <ul>
+                <li><a href="#"><img src="./img/instagram-circle (1).png" alt="Instagram"></a></li>
+                <li><a href="#"><img src="./img/twitter-alt-circle.png" alt="X"></a></li>
+                <li><a href="#"><img src="./img/facebook.png" alt="Facebook"></a></li>
+            </ul>
         </section>
         <p>
-        Copyright © | Todos los derechos reservados |
-        <a href="#">Términos y condiciones</a> |
-        <a href="#">Política de privacidad</a> |
-        Agosto 2025
+            Copyright © | Todos los derechos reservados |
+            <a href="#">Términos y condiciones</a> |
+            <a href="#">Política de privacidad</a> |
+            Agosto 2025
         </p>
     </footer>
-    <script src="js/game.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/estrellas.js"></script>
+    <script src="./javascript/menu.js"></script>
+    <script src="./javascript/animacionForm.js"></script>
 </body>
 </html>
