@@ -546,18 +546,19 @@ body {
 }
 
 .btn-home {
-    background: var(--acento_main);
+    background: white;
     border: none;
-    color: white;
+    color: black;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
     font-size: 16px;
 }
 
 .btn-home:hover {
-    background: var(--acento_1);
+    background-color: rgb(228, 228, 228);
     transform: translateY(-2px);
 }
 
@@ -594,7 +595,7 @@ body {
     padding: 3rem;
     max-width: 600px;
     text-align: center;
-    box-shadow: 0 2px 15px var(--primario_3);
+    box-shadow: 0 2px 10px var(--primario_3);
 }
 .completed-title {
     font-size: 32px;
@@ -651,6 +652,25 @@ body {
     transform: translateY(-2px);
 }
 
+.btn-retry {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.125rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+    background: var(--secundario_main);
+    color: white;
+}
+
+.btn-retry:hover {
+    transform: translateY(-2px);
+}
 .similares-section {
     background-color: var(--primario_5);
     box-shadow: var(--primario_2) 0px 0px 4px;
