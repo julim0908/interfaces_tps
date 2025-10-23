@@ -330,7 +330,7 @@ class JuegoBlocka {
     constructor() {
         this.rutasImagenes = [
             '../img/messi.jpg', '../img/r9.jpg', '../img/cr7.jpg',
-            '../img/msn.jpg', '../img/suarez.jpg', '../img/maradona.jpg',
+            '../img/msn.jpg', '../img/suarez.jpg', '../img/diego.jpg',
             '../img/messironaldinho.jpg', '../img/ney.jpg'
         ];
 
