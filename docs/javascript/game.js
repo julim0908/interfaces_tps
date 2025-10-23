@@ -8,9 +8,7 @@ const imageBank = [
   '../img/cr7.jpg',
   '../img/messironaldinho.jpg',
   '../img/messi.jpg',
-   '../img/riquelme.jpg',
-  
-
+   '../img/riquelme.jpg'
 ];
 
 const levels = [
