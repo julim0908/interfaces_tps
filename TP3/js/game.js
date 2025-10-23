@@ -270,7 +270,7 @@ function drawAnimationGallery(highlight) {
         
         if (highlight && isSelected) {
             // Borde dorado para la seleccionada
-            ctx.strokeStyle = '#9D4EDD';
+            ctx.strokeStyle = '#fbbf24';
             ctx.lineWidth = 4;
             ctx.strokeRect(x - 2, y - 2, imgSize + 4, imgSize + 4);
             ctx.globalAlpha = 1;
@@ -282,6 +282,7 @@ function drawAnimationGallery(highlight) {
         ctx.globalAlpha = 1;
     });
 }
+
 // ==================== INICIALIZACIÓN DEL NIVEL ====================
 
 function initializeLevel() {
@@ -479,6 +480,112 @@ function checkWin() {
         stopTimer();
         showCompletedScreen();
     }
+}
+
+function showCompletedScreen() {
+    elements.completedTime.textContent = `Tiempo: ${formatTime(gameState.timer)}`;
+    
+    // Dibujar imagen original sin filtro
+    canvases.completed.width = 400;
+    canvases.completed.height = 400;
+    contexts.completed.drawImage(gameState.originalImage, 0, 0, 400, 400);
+    
+    // Mostrar/ocultar botón de siguiente nivel
+    if (gameState.currentLevel < levels.length) {
+        elements.btnNextLevel.style.display = 'flex';
+    } else {
+        elements.btnNextLevel.style.display = 'none';
+    }
+    
+    showScreen('completed');
+}
+
+function updateLevelInfo() {
+    const levelConfig = levels[gameState.currentLevel - 1];
+    elements.levelName.textContent = levelConfig.name;
+    
+    if (levelConfig.time) {
+        elements.timeLimit.textContent = `/ ${formatTime(levelConfig.time)}`;
+    } else {
+        elements.timeLimit.textContent = '';
+    }
+    
+    elements.btnHelp.disabled = false;
+    elements.btnHelp.textContent = 'Ayudita (+5s)';
+}
+
+// ==================== TIMER ====================
+
+function startTimer() {
+    gameState.timer = 0;
+    stopTimer();
+    
+    gameState.timerInterval = setInterval(() => {
+        gameState.timer++;
+        elements.timer.textContent = formatTime(gameState.timer);
+        
+        // Verificar límite de tiempo
+        if (gameState.timeLimit && gameState.timer >= gameState.timeLimit) {
+            stopTimer();
+            alert('¡Tiempo agotado! Intenta nuevamente.');
+            goToMenu();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    if (gameState.timerInterval) {
+        clearInterval(gameState.timerInterval);
+        gameState.timerInterval = null;
+    }
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// ==================== FILTROS ====================
+
+function applyFilter(ctx, imageData, filterType, pieceIndex) {
+    const data = imageData.data;
+    
+    switch(filterType) {
+        case 'grayscale':
+            for (let i = 0; i < data.length; i += 4) {
+                const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                data[i] = data[i + 1] = data[i + 2] = avg;
+            }
+            break;
+            
+        case 'brightness':
+            const factor = 0.3;
+            for (let i = 0; i < data.length; i += 4) {
+                data[i] = Math.min(255, data[i] * (1 + factor));
+                data[i + 1] = Math.min(255, data[i + 1] * (1 + factor));
+                data[i + 2] = Math.min(255, data[i + 2] * (1 + factor));
+            }
+            break;
+            
+        case 'invert':
+            for (let i = 0; i < data.length; i += 4) {
+                data[i] = 255 - data[i];
+                data[i + 1] = 255 - data[i + 1];
+                data[i + 2] = 255 - data[i + 2];
+            }
+            break;
+            
+        case 'mixed':
+            const filters = ['grayscale', 'brightness', 'invert', 'none'];
+            const selectedFilter = filters[pieceIndex % filters.length];
+            if (selectedFilter !== 'none') {
+                return applyFilter(ctx, imageData, selectedFilter, pieceIndex);
+            }
+            break;
+    }
+    
+    return imageData;
 }
 
 // ==================== INICIAR AL CARGAR ====================
