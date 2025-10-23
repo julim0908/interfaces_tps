@@ -329,9 +329,9 @@ class RenderizadorCanvas {
 class JuegoBlocka {
     constructor() {
         this.rutasImagenes = [
-            '/img/messi.jpg', '/img/r9.jpg', '/img/cr7.jpg',
-            '/img/msn.jpg', '/img/suarez.jpg', '/img/maradona.jpg',
-            '/img/messironaldinho.jpg', '/img/ney.jpg'
+            '../img/messi.jpg', '../img/r9.jpg', '../img/cr7.jpg',
+            '../img/msn.jpg', '../img/suarez.jpg', '../img/maradona.jpg',
+            '../img/messironaldinho.jpg', '../img/ney.jpg'
         ];
 
         this.niveles = [
