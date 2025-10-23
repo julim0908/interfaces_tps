@@ -1,3 +1,4 @@
+
 (function() {
     let isOpen = false;
     let isRegistered = false; 
@@ -70,13 +71,19 @@
         }
     }
 
+    // Inicializar listeners solo si los elementos existen
     if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
     if (overlay) overlay.addEventListener('click', toggleMenu);
     if (registerBtn) registerBtn.addEventListener('click', handleRegister);
     if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
 
+    // Revisar si hay un usuario logueado en localStorage para inicializar el estado
     if (localStorage.getItem('usuarioLogueado')) {
         isRegistered = true;
+        // Opcional: Podrías cargar el nombre de usuario aquí si también lo guardaste.
+        // const username = localStorage.getItem('usuarioLogueado');
+        // const userSpan = userProfile.querySelector('.username');
+        // if (userSpan) userSpan.textContent = username;
     }
     
     updateUI();

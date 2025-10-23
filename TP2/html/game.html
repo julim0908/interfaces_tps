@@ -3,9 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PlayForge - Blocka</title>
+	<title>PlayForge - Peg Solitaire</title>
     <link rel="icon" href="/img/logo_64x64.png">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/game.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,6 +13,7 @@
         <div id="menuToggle" class="menu-toggle">
             <span class="menu-icon" id="menuIcon">☰</span>
         </div>
+        
         <div class="header-center">
             <a href="../html/home.html"><img src="../img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
         </div>
@@ -69,69 +70,23 @@
                 <img src="../img/publicity_2.png" alt="">
             </aside>
             <div class="breadcrumbs">
-                    <p>Destacados > Blocka</p>
+                    <p>Destacados > Peg Solitaire</p>
                 </div>
-            <h1 class="game-title">Blocka</h1>
-            <div class="game-full">
-                <div id="menuScreen" class="menu-screen">
-                    <canvas id="menuCanvas" class="menu-canvas"></canvas>
-
-                    <div class="config-menu">
-                        <div class="config-row">
-                            <label class="config-label">N° de piezas:</label>
-                            <select id="gridSizeSelect" class="config-select">
-                                <option value="4">4 piezas</option>
-                                <option value="6">6 piezas</option>
-                                <option value="8">8 piezas</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button id="btnStart" class="btn-start">Comenzar</button>
-                </div>
-                <div id="imageAnimation" class="image-animation hidden">
-                    <div class="animation-content">
-                        <h3 class="animation-title">Seleccionando imagen...</h3>
-                        <canvas id="animationCanvas" class="animation-canvas"></canvas>
-                    </div>
-                </div>
-
-                <div id="gameScreen" class="screen hidden">
-                    <div class="game-container">
-                        <div class="game-info">
-                            <div class="info-left">
-                                <h3 id="levelName" class="level-name">Nivel 1</h3>
-                                <div class="timer-container">
-                                    <span id="timer" class="timer">0:00</span>
-                                    <span id="timeLimit" class="time-limit"></span>
-                                </div>
-                            </div>
-                            <div class="info-right">
-                                <button id="btnHelp" class="btn-help">Ayudita</button>
-                                <button id="btnHome" class="btn-home">Inicio</button>
-                            </div>
-                        </div>
-
-                        <div class="canvas-container">
-                            <canvas id="gameCanvas" class="game-canvas"></canvas>
+            <div class="juego-container">
+                <h1 class="juego-title">Peg Solitaire</h1>
+                <div class="juego">
+                    <div class="game-cover">
+                        <img src="../img/pegSolitaireFB.png" class="img-juego" alt="Peg Solitaire Game Board">
+                        <div class="play-button">
+                            <img src="../img/tocar (2).png" alt="">
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!--nivel completado-->
-            <div id="completedScreen" class="completed-screen hidden">
-                <div class="completed-card">
-                    <h2 class="completed-title">¡Nivel Completado!</h2>
-                    <p id="completedTime" class="completed-time">Tiempo: 0:00</p>
-
-                    <div class="completed-image-container">
-                        <canvas id="completedCanvas" class="completed-canvas"></canvas>
-                    </div>
-
-                    <div class="completed-buttons">
-                        <button id="btnMenuCompleted" class="btn-menu">Volver al Inicio</button>
-                        <button id="btnNextLevel" class="btn-next">Ir al Siguiente Nivel</button>
+                <div class="game-actions">
+                    <button class="btn-volver">Volver al inicio</button>
+                    <div class="game-icons">
+                        <img src="../img/icono_compartir.png" class="icono-game" alt="">
+                        <img src="../img/icono_fullscreen.png" class="icono-game" alt="">
                     </div>
                 </div>
             </div>
@@ -176,28 +131,29 @@
             </aside>
             <div class="info-juego">
                 <div class="reglas-juego">
-                    <h2>¿Cómo jugar Blocka?</h2>
-                    <p>El objetivo del juego es rearmar la imagen original rotando las piezas a su posición correcta.</p>
-                    <p><span class="bold">1. Observá la imagen dividida.</span> Al comenzar, la imagen se dividirá en varias piezas y cada una estará girada al azar.</p>
-                    <p><span class="bold">2. Alineá todas las piezas.</span> Seguí girando cada pieza hasta que todas estén en su orientación correcta y formen la imagen completa.</p>
-                    <p><span class="bold">3. Atento a los niveles.</span> A medida que avances, se aplicarán filtros a la imagen y tendrás un tiempo límite para resolver el rompecabezas.</p>
-                    <p><span class="bold">4. Ganá si lográs armar la imagen.</span> Si todas las piezas están en la posición correcta antes de que se acabe el tiempo, ¡ganaste el nivel!</p>
-                    <p>Es un juego de percepción y lógica: ¡prestá atención a los detalles de cada pieza para resolverlo más rápido!</p>
+                    <h2>¿Cómo jugar Peg Solitaire?</h2>
+                    <p>El objetivo del juego es dejar solo una ficha en el tablero.</p>
+                    <p>1. Seleccioná una ficha y hacela saltar sobre otra ficha (arriba, abajo, izquierda o derecha) hacia un espacio vacío.</p>
+                    <p>2. La ficha sobre la que saltaste se elimina del tablero.</p>
+                    <p>3. Solo podés saltar una ficha a la vez y siempre en línea recta, nunca en diagonal.</p>
+                    <p>4. Seguí moviendo fichas hasta que no haya más movimientos posibles.</p>
+                    <p>5. Ganás si lográs que quede solo una ficha en el tablero, preferentemente en el centro.</p>
+                    <p>Es un juego de lógica y estrategia: pensá bien cada movimiento para no quedarte sin opciones antes de tiempo.</p>
                 </div>
                 <div class="controles-juego">
                     <h2>Controles</h2>
                     <div class="control-mouse"">
-                        <p><span class="bold">Clic izquierdo:</span> Gira la pieza 90 grados hacia la izquierda.</p>
-                        <p><span class="bold">Clic derecho:</span> Gira la pieza 90 grados hacia la derecha.</p>
+                        <img src="../img/raton-de-computadora.png" alt="">
+                        <p>Seleccionar</p>
                     </div>
                 </div>
             </div>
             <div class="content-multimedia">
                 <h2>Contenido multimedia</h2>
                 <div class="multimedia-files">
-                    <div class="media"><img src="../img/contenido3.jpeg" alt=""></div>
-                    <div class="media"><img src="../img/contenido2.jpeg" alt=""></div>
-                    <div class="media"><img src="../img/contenido.jpeg" alt=""></div>
+                    <div class="media"><img src="../img/content-1.gif" alt=""></div>
+                    <div class="media"><img src="../img/french-peg-solitaire.png" alt=""></div>
+                    <div class="media"><img src="../img/content-2.jpg" alt=""></div>
                 </div>
             </div>
 
@@ -231,7 +187,7 @@
                             </div>
                         </div>
                         <div class="review-text">
-                            Nunca había jugado al Blocka, está buenísimo😁. Lo mejor es que cada partida es diferente, ¡te obliga a pensar bien cada movimiento!
+                            Nunca había jugado al Peg Solitaire, está buenísimo😁. Lo mejor es que cada partida es diferente, ¡te obliga a pensar bien cada movimiento!
                         </div>
                         <div class="review-actions">
                             <button class="action-btn">
@@ -263,7 +219,7 @@
                             </div>
                         </div>
                         <div class="review-text">
-                            Nunca pensé que un juego tan simple pudiera ser tan adictivo😅. Recomendado para ejercitar la mente👌
+                            Nunca pensé que un juego tan simple pudiera ser tan adictivo😅. Cada partida me hace pensar más la estrategia, y cuando logro dejar una sola ficha me siento un genio. Recomendado para ejercitar la mente👌
                         </div>
                         <div class="review-actions">
                             <button class="action-btn">
@@ -333,8 +289,9 @@
         Agosto 2025
         </p>
     </footer>
-    <script src="/javascript/menu.js"></script>
-    <script src="/javascript/game.js"></script>
-    <script src="/javascript/estrellas.js"></script>
+    <script src="../javascript/localStorage.js"></script>
+    <script src="../javascript/menu.js"></script>
+    <script src="../javascript/estrellas.js"></script>
 </body>
 </html>
+
