@@ -2,12 +2,14 @@
 
 const imageBank = [
   '../img/ney.jpg',
-  '../img/equi.jpg',
-
+  '../img/maradona.jpg',
+  '../img/r9.jpg',
   '../img/suarez.jpg',
   '../img/cr7.jpg',
   '../img/messironaldinho.jpg',
-  '../img/messi.jpg'
+  '../img/messi.jpg',
+   '../img/riquelme.jpg',
+  
 
 ];
 
