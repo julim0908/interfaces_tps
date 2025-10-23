@@ -333,6 +333,7 @@ class JuegoBlocka {
             '../img/msn.jpg', '../img/suarez.jpg', '../img/maradona.jpg',
             '../img/messironaldinho.jpg', '../img/ney.jpg'
         ];
+        //comentario para hacer el push 
 
         this.niveles = [
             new Nivel(1, 'Nivel 1: Escala de Grises', 'grayscale', null),
