@@ -1,615 +1,596 @@
-// ==================== CLASE NIVEL ====================
-class Nivel {
-    constructor(numero, nombre, filtro, tiempoLimite) {
-        this.numero = numero;
-        this.nombre = nombre;
-        this.filtro = filtro;
-        this.tiempoLimite = tiempoLimite;
-    }
+// ==================== CONFIGURACIÓN DEL JUEGO ====================
+
+const imageBank = [
+  '../img/ney.jpg',
+  '../img/equi.jpg',
+
+  '../img/suarez.jpg',
+  '../img/cr7.jpg',
+  '../img/messironaldinho.jpg',
+  '../img/messi.jpg'
+
+];
+
+const levels = [
+    { name: 'Nivel 1', filter: 'grayscale', time: null },
+    { name: 'Nivel 2', filter: 'brightness', time: null },
+    { name: 'Nivel 3', filter: 'invert', time: 180 },
+    { name: 'Nivel 4', filter: 'mixed', time: 150 }
+];
+
+// ==================== ESTADO DEL JUEGO ====================
+
+let gameState = {
+    currentScreen: 'menu',
+    currentLevel: 1,
+    timer: 0,
+    timerInterval: null,
+    pieces: [],
+    selectedImage: null,
+    selectedImageIndex: -1,
+    originalImage: null,
+    gridSize: 4,
+    helpUsed: false,
+    timeLimit: null,
+    loadedImages: []
+};
+
+// ==================== CANVAS Y CONTEXTOS ====================
+
+const canvases = {
+    menu: null,
+    animation: null,
+    game: null,
+    completed: null
+};
+
+const contexts = {
+    menu: null,
+    animation: null,
+    game: null,
+    completed: null
+};
+
+// ==================== ELEMENTOS DEL DOM ====================
+
+const elements = {
+    menuScreen: document.getElementById('menuScreen'),
+    gameScreen: document.getElementById('gameScreen'),
+    completedScreen: document.getElementById('completedScreen'),
+    imageAnimation: document.getElementById('imageAnimation'),
+    
+    btnStart: document.getElementById('btnStart'),
+    btnHome: document.getElementById('btnHome'),
+    btnHelp: document.getElementById('btnHelp'),
+    btnMenuCompleted: document.getElementById('btnMenuCompleted'),
+    btnNextLevel: document.getElementById('btnNextLevel'),
+    
+    gridSizeSelect: document.getElementById('gridSizeSelect'),
+    
+    levelName: document.getElementById('levelName'),
+    timer: document.getElementById('timer'),
+    timeLimit: document.getElementById('timeLimit'),
+    completedTime: document.getElementById('completedTime')
+};
+
+// ==================== INICIALIZACIÓN ====================
+
+function init() {
+    setupCanvases();
+    setupEventListeners();
+    preloadImages();
 }
 
-// ==================== CLASE PIEZA ====================
-class Pieza {
-    constructor(id, col, row, canvas) {
-        this.id = id;
-        this.col = col;
-        this.row = row;
-        this.rotacion = Math.floor(Math.random() * 4) * 90;
-        this.rotacionCorrecta = 0;
-        this.canvas = canvas;
-        this.estaFija = false;
-    }
-
-    rotar(direccion) {
-        if (this.estaFija) return false;
-
-        if (direccion === 'derecha') {
-            this.rotacion = (this.rotacion + 90) % 360;
-        } else {
-            this.rotacion = (this.rotacion - 90 + 360) % 360;
-        }
-        return true;
-    }
-
-    fijar() {
-        this.rotacion = this.rotacionCorrecta;
-        this.estaFija = true;
-    }
-
-    estaCorrecta() {
-        return this.rotacion === this.rotacionCorrecta;
-    }
+function setupCanvases() {
+    canvases.menu = document.getElementById('menuCanvas');
+    canvases.animation = document.getElementById('animationCanvas');
+    canvases.game = document.getElementById('gameCanvas');
+    canvases.completed = document.getElementById('completedCanvas');
+    
+    contexts.menu = canvases.menu.getContext('2d');
+    contexts.animation = canvases.animation.getContext('2d');
+    contexts.game = canvases.game.getContext('2d');
+    contexts.completed = canvases.completed.getContext('2d');
 }
 
-// ==================== CLASE FILTRO ====================
-class Filtro {
-    static aplicarGrisEscala(imageData) {
-        const data = imageData.data;
-        for (let i = 0; i < data.length; i += 4) {
-            const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-            data[i] = data[i + 1] = data[i + 2] = avg;
-        }
-        return imageData;
-    }
-
-    static aplicarBrillo(imageData) {
-        const data = imageData.data;
-        const factor = 0.3;
-        for (let i = 0; i < data.length; i += 4) {
-            data[i] = Math.min(255, data[i] * (1 + factor));
-            data[i + 1] = Math.min(255, data[i + 1] * (1 + factor));
-            data[i + 2] = Math.min(255, data[i + 2] * (1 + factor));
-        }
-        return imageData;
-    }
-
-    static aplicarInvertir(imageData) {
-        const data = imageData.data;
-        for (let i = 0; i < data.length; i += 4) {
-            data[i] = 255 - data[i];
-            data[i + 1] = 255 - data[i + 1];
-            data[i + 2] = 255 - data[i + 2];
-        }
-        return imageData;
-    }
-
-    static aplicar(ctx, imageData, tipo, indice = 0) {
-        switch(tipo) {
-            case 'grayscale':
-                return this.aplicarGrisEscala(imageData);
-            case 'brightness':
-                return this.aplicarBrillo(imageData);
-            case 'invert':
-                return this.aplicarInvertir(imageData);
-            case 'mixed':
-                const filtros = ['grayscale', 'brightness', 'invert', 'none'];
-                const filtroSeleccionado = filtros[indice % filtros.length];
-                if (filtroSeleccionado !== 'none') {
-                    return this.aplicar(ctx, imageData, filtroSeleccionado, indice);
-                }
-                break;
-        }
-        return imageData;
-    }
+function setupEventListeners() {
+    elements.btnStart.addEventListener('click', startGame);
+    elements.btnHome.addEventListener('click', goToMenu);
+    elements.btnHelp.addEventListener('click', useHelp);
+    elements.btnMenuCompleted.addEventListener('click', goToMenu);
+    elements.btnNextLevel.addEventListener('click', nextLevel);
+    
+    elements.gridSizeSelect.addEventListener('change', (e) => {
+        gameState.gridSize = parseInt(e.target.value);
+    });
+    
+    // Event listeners para el canvas del juego
+    canvases.game.addEventListener('click', handleGameCanvasClick);
+    canvases.game.addEventListener('contextmenu', handleGameCanvasRightClick);
 }
 
-// ==================== CLASE TEMPORIZADOR ====================
-class Temporizador {
-    constructor() {
-        this.segundos = 0;
-        this.intervalo = null;
-        this.limiteSegundos = null;
-        this.enEjecucion = false;
-    }
-
-    iniciar(callback, limiteSegundos = null) {
-        this.segundos = 0;
-        this.limiteSegundos = limiteSegundos;
-        this.detener();
-        this.enEjecucion = true;
-
-        this.intervalo = setInterval(() => {
-            this.segundos++;
-            callback(this.segundos);
-
-            if (this.limiteSegundos && this.segundos >= this.limiteSegundos) {
-                this.detener();
+function preloadImages() {
+    let loadedCount = 0;
+    
+    imageBank.forEach((src, index) => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => {
+            gameState.loadedImages[index] = img;
+            loadedCount++;
+            if (loadedCount === imageBank.length) {
+                drawMenuGallery();
             }
-        }, 1000);
-    }
-
-    detener() {
-        if (this.intervalo) {
-            clearInterval(this.intervalo);
-            this.intervalo = null;
-            this.enEjecucion = false;
-        }
-    }
-
-    agregarSegundos(cantidad) {
-        this.segundos += cantidad;
-    }
-
-    obtenerTiempo() {
-        return this.segundos;
-    }
-
-    static formatear(segundos) {
-        const mins = Math.floor(segundos / 60);
-        const secs = segundos % 60;
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
-    }
+        };
+        img.onerror = () => {
+            console.error(`Error al cargar imagen: ${src}`);
+            loadedCount++;
+        };
+        img.src = src;
+    });
 }
 
-// ==================== CLASE CARGADOR DE IMAGENES ====================
-class CargadorImagenes {
-    constructor(rutas) {
-        this.rutas = rutas;
-        this.imagenes = [];
-    }
+// ==================== DIBUJADO DEL MENÚ ====================
 
-    cargar(callback) {
-        let cargadas = 0;
-        this.rutas.forEach((ruta, index) => {
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
-            
-            img.onload = () => {
-                this.imagenes[index] = img;
-                cargadas++;
-                if (cargadas === this.rutas.length) {
-                    callback(this.imagenes);
-                }
-            };
-            
-            img.onerror = () => {
-                console.error(`Error al cargar imagen: ${ruta}`);
-                cargadas++;
-            };
-            
-            img.src = ruta;
-        });
-    }
-
-    obtenerImagenAleatoria() {
-        const indice = Math.floor(Math.random() * this.imagenes.length);
-        return { imagen: this.imagenes[indice], indice: indice };
-    }
-
-    obtenerImagen(indice) {
-        return this.imagenes[indice];
-    }
-
-    obtenerTodas() {
-        return this.imagenes;
-    }
+function drawMenuGallery() {
+    const cols = 4;
+    const rows = 2;
+    const padding = 10;
+    const imgSize = 260;
+    
+    canvases.menu.width = cols * imgSize + (cols + 1) * padding;
+    canvases.menu.height = rows * imgSize + (rows + 1) * padding;
+    
+    const ctx = contexts.menu;
+    ctx.clearRect(0, 0, canvases.menu.width, canvases.menu.height);
+    
+    gameState.loadedImages.forEach((img, index) => {
+        if (!img) return;
+        
+        const col = index % cols;
+        const row = Math.floor(index / cols);
+        const x = col * imgSize + (col + 1) * padding;
+        const y = row * imgSize + (row + 1) * padding;
+        
+        // Sombra
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 5;
+        
+        // Dibujar imagen
+        ctx.drawImage(img, x, y, imgSize, imgSize);
+        
+        // Reset shadow
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+    });
 }
 
-// ==================== CLASE PUZZLE ====================
-class Puzzle {
-    constructor(imagen, tamanoGrilla, filtro) {
-        this.imagen = imagen;
-        this.tamanoGrilla = tamanoGrilla;
-        this.filtro = filtro;
-        this.piezas = [];
-        this.columnas = tamanoGrilla === 4 ? 2 : tamanoGrilla === 6 ? 3 : 4;
-        this.filas = tamanoGrilla / this.columnas;
-        this.anchoPieza = imagen.width / this.columnas;
-        this.altoPieza = imagen.height / this.filas;
-        this.ayudaUsada = false;
-    }
+// ==================== NAVEGACIÓN ====================
 
-    generar() {
-        this.piezas = [];
-        for (let i = 0; i < this.tamanoGrilla; i++) {
-            const col = i % this.columnas;
-            const row = Math.floor(i / this.columnas);
-
-            const canvasPieza = document.createElement('canvas');
-            canvasPieza.width = this.anchoPieza;
-            canvasPieza.height = this.altoPieza;
-            const ctx = canvasPieza.getContext('2d');
-
-            ctx.drawImage(
-                this.imagen,
-                col * this.anchoPieza, row * this.altoPieza,
-                this.anchoPieza, this.altoPieza,
-                0, 0,
-                this.anchoPieza, this.altoPieza
-            );
-
-            let imageData = ctx.getImageData(0, 0, this.anchoPieza, this.altoPieza);
-            imageData = Filtro.aplicar(ctx, imageData, this.filtro, i);
-            ctx.putImageData(imageData, 0, 0);
-
-            const pieza = new Pieza(i, col, row, canvasPieza);
-            this.piezas.push(pieza);
-        }
-    }
-
-    obtenerPiezaEnPosicion(x, y, tamanoMaximo, padding) {
-        const tamanoPieza = Math.floor((tamanoMaximo - (this.columnas + 1) * padding) / this.columnas);
-        for (let pieza of this.piezas) {
-            const px = pieza.col * tamanoPieza + (pieza.col + 1) * padding;
-            const py = pieza.row * tamanoPieza + (pieza.row + 1) * padding;
-            if (x >= px && x <= px + tamanoPieza && y >= py && y <= py + tamanoPieza) {
-                return pieza;
-            }
-        }
-        return null;
-    }
-
-    usarAyuda() {
-        if (this.ayudaUsada) return false;
-        const piezasNoFijas = this.piezas.filter(p => !p.estaFija && !p.estaCorrecta());
-        if (piezasNoFijas.length > 0) {
-            const piezaAleatoria = piezasNoFijas[Math.floor(Math.random() * piezasNoFijas.length)];
-            piezaAleatoria.fijar();
-            this.ayudaUsada = true;
-            return true;
-        }
-        return false;
-    }
-
-    estaCompleto() {
-        return this.piezas.every(pieza => pieza.estaCorrecta());
-    }
-}
-
-// ==================== CLASE RENDERIZADOR CANVAS ====================
-class RenderizadorCanvas {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
-    }
-
-    limpiar() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    }
-
-    establecerDimensiones(ancho, alto) {
-        this.canvas.width = ancho;
-        this.canvas.height = alto;
-    }
-
-    dibujarImagen(imagen, x, y, ancho, alto) {
-        this.ctx.drawImage(imagen, x, y, ancho, alto);
-    }
-
-    dibujarImagenRotada(imagen, x, y, ancho, alto, rotacion) {
-        this.ctx.save();
-        this.ctx.translate(x + ancho / 2, y + alto / 2);
-        this.ctx.rotate((rotacion * Math.PI) / 180);
-        this.ctx.drawImage(imagen, -ancho / 2, -alto / 2, ancho, alto);
-        this.ctx.restore();
+function showScreen(screenName) {
+    elements.menuScreen.classList.add('hidden');
+    elements.gameScreen.classList.add('hidden');
+    elements.completedScreen.classList.add('hidden');
+    
+    if (screenName === 'menu') {
+        elements.menuScreen.classList.remove('hidden');
+    } else if (screenName === 'game') {
+        elements.gameScreen.classList.remove('hidden');
+    } else if (screenName === 'completed') {
+        elements.completedScreen.classList.remove('hidden');
     }
     
-    dibujarRectangulo(x, y, ancho, alto, color) {
-        this.ctx.fillStyle = color;
-        this.ctx.fillRect(x, y, ancho, alto);
-    }
+    gameState.currentScreen = screenName;
+}
 
-    dibujarBorde(x, y, ancho, alto, color, grosor) {
-        this.ctx.strokeStyle = color;
-        this.ctx.lineWidth = grosor;
-        this.ctx.strokeRect(x, y, ancho, alto);
-    }
+function goToMenu() {
+    stopTimer();
+    gameState = {
+        currentScreen: 'menu',
+        currentLevel: 1,
+        timer: 0,
+        timerInterval: null,
+        pieces: [],
+        selectedImage: null,
+        selectedImageIndex: -1,
+        originalImage: null,
+        gridSize: gameState.gridSize,
+        helpUsed: false,
+        timeLimit: null,
+        loadedImages: gameState.loadedImages
+    };
+    showScreen('menu');
+}
 
-    establecerSombra(color, difuminado, offsetX, offsetY) {
-        this.ctx.shadowColor = color;
-        this.ctx.shadowBlur = difuminado;
-        this.ctx.shadowOffsetX = offsetX;
-        this.ctx.shadowOffsetY = offsetY;
+// ==================== CONTROL DEL JUEGO ====================
+
+function startGame() {
+    gameState.currentLevel = 1;
+    showImageSelectionAnimation();
+}
+
+function nextLevel() {
+    if (gameState.currentLevel < levels.length) {
+        gameState.currentLevel++;
+        showImageSelectionAnimation();
+    } else {
+        goToMenu();
+    }
+}
+
+function showImageSelectionAnimation() {
+    // Seleccionar imagen aleatoria
+    const randomIndex = Math.floor(Math.random() * imageBank.length);
+    gameState.selectedImageIndex = randomIndex;
+    gameState.selectedImage = gameState.loadedImages[randomIndex];
+    
+    // Configurar canvas de animación
+    const cols = 4;
+    const rows = 2;
+    const imgSize = 80;
+    const padding = 8;
+    
+    canvases.animation.width = cols * imgSize + (cols + 1) * padding;
+    canvases.animation.height = rows * imgSize + (rows + 1) * padding;
+    
+    elements.imageAnimation.classList.remove('hidden');
+    
+    // Dibujar galería inicial
+    drawAnimationGallery(false);
+    
+    // Después de 500ms, resaltar la seleccionada
+    setTimeout(() => {
+        drawAnimationGallery(true);
+    }, 500);
+    
+    // Después de 2 segundos, iniciar el nivel
+    setTimeout(() => {
+        elements.imageAnimation.classList.add('hidden');
+        initializeLevel();
+    }, 2000);
+}
+
+function drawAnimationGallery(highlight) {
+    const ctx = contexts.animation;
+    const cols = 4;
+    const rows = 2;
+    const imgSize = 80;
+    const padding = 8;
+    
+    ctx.clearRect(0, 0, canvases.animation.width, canvases.animation.height);
+    
+    gameState.loadedImages.forEach((img, index) => {
+        if (!img) return;
+        
+        const col = index % cols;
+        const row = Math.floor(index / cols);
+        const x = col * imgSize + (col + 1) * padding;
+        const y = row * imgSize + (row + 1) * padding;
+        
+        const isSelected = index === gameState.selectedImageIndex;
+        
+        if (highlight && isSelected) {
+            // Borde dorado para la seleccionada
+            ctx.strokeStyle = '#fbbf24';
+            ctx.lineWidth = 4;
+            ctx.strokeRect(x - 2, y - 2, imgSize + 4, imgSize + 4);
+            ctx.globalAlpha = 1;
+        } else {
+            ctx.globalAlpha = highlight ? 0.5 : 0.8;
+        }
+        
+        ctx.drawImage(img, x, y, imgSize, imgSize);
+        ctx.globalAlpha = 1;
+    });
+}
+
+// ==================== INICIALIZACIÓN DEL NIVEL ====================
+
+function initializeLevel() {
+    if (!gameState.selectedImage) {
+        console.error('No hay imagen seleccionada');
+        return;
     }
     
-    limpiarSombra() {
-        this.ctx.shadowColor = 'transparent';
-        this.ctx.shadowBlur = 0;
-    }
-
-    establecerOpacidad(opacidad) {
-        this.ctx.globalAlpha = opacidad;
-    }
+    gameState.originalImage = gameState.selectedImage;
+    setupPuzzle();
+    updateLevelInfo();
+    showScreen('game');
+    startTimer();
 }
 
-// ==================== CLASE JUEGO BLOCKA ====================
-class JuegoBlocka {
-    constructor() {
-        this.rutasImagenes = [
-            '/img/messi.jpg', '/img/r9.jpg', '/img/cr7.jpg',
-            '/img/msn.jpg', '/img/suarez.jpg', '/img/maradona.jpg',
-            '/img/messironaldinho.jpg', '/img/ney.jpg'
-        ];
-
-        this.niveles = [
-            new Nivel(1, 'Nivel 1: Escala de Grises', 'grayscale', null),
-            new Nivel(2, 'Nivel 2: Brillo', 'brightness', null),
-            new Nivel(3, 'Nivel 3: Negativo (60s)', 'invert', 60),
-            new Nivel(4, 'Nivel 4: Mixto (30s)', 'mixed', 30)
-        ];
-
-        this.nivelActual = 0;
-        this.tamanoGrilla = 4;
-        this.pantallaActual = 'menu';
-        this.imagenSeleccionada = null;
-        this.indiceImagenSeleccionada = -1;
-
-        this.cargadorImagenes = new CargadorImagenes(this.rutasImagenes);
-        this.temporizador = new Temporizador();
-        this.puzzle = null;
-
-        this.elementos = this.obtenerElementosDOM();
-        this.renderizadores = this.crearRenderizadores();
-    }
-
-    obtenerElementosDOM() {
-        return {
-            menuScreen: document.getElementById('menuScreen'),
-            gameScreen: document.getElementById('gameScreen'),
-            completedScreen: document.getElementById('completedScreen'),
-            imageAnimation: document.getElementById('imageAnimation'),
-            btnStart: document.getElementById('btnStart'),
-            btnHome: document.getElementById('btnHome'),
-            btnHelp: document.getElementById('btnHelp'),
-            btnMenuCompleted: document.getElementById('btnMenuCompleted'),
-            btnNextLevel: document.getElementById('btnNextLevel'),
-            gridSizeSelect: document.getElementById('gridSizeSelect'),
-            levelName: document.getElementById('levelName'),
-            timer: document.getElementById('timer'),
-            timeLimit: document.getElementById('timeLimit'),
-            completedTime: document.getElementById('completedTime')
-        };
-    }
-
-    crearRenderizadores() {
-        return {
-            menu: new RenderizadorCanvas(document.getElementById('menuCanvas')),
-            animacion: new RenderizadorCanvas(document.getElementById('animationCanvas')),
-            juego: new RenderizadorCanvas(document.getElementById('gameCanvas')),
-            completado: new RenderizadorCanvas(document.getElementById('completedCanvas'))
-        };
-    }
-
-    iniciar() {
-        this.configurarEventListeners();
-        this.cargadorImagenes.cargar(() => {
-            this.dibujarGaleriaMenu();
-        });
-    }
-
-    configurarEventListeners() {
-        this.elementos.btnStart.addEventListener('click', () => this.iniciarJuego());
-        this.elementos.btnHome.addEventListener('click', () => this.irAlMenu());
-        this.elementos.btnHelp.addEventListener('click', () => this.usarAyuda());
-        this.elementos.btnMenuCompleted.addEventListener('click', () => this.irAlMenu());
-        this.elementos.btnNextLevel.addEventListener('click', () => this.siguienteNivel());
+function setupPuzzle() {
+    const img = gameState.originalImage;
+    const cols = gameState.gridSize === 4 ? 2 : gameState.gridSize === 6 ? 3 : 4;
+    const rows = gameState.gridSize / cols;
+    const pieceWidth = img.width / cols;
+    const pieceHeight = img.height / rows;
+    
+    gameState.pieces = [];
+    gameState.helpUsed = false;
+    
+    const levelConfig = levels[gameState.currentLevel - 1];
+    gameState.timeLimit = levelConfig.time;
+    
+    // Crear piezas con canvas individuales
+    for (let i = 0; i < gameState.gridSize; i++) {
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const rotation = Math.floor(Math.random() * 4) * 90;
         
-        this.elementos.gridSizeSelect.addEventListener('change', (e) => {
-            this.tamanoGrilla = parseInt(e.target.value);
-        });
+        // Crear canvas temporal para la pieza
+        const pieceCanvas = document.createElement('canvas');
+        pieceCanvas.width = pieceWidth;
+        pieceCanvas.height = pieceHeight;
+        const pieceCtx = pieceCanvas.getContext('2d');
         
-        this.renderizadores.juego.canvas.addEventListener('click', (e) => this.manejarClick(e));
-        this.renderizadores.juego.canvas.addEventListener('contextmenu', (e) => this.manejarClickDerecho(e));
-    }
-
-    dibujarGaleriaMenu() {
-        const cols = 4;
-        const rows = 2;
-        const padding = 10;
-        const imgSize = 250;
-        const renderer = this.renderizadores.menu;
-
-        renderer.establecerDimensiones(
-            cols * imgSize + (cols + 1) * padding,
-            rows * imgSize + (rows + 1) * padding
+        // Dibujar la porción de imagen
+        pieceCtx.drawImage(
+            img,
+            col * pieceWidth, row * pieceHeight,
+            pieceWidth, pieceHeight,
+            0, 0,
+            pieceWidth, pieceHeight
         );
-        renderer.limpiar();
-
-        this.cargadorImagenes.obtenerTodas().forEach((img, index) => {
-            if (!img) return;
-            const col = index % cols;
-            const row = Math.floor(index / cols);
-            const x = col * imgSize + (col + 1) * padding;
-            const y = row * imgSize + (row + 1) * padding;
-
-            renderer.establecerSombra('rgba(0, 0, 0, 0.3)', 10, 0, 5);
-            renderer.dibujarImagen(img, x, y, imgSize, imgSize);
-            renderer.limpiarSombra();
+        
+        // Aplicar filtro
+        let imageData = pieceCtx.getImageData(0, 0, pieceWidth, pieceHeight);
+        imageData = applyFilter(pieceCtx, imageData, levelConfig.filter, i);
+        pieceCtx.putImageData(imageData, 0, 0);
+        
+        gameState.pieces.push({
+            id: i,
+            col: col,
+            row: row,
+            rotation: rotation,
+            correctRotation: 0,
+            canvas: pieceCanvas,
+            isFixed: false,
+            width: pieceWidth,
+            height: pieceHeight
         });
     }
+    
+    drawGameCanvas();
+}
 
-    mostrarPantalla(nombre) {
-        this.elementos.menuScreen.classList.add('hidden');
-        this.elementos.gameScreen.classList.add('hidden');
-        this.elementos.completedScreen.classList.add('hidden');
+// ==================== DIBUJADO DEL CANVAS DE JUEGO ====================
 
-        if (nombre === 'menu') {
-            this.elementos.menuScreen.classList.remove('hidden');
-        } else if (nombre === 'juego') {
-            this.elementos.gameScreen.classList.remove('hidden');
-        } else if (nombre === 'completado') {
-            this.elementos.completedScreen.classList.remove('hidden');
-        }
-        this.pantallaActual = nombre;
-    }
-
-    irAlMenu() {
-        this.temporizador.detener();
-        this.nivelActual = 0;
-        this.imagenSeleccionada = null;
-        this.puzzle = null;
-        this.mostrarPantalla('menu');
-    }
-
-    iniciarJuego() {
-        this.nivelActual = 0;
-        this.mostrarAnimacionSeleccion();
-    }
-
-    siguienteNivel() {
-        if (this.nivelActual < this.niveles.length - 1) {
-            this.nivelActual++;
-            this.mostrarAnimacionSeleccion();
+function drawGameCanvas() {
+    const cols = gameState.gridSize === 4 ? 2 : gameState.gridSize === 6 ? 3 : 4;
+    const rows = gameState.gridSize / cols;
+    const padding = 10;
+    const maxSize = 600;
+    
+    // Calcular tamaño de pieza basado en el tamaño máximo
+    const pieceSize = Math.floor((maxSize - (cols + 1) * padding) / cols);
+    
+    canvases.game.width = cols * pieceSize + (cols + 1) * padding;
+    canvases.game.height = rows * pieceSize + (rows + 1) * padding;
+    
+    const ctx = contexts.game;
+    ctx.clearRect(0, 0, canvases.game.width, canvases.game.height);
+    
+    // Fondo oscuro
+    ctx.fillStyle = 'rgba(31, 41, 55, 0.3)';
+    ctx.fillRect(0, 0, canvases.game.width, canvases.game.height);
+    
+    gameState.pieces.forEach((piece) => {
+        const x = piece.col * pieceSize + (piece.col + 1) * padding;
+        const y = piece.row * pieceSize + (piece.row + 1) * padding;
+        
+        ctx.save();
+        
+        // Mover al centro de la pieza
+        ctx.translate(x + pieceSize / 2, y + pieceSize / 2);
+        
+        // Rotar
+        ctx.rotate((piece.rotation * Math.PI) / 180);
+        
+        // Dibujar imagen centrada
+        ctx.drawImage(
+            piece.canvas,
+            -pieceSize / 2,
+            -pieceSize / 2,
+            pieceSize,
+            pieceSize
+        );
+        
+        ctx.restore();
+        
+        // Borde
+        if (piece.isFixed) {
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 4;
         } else {
-            this.irAlMenu();
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.lineWidth = 2;
         }
-    }
+        ctx.strokeRect(x, y, pieceSize, pieceSize);
+    });
+}
 
-    mostrarAnimacionSeleccion() {
-        const { imagen, indice } = this.cargadorImagenes.obtenerImagenAleatoria();
-        this.imagenSeleccionada = imagen;
-        this.indiceImagenSeleccionada = indice;
+// ==================== INTERACCIÓN CON EL CANVAS ====================
 
-        this.elementos.imageAnimation.classList.remove('hidden');
-        this.dibujarGaleriaAnimacion(false);
-
-        setTimeout(() => this.dibujarGaleriaAnimacion(true), 500);
-        setTimeout(() => {
-            this.elementos.imageAnimation.classList.add('hidden');
-            this.inicializarNivel();
-        }, 2000);
-    }
-
-    dibujarGaleriaAnimacion(resaltar) {
-        const cols = 4;
-        const rows = 2;
-        const imgSize = 80;
-        const padding = 8;
-        const renderer = this.renderizadores.animacion;
-        
-        renderer.establecerDimensiones(
-            cols * imgSize + (cols + 1) * padding,
-            rows * imgSize + (rows + 1) * padding
-        );
-        renderer.limpiar();
-
-        this.cargadorImagenes.obtenerTodas().forEach((img, index) => {
-            if (!img) return;
-            const col = index % cols;
-            const row = Math.floor(index / cols);
-            const x = col * imgSize + (col + 1) * padding;
-            const y = row * imgSize + (row + 1) * padding;
-            const esSeleccionada = index === this.indiceImagenSeleccionada;
-
-            if (resaltar && esSeleccionada) {
-                renderer.dibujarBorde(x - 2, y - 2, imgSize + 4, imgSize + 4, '#9D4EDD', 4);
-                renderer.establecerOpacidad(1);
-            } else {
-                renderer.establecerOpacidad(resaltar ? 0.5 : 0.8);
-            }
-            renderer.dibujarImagen(img, x, y, imgSize, imgSize);
-            renderer.establecerOpacidad(1);
-        });
-    }
-
-    inicializarNivel() {
-        if (!this.imagenSeleccionada) {
-            console.error('No hay imagen seleccionada');
-            return;
-        }
-
-        const nivel = this.niveles[this.nivelActual];
-        this.puzzle = new Puzzle(this.imagenSeleccionada, this.tamanoGrilla, nivel.filtro);
-        this.puzzle.generar();
-
-        this.actualizarInfoNivel();
-        this.mostrarPantalla('juego');
-        this.dibujarPuzzle();
-
-        const onTick = (segundos) => {
-            this.elementos.timer.textContent = Temporizador.formatear(segundos);
-            if (nivel.tiempoLimite && segundos >= nivel.tiempoLimite) {
-                alert('¡Tiempo agotado! Intenta nuevamente.');
-                this.irAlMenu();
-            }
-        };
-
-        this.temporizador.iniciar(onTick, nivel.tiempoLimite);
-    }
-
-    dibujarPuzzle() {
-        const padding = 10;
-        const maxSize = 600;
-        const cols = this.puzzle.columnas;
-        const rows = this.puzzle.filas;
-        const tamanoPieza = Math.floor((maxSize - (cols + 1) * padding) / cols);
-        const renderer = this.renderizadores.juego;
-
-        renderer.establecerDimensiones(
-            cols * tamanoPieza + (cols + 1) * padding,
-            rows * tamanoPieza + (rows + 1) * padding
-        );
-        renderer.limpiar();
-        renderer.dibujarRectangulo(0, 0, renderer.canvas.width, renderer.canvas.height, 'rgba(31, 41, 55, 0.3)');
-
-        this.puzzle.piezas.forEach((pieza) => {
-            const x = pieza.col * tamanoPieza + (pieza.col + 1) * padding;
-            const y = pieza.row * tamanoPieza + (pieza.row + 1) * padding;
-
-            renderer.dibujarImagenRotada(pieza.canvas, x, y, tamanoPieza, tamanoPieza, pieza.rotacion);
-            const colorBorde = pieza.estaFija ? '#32CD32' : 'rgba(255, 255, 255, 0.3)';
-            const grosorBorde = pieza.estaFija ? 4 : 2;
-            renderer.dibujarBorde(x, y, tamanoPieza, tamanoPieza, colorBorde, grosorBorde);
-        });
-    }
-
-    manejarClick(e) {
-        const pieza = this.puzzle.obtenerPiezaEnPosicion(e.offsetX, e.offsetY, 600, 10);
-        if (pieza && pieza.rotar('izquierda')) {
-            this.dibujarPuzzle();
-            this.verificarVictoria();
-        }
-    }
-
-    manejarClickDerecho(e) {
-        e.preventDefault();
-        const pieza = this.puzzle.obtenerPiezaEnPosicion(e.offsetX, e.offsetY, 600, 10);
-        if (pieza && pieza.rotar('derecha')) {
-            this.dibujarPuzzle();
-            this.verificarVictoria();
-        }
-    }
-
-    usarAyuda() {
-        if (this.puzzle && this.puzzle.usarAyuda()) {
-            this.temporizador.agregarSegundos(5);
-            this.elementos.btnHelp.disabled = true;
-            this.elementos.btnHelp.textContent = 'Ayuda usada';
-            this.dibujarPuzzle();
-            this.verificarVictoria();
-        }
-    }
-
-    verificarVictoria() {
-        if (this.puzzle.estaCompleto()) {
-            this.temporizador.detener();
-            this.mostrarPantallaCompletado();
-        }
-    }
-
-    mostrarPantallaCompletado() {
-        const tiempo = this.temporizador.obtenerTiempo();
-        this.elementos.completedTime.textContent = `Tiempo: ${Temporizador.formatear(tiempo)}`;
-        const renderer = this.renderizadores.completado;
-
-        renderer.establecerDimensiones(400, 400);
-        renderer.dibujarImagen(this.imagenSeleccionada, 0, 0, 400, 400);
-
-        this.elementos.btnNextLevel.style.display = this.nivelActual < this.niveles.length - 1 ? 'flex' : 'none';
-        this.mostrarPantalla('completado');
-    }
-
-    actualizarInfoNivel() {
-        const nivel = this.niveles[this.nivelActual];
-        this.elementos.levelName.textContent = nivel.nombre;
-        this.elementos.timeLimit.textContent = nivel.tiempoLimite ? `/ ${Temporizador.formatear(nivel.tiempoLimite)}` : '';
-        this.elementos.btnHelp.disabled = false;
-        this.elementos.btnHelp.textContent = 'Ayudita (+5s)';
+function handleGameCanvasClick(e) {
+    const piece = getPieceAtPosition(e.offsetX, e.offsetY);
+    if (piece && !piece.isFixed) {
+        rotatePiece(piece.id, 'left');
     }
 }
 
-// ==================== INICIALIZAR JUEGO ====================
-window.addEventListener('DOMContentLoaded', () => {
-    const juego = new JuegoBlocka();
-    juego.iniciar();
-});
+function handleGameCanvasRightClick(e) {
+    e.preventDefault();
+    const piece = getPieceAtPosition(e.offsetX, e.offsetY);
+    if (piece && !piece.isFixed) {
+        rotatePiece(piece.id, 'right');
+    }
+}
+
+function getPieceAtPosition(x, y) {
+    const cols = gameState.gridSize === 4 ? 2 : gameState.gridSize === 6 ? 3 : 4;
+    const padding = 10;
+    const maxSize = 600;
+    const pieceSize = Math.floor((maxSize - (cols + 1) * padding) / cols);
+    
+    for (let piece of gameState.pieces) {
+        const px = piece.col * pieceSize + (piece.col + 1) * padding;
+        const py = piece.row * pieceSize + (piece.row + 1) * padding;
+        
+        if (x >= px && x <= px + pieceSize && y >= py && y <= py + pieceSize) {
+            return piece;
+        }
+    }
+    return null;
+}
+
+function rotatePiece(pieceId, direction) {
+    const piece = gameState.pieces.find(p => p.id === pieceId);
+    if (!piece || piece.isFixed) return;
+    
+    if (direction === 'right') {
+        piece.rotation = (piece.rotation + 90) % 360;
+    } else {
+        piece.rotation = (piece.rotation - 90 + 360) % 360;
+    }
+    
+    drawGameCanvas();
+    checkWin();
+}
+
+function useHelp() {
+    if (gameState.helpUsed) return;
+    
+    const unfixedPieces = gameState.pieces.filter(p => !p.isFixed && p.rotation !== p.correctRotation);
+    if (unfixedPieces.length > 0) {
+        const randomPiece = unfixedPieces[Math.floor(Math.random() * unfixedPieces.length)];
+        randomPiece.rotation = 0;
+        randomPiece.isFixed = true;
+        gameState.timer += 5;
+        gameState.helpUsed = true;
+        elements.btnHelp.disabled = true;
+        elements.btnHelp.textContent = 'Ayuda usada';
+        drawGameCanvas();
+        checkWin();
+    }
+}
+
+function checkWin() {
+    const allCorrect = gameState.pieces.every(piece => piece.rotation === piece.correctRotation);
+    if (allCorrect) {
+        stopTimer();
+        showCompletedScreen();
+    }
+}
+
+function showCompletedScreen() {
+    elements.completedTime.textContent = `Tiempo: ${formatTime(gameState.timer)}`;
+    
+    // Dibujar imagen original sin filtro
+    canvases.completed.width = 400;
+    canvases.completed.height = 400;
+    contexts.completed.drawImage(gameState.originalImage, 0, 0, 400, 400);
+    
+    // Mostrar/ocultar botón de siguiente nivel
+    if (gameState.currentLevel < levels.length) {
+        elements.btnNextLevel.style.display = 'flex';
+    } else {
+        elements.btnNextLevel.style.display = 'none';
+    }
+    
+    showScreen('completed');
+}
+
+function updateLevelInfo() {
+    const levelConfig = levels[gameState.currentLevel - 1];
+    elements.levelName.textContent = levelConfig.name;
+    
+    if (levelConfig.time) {
+        elements.timeLimit.textContent = `/ ${formatTime(levelConfig.time)}`;
+    } else {
+        elements.timeLimit.textContent = '';
+    }
+    
+    elements.btnHelp.disabled = false;
+    elements.btnHelp.textContent = 'Ayudita (+5s)';
+}
+
+// ==================== TIMER ====================
+
+function startTimer() {
+    gameState.timer = 0;
+    stopTimer();
+    
+    gameState.timerInterval = setInterval(() => {
+        gameState.timer++;
+        elements.timer.textContent = formatTime(gameState.timer);
+        
+        // Verificar límite de tiempo
+        if (gameState.timeLimit && gameState.timer >= gameState.timeLimit) {
+            stopTimer();
+            alert('¡Tiempo agotado! Intenta nuevamente.');
+            goToMenu();
+        }
+    }, 1000);
+}
+
+function stopTimer() {
+    if (gameState.timerInterval) {
+        clearInterval(gameState.timerInterval);
+        gameState.timerInterval = null;
+    }
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+// ==================== FILTROS ====================
+
+function applyFilter(ctx, imageData, filterType, pieceIndex) {
+    const data = imageData.data;
+    
+    switch(filterType) {
+        case 'grayscale':
+            for (let i = 0; i < data.length; i += 4) {
+                const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                data[i] = data[i + 1] = data[i + 2] = avg;
+            }
+            break;
+            
+        case 'brightness':
+            const factor = 0.3;
+            for (let i = 0; i < data.length; i += 4) {
+                data[i] = Math.min(255, data[i] * (1 + factor));
+                data[i + 1] = Math.min(255, data[i + 1] * (1 + factor));
+                data[i + 2] = Math.min(255, data[i + 2] * (1 + factor));
+            }
+            break;
+            
+        case 'invert':
+            for (let i = 0; i < data.length; i += 4) {
+                data[i] = 255 - data[i];
+                data[i + 1] = 255 - data[i + 1];
+                data[i + 2] = 255 - data[i + 2];
+            }
+            break;
+            
+        case 'mixed':
+            const filters = ['grayscale', 'brightness', 'invert', 'none'];
+            const selectedFilter = filters[pieceIndex % filters.length];
+            if (selectedFilter !== 'none') {
+                return applyFilter(ctx, imageData, selectedFilter, pieceIndex);
+            }
+            break;
+    }
+    
+    return imageData;
+}
+
+// ==================== INICIAR AL CARGAR ====================
+
+window.addEventListener('DOMContentLoaded', init);
