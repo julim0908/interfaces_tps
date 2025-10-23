@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayForge - Iniciar sesión</title>
+    <link rel="icon" href="/img/lsldl.png">
+    <link rel="stylesheet" href="/css/formulario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div id="menuToggle" class="menu-toggle">
+            <span class="menu-icon" id="menuIcon">☰</span>
+        </div>
+
+        <div class="header-center">
+            <img src="/img/logo_64x64.png" alt="">
+            <p class="logo-text">PlayForge</p>
+        </div>
+
+        <div class="header-right">
+            <div class="search-input">
+                <input type="text" placeholder="Buscar un juego">
+                <img src="/img/lupa.png" class="logo_buscador" alt="logo_buscador">
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="overlay" class="overlay"></div>
+
+    <div id="sidebarMenu" class="sidebar">
+        <div id="userProfile" class="user-profile hidden">
+            <div class="avatar">
+                <img class="icon-sidebar" src="/img/usuario.png" alt="usuario">
+            </div>
+            <span class="username">Usuario</span>
+            <button class="edit-profile">Editar perfil</button>
+        </div>
+
+        <nav class="menu-nav">
+            <ul>
+                <li><a href="#"><img class="icon-sidebar" src="/img/hogar.png"> Inicio</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/aplicaciones.png"> Mi biblioteca</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/deportes.png"> Deportes</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/estrategia.png"> Estrategia</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/escudo-espada.png"> Acción</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/descuento.png"> Ofertas</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/regalo.png"> Gratuitos</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/favorito.png"> Destacados</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="/img/carrito-de-compras (1).png"> Carrito</a></li>
+            </ul>
+        </nav>
+
+        <div class="action-buttons">
+            <button id="registerBtn" class="btn-register">Registrate</button>
+            <button id="logoutBtn" class="btn-logout hidden">
+                <img class="icon-sidebar" src="/img/cerrar-sesion-de-usuario.png" alt="">Cerrar sesión
+            </button>
+        </div>
+
+        <div class="logo-section">
+            <span class="logo-text">PlayForge</span>
+            <img src="/img/logo_64x64.png" alt="">
+        </div>
+    </div>
+
+    <!-- Main -->
+    <main class="auth-container">
+        <section class="auth-card">
+            <figure class="auth-logo">
+                <img src="/img/logo_64x64.png" alt="Logo PlayForge">
+                <figcaption>PlayForge</figcaption>
+            </figure>
+
+            <h1 class="auth-title">Iniciar sesión</h1>
+
+            <!-- Botones sociales -->
+            <div class="auth-social">
+                <button class="btn-social facebook">
+                    <img src="/img/facebook.png" alt="">
+                    <p>Continuar con Facebook</p>
+                </button>
+                <button class="btn-social google">
+                    <img src="/img/google.png" alt="">
+                    <p>Continuar con Google</p>
+                </button>
+            </div>
+
+            <!-- Formulario de login -->
+            <form action="#" method="post" class="auth-form">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+
+                <a href="home.html" class="btn-submit">Iniciar sesión</a>
+            </form>
+
+            <p class="auth-register">
+                ¿No tienes una cuenta?
+                <a href="/index.html">Regístrate</a>
+            </p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <section>
+            <h3>Sobre nosotros</h3>
+            <ul>
+                <li><a href="#">Contáctanos</a></li>
+                <li><a href="#">Nuestro equipo</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Ayuda</h3>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Soporte</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Categorías</h3>
+            <ul>
+                <li><a href="#">Destacados</a></li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Gratuitos</a></li>
+                <li><a href="#">Deportes</a></li>
+                <li><a href="#">Estrategia</a></li>
+                <li><a href="#">Acción</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Unite</h3>
+            <ul>
+                <li><a href="#">Registrarse</a></li>
+                <li><a href="#">Iniciar sesión</a></li>
+            </ul>
+        </section>
+        <section>
+            <h3>Nuestras redes</h3>
+            <ul>
+                <li><a href="#"><img src="/img/instagram-circle (1).png" alt="Instagram"></a></li>
+                <li><a href="#"><img src="/img/twitter-alt-circle.png" alt="X"></a></li>
+                <li><a href="#"><img src="/img/facebook.png" alt="Facebook"></a></li>
+            </ul>
+        </section>
+        <p>
+            Copyright © | Todos los derechos reservados |
+            <a href="#">Términos y condiciones</a> |
+            <a href="#">Política de privacidad</a> |
+            Agosto 2025
+        </p>
+    </footer>
+    <script src="/javascript/menu.js"></script>
+</body>
+</html>
