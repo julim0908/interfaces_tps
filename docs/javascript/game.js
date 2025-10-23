@@ -164,8 +164,10 @@ class CargadorImagenes {
 
             img.onerror = () => {
                 console.error(`Error al cargar imagen: ${ruta}`);
+                // Corregido: Si la imagen falla, asignamos null para que la galería no se rompa
+                this.imagenes[index] = null; 
                 cargadas++;
-                 if (cargadas === this.rutas.length) {
+                if (cargadas === this.rutas.length) {
                     callback(this.imagenes);
                 }
             };
@@ -175,10 +177,19 @@ class CargadorImagenes {
     }
 
     obtenerImagenAleatoria() {
-        const indice = Math.floor(Math.random() * this.imagenes.length);
+        // Aseguramos que solo seleccionamos imágenes que hayan cargado (no son null)
+        const imagenesValidas = this.imagenes.filter(img => img !== null);
+        if (imagenesValidas.length === 0) return { imagen: null, indice: -1 };
+        
+        const indiceAleatorio = Math.floor(Math.random() * imagenesValidas.length);
+        const imagenSeleccionada = imagenesValidas[indiceAleatorio];
+        
+        // Buscamos el índice original para no romper el resto de la lógica si se necesita
+        const indiceOriginal = this.imagenes.findIndex(img => img === imagenSeleccionada);
+
         return {
-            imagen: this.imagenes[indice],
-            indice: indice
+            imagen: imagenSeleccionada,
+            indice: indiceOriginal
         };
     }
 
@@ -425,7 +436,8 @@ class JuegoBlocka {
         renderer.limpiar();
 
         this.cargadorImagenes.obtenerTodas().forEach((img, index) => {
-            if (!img) return;
+            // Se omiten las imágenes que no cargaron (ahora son null)
+            if (!img) return; 
             const col = index % cols;
             const row = Math.floor(index / cols);
             const x = col * imgSize + (col + 1) * padding;
@@ -483,6 +495,14 @@ class JuegoBlocka {
             imagen,
             indice
         } = this.cargadorImagenes.obtenerImagenAleatoria();
+        
+        // Verifica si se pudo seleccionar una imagen válida (en caso de que todas fallen)
+        if (!imagen) {
+            alert('No se pudo cargar ninguna imagen. Verifica las rutas de archivo.');
+            this.irAlMenu();
+            return;
+        }
+        
         this.imagenSeleccionada = imagen;
         this.indiceImagenSeleccionada = indice;
 
