@@ -165,7 +165,7 @@ class CargadorImagenes {
             img.onerror = () => {
                 console.error(`Error al cargar imagen: ${ruta}`);
                 cargadas++;
-                 if (cargadas === this.rutas.length) {
+                if (cargadas === this.rutas.length) {
                     callback(this.imagenes);
                 }
             };
@@ -300,7 +300,7 @@ class RenderizadorCanvas {
         this.ctx.lineWidth = grosor;
         this.ctx.strokeRect(x, y, ancho, alto);
     }
-    
+
     dibujarTexto(texto, x, y, color, fuente, alineacion = 'center') {
         this.ctx.fillStyle = color;
         this.ctx.font = fuente;
@@ -330,7 +330,7 @@ class JuegoBlocka {
     constructor() {
         this.rutasImagenes = [
             '../img/messi.jpg', '../img/r9.jpg', '../img/cr7.jpg',
-            '../img/msn.jpg', '../img/suarez.jpg', '../img/maradona.jpg',
+            '../img/msn.jpg', '../img/suarez.jpg', '../img/diego.jpg',
             '../img/messironaldinho.jpg', '../img/ney.jpg'
         ];
         //comentario para hacer el push 
@@ -347,6 +347,7 @@ class JuegoBlocka {
         this.pantallaActual = 'menu';
         this.imagenSeleccionada = null;
         this.indiceImagenSeleccionada = -1;
+        this.records = {};
 
         this.cargadorImagenes = new CargadorImagenes(this.rutasImagenes);
         this.temporizador = new Temporizador();
@@ -374,7 +375,8 @@ class JuegoBlocka {
             levelName: document.getElementById('levelName'),
             timer: document.getElementById('timer'),
             timeLimit: document.getElementById('timeLimit'),
-            completedTime: document.getElementById('completedTime')
+            completedTime: document.getElementById('completedTime'),
+            recordTime: document.getElementById('recordTime')
         };
     }
 
@@ -389,9 +391,36 @@ class JuegoBlocka {
 
     iniciar() {
         this.configurarEventListeners();
+        this.cargarRecords();
         this.cargadorImagenes.cargar(() => {
             this.dibujarGaleriaMenu();
         });
+    }
+
+    cargarRecords() {
+        const recordsGuardados = localStorage.getItem('blocka_records');
+        if (recordsGuardados) {
+            this.records = JSON.parse(recordsGuardados);
+        } else {
+            this.records = {};
+        }
+    }
+
+    guardarRecord(nivel, tamanoGrilla, tiempo) {
+        const key = `nivel${nivel}_${tamanoGrilla}piezas`;
+        const recordAnterior = this.records[key];
+
+        if (!recordAnterior || tiempo < recordAnterior) {
+            this.records[key] = tiempo;
+            localStorage.setItem('blocka_records', JSON.stringify(this.records));
+            return true;
+        }
+        return false;
+    }
+
+    obtenerRecord(nivel, tamanoGrilla) {
+        const key = `nivel${nivel}_${tamanoGrilla}piezas`;
+        return this.records[key] || null;
     }
 
     configurarEventListeners() {
@@ -618,6 +647,17 @@ class JuegoBlocka {
         const tiempo = this.temporizador.obtenerTiempo();
         this.elementos.completedTime.textContent = `Tiempo: ${Temporizador.formatear(tiempo)}`;
         const renderer = this.renderizadores.completado;
+
+        const nivelNum = this.nivelActual + 1;
+        const tamano = this.tamanoGrilla;
+        const esNuevoRecord = this.guardarRecord(nivelNum, tamano, tiempo);
+        const record = this.obtenerRecord(nivelNum, tamano);
+
+        if (esNuevoRecord) {
+            this.elementos.recordTime.innerHTML = `¡Nuevo Récord!: ${Temporizador.formatear(record)}`;
+        } else {
+            this.elementos.recordTime.textContent = `Récord: ${Temporizador.formatear(record)}`;
+        }
 
         renderer.establecerDimensiones(400, 400);
         renderer.dibujarImagen(this.imagenSeleccionada, 0, 0, 400, 400);
