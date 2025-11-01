@@ -1,60 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peg Solitaire - TPE2</title>
-    <link rel="stylesheet" href="estilos.css"> </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peg Solitaire - TPE2</title>
+    <link rel="stylesheet" href="estilos.css"> 
+</head>
 <body>
 
-    <header>
-        <h1>Peg Solitaire: El Desafío</h1>
-    </header>
-    
-    <main class="contenedor-juego">
+    <header>
+        <h1>Peg Solitaire: El Desafío</h1>
+    </header>
+    
+    <main class="contenedor-juego">
 
-        <section id="informacion-juego">
-            <h2>Acerca del Juego</h2>
-            <p>El Peg Solitaire (Senku) es un desafío de lógica donde el objetivo es eliminar todas las fichas del tablero, dejando solo una al final.</p>
-            
-            <h3>Reglas y Cómo Jugar</h3>
-            <ul>
-                <li>Al inicio, solo la posición central del tablero está vacía.</li>
-                <li>Las fichas se eliminan saltando sobre una ficha adyacente (horizontal o vertical) hacia un espacio vacío.</li>
-                <li>La ficha que es saltada es eliminada.</li>
-                <li>El juego finaliza cuando ya no quedan más movimientos válidos.</li>
-                <li>Para mover: Haz clic y arrastra una ficha (Drag and Drop). Los **Hints Animados** indican los posibles destinos.</li>
-            </ul>
-            
-            <div class="tematica-descripcion">
-                <h3>Temática: Diferentes Tipos de Fichas</h3>
-                <p>Nuestras fichas tienen diferentes formatos temáticos (puedes implementarlo variando las imágenes por posición o por nivel, usando la variable `estado` de la clase `Celda`).</p>
-                </div>
-        </section>
+                <section id="informacion-juego">
+                    </section>
 
-        <section id="area-de-juego">
-            <h2>Tablero de Juego</h2>
+                <section id="area-de-juego">
+            <h2>Tablero de Juego</h2>
 
-            <canvas id="tableroCanvas" width="550" height="550">
-                Tu navegador no soporta el elemento Canvas.
-            </canvas>
-            
-            <div id="controles">
-                <button id="btnReiniciar">🔄 Reiniciar Juego</button>
-                
-                <div id="timer">Tiempo restante: <span id="tiempoRestante">00:00</span></div>
-                
-                <div id="mensajeJuego"></div>
-            </div>
-        </section>
-        
-    </main>
+            <canvas id="tableroCanvas" width="550" height="550">
+                Tu navegador no soporta el elemento Canvas.
+            </canvas>
+            
+            <div id="controles">
+                <button id="btnReiniciar">🔄 Reiniciar Juego</button>
+                
+                <div id="timer">Tiempo restante: <span id="tiempoRestante">00:00</span></div>
+                
+                <div id="mensajeJuego"></div>
+            </div>
+        </section>
+        
+    </main>
 
-    <footer>
-        <p>&copy; TPE2 - Desarrollo de Videojuegos con Canvas</p>
-    </footer>
+    <footer>
+        <p>&copy; TPE2 - Desarrollo de Videojuegos con Canvas</p>
+    </footer>
 
-    <script src="juego.js"></script>
+        <script src="/TP4/model/modeloPegSolitaire.js"></script>
+    <script src="/TP4/view/vistaPegSolitaire.js"></script>
+    <script src="/TP4/controller/controllerPegSolitaire.js"></script> 
 
 </body>
 </html>

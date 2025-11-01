@@ -1,0 +1,221 @@
+/* estilos.css (Versión 2.0 - Centrado y Consistencia) */
+
+/* ==================================== */
+/* 1. ESTILOS BASE Y FUENTES (FÚTBOL)   */
+/* ==================================== */
+
+:root {
+    --color-campo-verde: #4CAF50; /* Verde césped */
+    --color-lineas-blancas: #FFFFFF;
+    --color-tablero-base: #2E7D32; /* Verde más oscuro para el fondo del Canvas */
+    --color-pelota-principal: #333333; /* Color oscuro para la ficha (pelota) */
+    --color-accent: #FFC107; /* Amarillo/Oro para acentos */
+    --color-success: #009688;
+    --color-error: #D32F2F;
+    --color-btn-fondo: #1976D2; /* Azul para contraste/Botón */
+    --sombra-sutil: 0 4px 8px rgba(0, 0, 0, 0.2);
+    --sombra-consistente: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --border-radius-consistente: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #F4F4F4;
+    color: #333;
+    line-height: 1.6;
+    /* CENTRADO TOTAL: Hace que el body ocupe toda la ventana para centrar */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--color-campo-verde);
+    color: var(--color-lineas-blancas);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: var(--sombra-sutil);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    font-size: 2.5em;
+    letter-spacing: 2px;
+}
+
+/* ==================================== */
+/* 2. LAYOUT: CENTRADO Y CONTENEDOR     */
+/* ==================================== */
+
+.contenedor-juego {
+    /* Flex grow para empujar el footer hacia abajo si es necesario */
+    flex-grow: 1;
+    display: flex;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    gap: 30px;
+    
+    /* Centrar verticalmente el contenido principal si hay espacio extra */
+    align-items: flex-start; 
+}
+
+#informacion-juego {
+    flex: 1;
+    padding: 20px;
+    background: var(--color-lineas-blancas);
+    border-radius: var(--border-radius-consistente);
+    box-shadow: var(--sombra-sutil);
+}
+
+#area-de-juego {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* Ajuste para centrar el juego en el espacio disponible */
+    margin: 0 auto;
+}
+
+#area-de-juego h2 {
+    margin-bottom: 15px;
+    color: var(--color-campo-verde);
+}
+
+/* ==================================== */
+/* 3. ESTILOS DEL CANVAS Y CONTROLES    */
+/* ==================================== */
+
+#tableroCanvas {
+    border: 8px solid var(--color-tablero-base); 
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-out;
+}
+
+#controles {
+    width: 100%;
+    max-width: 550px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+/* --- Consistencia de Diseño: BOTÓN, TIMER y MENSAJE --- */
+
+/* Estilo Base para todos los elementos de control */
+#btnReiniciar, 
+#timer, 
+#mensajeJuego {
+    padding: 10px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: var(--border-radius-consistente); /* Aplica el mismo radio */
+    box-shadow: var(--sombra-consistente); /* Aplica la misma sombra */
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+/* Estilo del Botón Reiniciar */
+#btnReiniciar {
+    color: var(--color-lineas-blancas);
+    background-color: var(--color-btn-fondo); 
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+#btnReiniciar:hover {
+    background-color: #1565C0; /* Tono más oscuro al pasar el mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+#btnReiniciar:active {
+    transform: translateY(0);
+}
+
+/* Estilo del Timer */
+#timer {
+    color: var(--color-tablero-base);
+    background-color: var(--color-lineas-blancas); 
+    border: 2px solid var(--color-tablero-base);
+    min-width: 120px;
+    flex-shrink: 0; /* Evita que se encoja */
+}
+
+#tiempoRestante {
+    color: var(--color-error);
+    transition: color 0.5s;
+}
+
+/* Estilos de Mensajes Dinámicos */
+#mensajeJuego {
+    min-height: 40px;
+    flex-grow: 1; 
+    border: 1px solid transparent; /* Consistencia en el borde, aunque transparente */
+}
+
+/* Clases de estado del mensaje */
+.info {
+    background-color: #E0F7FA;
+    color: #00BCD4;
+    border-color: #00BCD4; /* Borde con el color de info */
+}
+
+.success {
+    background-color: #E8F5E9;
+    color: var(--color-success);
+    border-color: var(--color-success); /* Borde con el color de success */
+    animation: pulse 1s infinite alternate;
+}
+
+.error {
+    background-color: #FFEBEE;
+    color: var(--color-error);
+    border-color: var(--color-error); /* Borde con el color de error */
+}
+
+/* Animación de pulsación para el mensaje de victoria/error */
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 0 0 rgba(0, 150, 136, 0.7);
+    }
+    to {
+        box-shadow: 0 0 0 10px rgba(0, 150, 136, 0);
+    }
+}
+
+
+/* ==================================== */
+/* 4. RESPONSIVE Y CENTRADO MÓVIL       */
+/* ==================================== */
+
+@media (max-width: 900px) {
+    .contenedor-juego {
+        flex-direction: column;
+        margin: 15px;
+        align-items: center; /* Centra la columna de juego/info */
+    }
+
+    #controles {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* Hace que todos los controles ocupen el ancho total en móvil */
+    #btnReiniciar, #timer, #mensajeJuego {
+        width: 100%;
+        max-width: none;
+    }
+}

@@ -135,9 +135,9 @@ class Temporizador {
     }
 
     static formatear(segundos) {
-        const mins = Math.floor(segundos / 60);
-        const secs = segundos % 60;
-        return `${mins}:${secs.toString().padStart(2, '0')}`;
+        const mins = Math.floor(segundos / 60); //calcula la cantidad de minutos
+        const secs = segundos % 60; //calcula los segundos restantes
+        return `${mins}:${secs.toString().padStart(2, '0')}`; //sirve para escribir el tiempo en un formato de al menos 2 caracteres
     }
 }
 
@@ -198,7 +198,7 @@ class Puzzle {
         this.tamanoGrilla = tamanoGrilla;
         this.filtro = filtro;
         this.piezas = [];
-        this.columnas = tamanoGrilla === 4 ? 2 : tamanoGrilla === 6 ? 3 : 4;
+        this.columnas = tamanoGrilla === 4 ? 2 : tamanoGrilla === 6 ? 3 : tamanoGrilla === 16 ? 4 : 4;
         this.filas = tamanoGrilla / this.columnas;
         this.anchoPieza = imagen.width / this.columnas;
         this.altoPieza = imagen.height / this.filas;
