@@ -87,27 +87,31 @@
                     <img id="img-piece-rocket" src="./img/afa.png" alt="Ficha Cohete">
                 </div>
 
+                <!-- Botón de Pantalla Completa para la PORTADA -->
+                <div class="fullscreen-container fullscreen-preview">
+                    <button id="fullscreenButtonPreview" class="btn-fullscreen">
+                        <img src="./img/pantalla-completa (2).png" alt="Icono de Pantalla Completa" class="icon-fullscreen">
+                    </button>
+                </div>
+
                 <div id="gameScreen" class="screen hidden">
                     <div class="game-container">
                         <div class="game-info">
                             <div class="info-left">
-                                <div class="timer-container">
-                                    <span id="timer" class="timer">3:00</span>
                                 </div>
                                 <div class="pieces-info">
-                                    <span class="pieces-label">Fichas: </span>
-                                    <span id="piecesCount" class="pieces-count">32</span>
                                 </div>
                             </div>
-                            <div class="info-right">
-                                <button id="btnRestart" class="btn-help">Reiniciar</button>
-                                <button id="btnHome" class="btn-home">Inicio</button>
-                            </div>
                         </div>
-
                         <div class="canvas-container">
                             <canvas id="gameCanvas" class="game-canvas"></canvas>
                             <div id="hints" class="hints-container"></div>
+                        </div>
+                        <!-- Botón de Pantalla Completa para el JUEGO -->
+                        <div class="fullscreen-container fullscreen-game">
+                            <button id="fullscreenButton" class="btn-fullscreen">
+                                <img src="./img/pantalla-completa (2).png" alt="Icono de Pantalla Completa" class="icon-fullscreen">
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -359,7 +363,6 @@
             Agosto 2025
         </p>
     </footer>
-
     <script src="./javascript/menu.js"></script>
     <script src="./javascript/modeloPegSolitaire.js"></script>
     <script src="./javascript/controllerPegSolitaire.js"></script>
