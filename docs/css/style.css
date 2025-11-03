@@ -346,6 +346,21 @@ body {
     color: var(--acento_main);
     font-family: var(--font_roboto);
 }
+
+.juego-title {
+    color: white;
+    font-size: 2rem;
+    font-family: var(--font_montserrat);
+    margin-bottom: 20px;
+}
+
+.juego-container {
+    background-color: var(--primario_5);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--primario_2) 0px 0px 4px;
+}
+
 .game-title {
     color: white;
 }
@@ -355,6 +370,7 @@ body {
     border-radius: 6px;
     box-shadow: var(--primario_2) 0px 0px 4px;
 }
+
 /*Pantalla juego*/
 .screen {
     animation: fadeIn 0.5s ease-in;
@@ -403,6 +419,287 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     max-width: 100%;
 }
+
+/* ============================================
+   ESTILOS ESPECÍFICOS PEG SOLITAIRE
+   ============================================ */
+
+/* Ocultar elementos del juego */
+.game-hidden {
+    display: none !important;
+}
+
+/* Preview del juego */
+.game-cover {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
+    background: linear-gradient(135deg, var(--primario_4) 0%, var(--primario_5) 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.img-juego {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.play-button {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    animation: pulse 2s infinite;
+}
+
+.play-button:hover {
+    transform: scale(1.15);
+    background: white;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.play-button img {
+    width: 50px;
+    height: 50px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Container del canvas del juego */
+.game-canvas-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
+    padding: 10px;
+}
+
+/* Canvas del juego Peg Solitaire */
+#tableroCanvas {
+    border: 3px solid var(--primario_2);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 
+                0 0 30px rgba(199, 125, 255, 0.3);
+    background: var(--primario_5);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#tableroCanvas:hover {
+    transform: scale(1.01);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(199, 125, 255, 0.4);
+}
+
+/* Acciones del juego */
+.game-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+/* Botón volver */
+.btn-volver {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--acento_main) 0%, var(--acento_4) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--font_montserrat);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.btn-volver:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+    background: linear-gradient(135deg, var(--acento_1) 0%, var(--acento_main) 100%);
+}
+
+.btn-volver:active {
+    transform: translateY(0);
+}
+
+/* Controles del juego */
+#controles {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+#btnReiniciar {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--secundario_main) 0%, var(--secundario_4) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--font_montserrat);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(50, 205, 50, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#btnReiniciar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(50, 205, 50, 0.4);
+    background: linear-gradient(135deg, var(--secundario_1) 0%, var(--secundario_main) 100%);
+}
+
+#btnReiniciar:active {
+    transform: translateY(0);
+}
+
+/* Timer */
+#timer {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--primario_1) 0%, var(--primario_main) 100%);
+    color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: var(--font_montserrat);
+    box-shadow: 0 4px 12px rgba(157, 78, 221, 0.3);
+    min-width: 140px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#tiempoRestante {
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+/* Mensajes del juego */
+#mensajeJuego {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font_montserrat);
+    text-align: center;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    min-width: 300px;
+}
+
+#mensajeJuego.info {
+    background: linear-gradient(135deg, var(--primario_1) 0%, var(--primario_main) 100%);
+    color: white;
+}
+
+#mensajeJuego.success {
+    background: linear-gradient(135deg, var(--secundario_main) 0%, var(--secundario_4) 100%);
+    color: white;
+    animation: pulso-success 0.5s ease;
+}
+
+#mensajeJuego.error {
+    background: linear-gradient(135deg, var(--acento_main) 0%, var(--acento_4) 100%);
+    color: white;
+    animation: shake 0.5s ease;
+}
+
+/* Animaciones de mensajes */
+@keyframes pulso-success {
+    0%, 100% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.05); 
+    }
+}
+
+@keyframes shake {
+    0%, 100% { 
+        transform: translateX(0); 
+    }
+    25% { 
+        transform: translateX(-5px); 
+    }
+    50% { 
+        transform: translateX(5px); 
+    }
+    75% { 
+        transform: translateX(-5px); 
+    }
+}
+
+/* Iconos del juego */
+.game-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icono-game {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: brightness(0.9);
+    opacity: 0.9;
+}
+
+.icono-game:hover {
+    transform: scale(1.2) rotate(5deg);
+    filter: brightness(1.2);
+    opacity: 1;
+}
+
+.icono-game:active {
+    transform: scale(1.1);
+}
+
+/* ============================================
+   FIN ESTILOS PEG SOLITAIRE
+   ============================================ */
+
 /* Config Panel */
 
 .config-row {
@@ -698,7 +995,8 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
-    }
+    position: relative;
+}
 .game-similar:hover {
     transform: translateY(-4px);
 }
@@ -737,7 +1035,7 @@ body {
 .play-button-small {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--secundario_main));
+    background: linear-gradient(135deg, var(--secundario_main), var(--secundario_1));
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -767,36 +1065,101 @@ body {
     display: flex;
     margin-top: 20px;
     color: var(--blanco);
-    line-height: 1.5;
+    line-height: 1.6;
     border-radius: 8px;
-    padding: 10px;
+    padding: 20px;
+    background-color: var(--primario_5);
+    box-shadow: var(--primario_2) 0px 0px 4px;
+    gap: 30px;
 }
 
 .reglas-juego {
-    margin-right: 10px;
-    border-right: 0.5px solid var(--blanco);
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.reglas-juego p {
-    margin-right: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    font-family: var(--font_roboto);
-}
-
+.reglas-juego h2,
 .controles-juego h2 {
-    margin-bottom: 20px;
+    color: var(--primario_2);
+    font-family: var(--font_montserrat);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.reglas-juego h3 {
+    color: var(--primario_3);
+    font-family: var(--font_montserrat);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.reglas-juego p,
+.reglas-juego ol,
+.reglas-juego ul {
+    margin-bottom: 12px;
+    font-family: var(--font_roboto);
+    line-height: 1.8;
+}
+
+.reglas-juego ol,
+.reglas-juego ul {
+    padding-left: 25px;
+}
+
+.reglas-juego li {
+    margin-bottom: 8px;
+}
+
+.reglas-juego strong {
+    color: var(--secundario_1);
+    font-weight: 600;
 }
 
 .controles-juego {
-    padding-left: 10px;
+    flex: 0 0 250px;
+    padding-left: 20px;
 }
 
 .control-mouse {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
 }
+
+.control-mouse img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+}
+
+.control-mouse p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.control-mouse strong {
+    color: var(--secundario_1);
+}
+
+.control-hints {
+    background: rgba(50, 205, 50, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid var(--secundario_main);
+}
+
+.control-hints p {
+    font-size: 14px;
+    margin: 0;
+    line-height: 1.6;
+}
+
 .bold {
     font-weight: bold;
 }
@@ -811,24 +1174,39 @@ body {
 }
 
 .content-multimedia h2 {
-    padding: 10px;
+    padding: 20px;
     text-align: center;
+    font-family: var(--font_montserrat);
+    color: var(--primario_2);
+    font-size: 1.8rem;
 }
 
 .multimedia-files {
     display: flex;
     flex-direction: row;
-    padding: 10px;
+    padding: 20px;
     justify-content: center;
     gap: 24px;
+    flex-wrap: wrap;
 }
+
 .media {
-    box-shadow: 0px 0px 4px var(--primario_3);
+    box-shadow: 0 4px 12px rgba(227, 192, 255, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.media:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(227, 192, 255, 0.5);
+}
+
 .media img {
     width: 200px;
     height: 200px;
-    border-radius: 8px;
+    object-fit: cover;
+    display: block;
 }
 
 .rating {
@@ -840,6 +1218,7 @@ body {
 
 .rating img {
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 .rating img:hover {
@@ -849,6 +1228,9 @@ body {
 @keyframes star-bounce {
     0% {
         transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(20deg);
     }
     100% {
         transform: translateY(-4px) rotate(45deg);
@@ -892,13 +1274,18 @@ body {
     border: 0;
     outline: 0;
     width: 100%;
-    padding: 5px;
-    height: 70px;
+    padding: 12px;
+    height: 80px;
     border-radius: 8px;
     font-family: var(--font_montserrat);
     font-weight: 300;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     resize: none;
+    transition: box-shadow 0.3s ease;
+}
+
+.input-opinion:focus {
+    box-shadow: 0 0 0 3px rgba(199, 125, 255, 0.3);
 }
 
 .btn-enviar-comentario {
@@ -906,7 +1293,7 @@ body {
     font-family: var(--font_montserrat);
     color: var(--blanco);
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border-radius: 25px;
     font-size: 16px;
     font-weight: 600;
@@ -930,6 +1317,20 @@ body {
     background-color: var(--blanco);
     border-radius: 12px;
     padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .user-info {
@@ -938,24 +1339,25 @@ body {
     gap: 2px;
     font-family: var(--font_montserrat);
     border-right: #e5e7eb 2px solid;
-    padding-right: 10px;
+    padding-right: 12px;
+    flex: 1;
 }
 
 .usuario {
     font-size: 16px;
     color: black;
-    margin-left: 8px;
+    font-weight: 600;
 }
 
 .time {
     font-size: 13px;
-    font-weight: bold;
-    margin-left: 8px;
+    color: #6b7280;
+    font-weight: 400;
 }
 
 .stars {
-    margin-left: 10px;
-    gap: 2px;
+    display: flex;
+    gap: 4px;
 }
 
 .star {
@@ -972,18 +1374,14 @@ body {
     font-size: 15px;
     font-family: var(--font_montserrat);
     line-height: 1.6;
-    margin-bottom: 16px;
-}
-
-.review-header {
-    display: flex;
+    margin: 12px 0 16px 0;
 }
 
 .review-actions {
     display: flex;
     gap: 16px;
     padding-top: 12px;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     border-bottom: 2px solid #e5e7eb;
 }
 
@@ -1003,8 +1401,9 @@ body {
     background-color: #f3f4f6;
 }
 
-.action-btn .icon {
-    font-size: 18px;
+.action-btn img {
+    width: 20px;
+    height: 20px;
 }
 
 .action-btn .count {
@@ -1111,4 +1510,193 @@ footer p a {
 
 footer p a:hover {
     text-decoration: underline;
+}
+
+/* ============================================
+   RESPONSIVE - PEG SOLITAIRE
+   ============================================ */
+
+@media (max-width: 768px) {
+    #tableroCanvas {
+        max-width: 90vw;
+        height: auto;
+    }
+
+    .game-canvas-container {
+        min-height: auto;
+        padding: 5px;
+    }
+
+    #controles {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .game-actions {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px;
+    }
+
+    #mensajeJuego {
+        font-size: 13px;
+        padding: 10px 15px;
+        min-width: auto;
+        width: 100%;
+    }
+
+    #timer {
+        min-width: 120px;
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    #btnReiniciar,
+    .btn-volver {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .game-icons {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .info-juego {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .reglas-juego {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+
+    .controles-juego {
+        flex: 1;
+        padding-left: 0;
+    }
+
+    .publicidad {
+        display: none;
+    }
+
+    .similares-section {
+        position: static;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .content {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-cover {
+        min-height: 300px;
+    }
+
+    .play-button {
+        width: 80px;
+        height: 80px;
+    }
+
+    .play-button img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .juego-title {
+        font-size: 1.5rem;
+    }
+
+    #tableroCanvas {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Animación de carga */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+/* Transiciones suaves para cambios de estado */
+.game-canvas-container,
+.game-cover,
+#controles {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.game-canvas-container.game-hidden,
+.game-cover.game-hidden,
+#controles.game-hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+/* Mejoras de accesibilidad */
+button:focus,
+.icono-game:focus,
+#tableroCanvas:focus {
+    outline: 3px solid var(--secundario_main);
+    outline-offset: 2px;
+}
+
+/* Cursor personalizado para el canvas cuando está jugando */
+#tableroCanvas[data-playing="true"] {
+    cursor: grab;
+}
+
+#tableroCanvas[data-dragging="true"] {
+    cursor: grabbing;
+}
+
+/* Efectos de brillo para elementos interactivos */
+.btn-volver,
+#btnReiniciar,
+.btn-enviar-comentario,
+.btn-ver-mas {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-volver::before,
+#btnReiniciar::before,
+.btn-enviar-comentario::before,
+.btn-ver-mas::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-volver:hover::before,
+#btnReiniciar:hover::before,
+.btn-enviar-comentario:hover::before,
+.btn-ver-mas:hover::before {
+    width: 300px;
+    height: 300px;
 }

@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="estilos.css">
+    <title>PlayForge - Peg Solitaire</title>
+    <link rel="icon" href="./img/logo_64x64.png">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/peg-solitaire.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header class="header">
+    <header class="header">
         <div id="menuToggle" class="menu-toggle">
             <span class="menu-icon" id="menuIcon">☰</span>
         </div>
-        
         <div class="header-center">
-            <a href="../html/home.html"><img src="./img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
+            <a href="./html/home.html"><img src="./img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
         </div>
         
         <div class="header-right">
@@ -29,7 +31,7 @@
     <div id="sidebarMenu" class="sidebar">
         <div id="userProfile" class="user-profile hidden">
             <div class="avatar">
-                <img class="icon-sidebar" src="./img/usuario.png"></img>
+                <img class="icon-sidebar" src="./img/usuario.png">
             </div>
             <span class="username">Usuario</span>
             <button class="edit-profile">Editar perfil</button>
@@ -37,15 +39,15 @@
 
         <nav class="menu-nav">
             <ul>
-                <li><a href="#"><img class="icon-sidebar" src="./img/hogar.png"></img> Inicio</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/aplicaciones.png"></img> Mi biblioteca</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/deportes.png"></img> Deportes</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/estrategia.png"></img> Estrategia</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/escudo-espada.png"></img> Acción</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/descuento.png"></img> Ofertas</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/regalo.png"></img> Gratuitos</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/favorito.png"></img> Destacados</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/carrito-de-compras (1).png"></img> Carrito</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/hogar.png"> Inicio</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/aplicaciones.png"> Mi biblioteca</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/deportes.png"> Deportes</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/estrategia.png"> Estrategia</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/escudo-espada.png"> Acción</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/descuento.png"> Ofertas</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/regalo.png"> Gratuitos</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/favorito.png"> Destacados</a></li>
+                <li><a href="#"><img class="icon-sidebar" src="./img/carrito-de-compras (1).png"> Carrito</a></li>
             </ul>
         </nav>
 
@@ -59,54 +61,102 @@
             <img src="./img/logo_64x64.png" alt="">
         </div>
     </div>
-
+    
     <section class="contenido-principal">
         <article class="content">
             <aside class="publicidad">
                 <img src="./img/publicity_1.png" alt="">
                 <img src="./img/publicity_2.png" alt="">
             </aside>
-
+            
             <div class="breadcrumbs">
                 <p>Destacados > Peg Solitaire</p>
             </div>
-
-            <div class="juego-container">
-                <h1 class="juego-title">Peg Solitaire</h1>
-                
-                <div class="juego">
-                    <!-- Preview del juego (se oculta al jugar) -->
-                    <div class="game-cover" id="gamePreview">
-                        <img src="./img/pegSolitaireFB.png" class="img-juego" alt="Peg Solitaire Game Board">
-                        <div class="play-button" id="playButton">
-                            <img src="./img/tocar (2).png" alt="Play">
-                        </div>
-                    </div>
-
-                    <!-- Canvas del juego (se muestra al jugar) -->
-                    <div class="game-canvas-container game-hidden" id="gameCanvas">
-                        <canvas id="tableroCanvas" width="550" height="550">
-                            Tu navegador no soporta el elemento Canvas.
-                        </canvas>
+            
+            <div class="game-full">
+                <h1 class="game-title">Football Peg Solitaire</h1>
+                <div class="game-cover" id="gamePreview">
+                    <img src="./img/pegSolitaire_resized.png" class="img-juego" alt="Peg Solitaire Preview">
+                    <div class="play-button" id="playButton">
+                        <img src="./img/tocar (2).png" alt="Play">
                     </div>
                 </div>
+                <div id="gameAssets" style="display: none;">
+                    <img id="img-pelota" src="./img/brazuca.png" alt="Ficha Pelota">
+                    <img id="img-piece-star" src="./img/worldcupficha.png" alt="Ficha Estrella">
+                    <img id="img-piece-rocket" src="./img/afa.png" alt="Ficha Cohete">
+                </div>
 
-                <div class="game-actions">
-                    <button class="btn-volver" id="btnVolver">Volver al inicio</button>
-                    
-                    <!-- Controles del juego (se muestran solo cuando está jugando) -->
-                    <div id="controles" class="game-hidden">
-                        <button id="btnReiniciar">🔄 Reiniciar</button>
-                        <div id="timer">⏱️ <span id="tiempoRestante">00:00</span></div>
-                        <div id="mensajeJuego"></div>
-                    </div>
+                <div id="gameScreen" class="screen hidden">
+                    <div class="game-container">
+                        <div class="game-info">
+                            <div class="info-left">
+                                <div class="timer-container">
+                                    <span id="timer" class="timer">3:00</span>
+                                </div>
+                                <div class="pieces-info">
+                                    <span class="pieces-label">Fichas: </span>
+                                    <span id="piecesCount" class="pieces-count">32</span>
+                                </div>
+                            </div>
+                            <div class="info-right">
+                                <button id="btnRestart" class="btn-help">Reiniciar</button>
+                                <button id="btnHome" class="btn-home">Inicio</button>
+                            </div>
+                        </div>
 
-                    <div class="game-icons">
-                        <img src="./img/icono_compartir.png" class="icono-game" alt="Compartir">
-                        <img src="./img/icono_fullscreen.png" class="icono-game" alt="Pantalla completa">
+                        <div class="canvas-container">
+                            <canvas id="gameCanvas" class="game-canvas"></canvas>
+                            <div id="hints" class="hints-container"></div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div id="victoryScreen" class="completed-screen hidden">
+                <div class="completed-card">
+                    <h2 class="completed-title">¡VICTORIA!</h2>
+                    <p class="victory-message">¡Felicitaciones! Has completado el juego exitosamente.</p>
+                    <div class="victory-stats">
+                        <p><strong>Fichas Restantes:</strong> <span id="victoryPieces">1</span></p>
+                        <p><strong>Tiempo Usado:</strong> <span id="victoryTime">0:00</span></p>
+                    </div>
+                    <div class="completed-buttons">
+                        <button id="btnMenuVictory" class="btn-menu">Volver al Inicio</button>
+                        <button id="btnPlayAgainVictory" class="btn-next">Jugar de Nuevo</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="timeUpScreen" class="completed-screen hidden">
+                <div class="completed-card">
+                    <h2 class="completed-title">⏱️ Tiempo Agotado</h2>
+                    <p class="defeat-message">Se acabó el tiempo. ¡Inténtalo de nuevo!</p>
+                    <div class="defeat-stats">
+                        <p><strong>Fichas Restantes:</strong> <span id="timeUpPieces">0</span></p>
+                    </div>
+                    <div class="completed-buttons">
+                        <button id="btnMenuTimeUp" class="btn-menu">Volver al Inicio</button>
+                        <button id="btnRetryTimeUp" class="btn-retry">Reintentar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="noMovesScreen" class="completed-screen hidden">
+                <div class="completed-card">
+                    <h2 class="completed-title">Fin del Juego</h2>
+                    <p class="defeat-message">No hay más movimientos posibles.</p>
+                    <div class="defeat-stats">
+                        <p><strong>Fichas Restantes:</strong> <span id="noMovesPieces">0</span></p>
+                        <p><strong>Tiempo Usado:</strong> <span id="noMovesTime">0:00</span></p>
+                    </div>
+                    <div class="completed-buttons">
+                        <button id="btnMenuNoMoves" class="btn-menu">Volver al Inicio</button>
+                        <button id="btnRetryNoMoves" class="btn-retry">Reintentar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
             <aside class="similares-section">
                 <h2 class="similares-title">Similares</h2>
@@ -150,19 +200,19 @@
             <div class="info-juego">
                 <div class="reglas-juego">
                     <h2>¿Cómo jugar Peg Solitaire?</h2>
-                    <p>El objetivo del juego es dejar solo una ficha en el tablero.</p>
-                    <p>1. Seleccioná una ficha y hacela saltar sobre otra ficha (arriba, abajo, izquierda o derecha) hacia un espacio vacío.</p>
-                    <p>2. La ficha sobre la que saltaste se elimina del tablero.</p>
-                    <p>3. Solo podés saltar una ficha a la vez y siempre en línea recta, nunca en diagonal.</p>
-                    <p>4. Seguí moviendo fichas hasta que no haya más movimientos posibles.</p>
-                    <p>5. Ganás si lográs que quede solo una ficha en el tablero, preferentemente en el centro.</p>
-                    <p>Es un juego de lógica y estrategia: pensá bien cada movimiento para no quedarte sin opciones antes de tiempo.</p>
+                    <p>El Peg Solitaire es un clásico juego de ingenio donde debes eliminar todas las fichas excepto una.</p>
+                    <p><span class="bold">1. Seleccioná una ficha.</span> Hacé click sobre cualquier ficha del tablero. Si tiene movimientos válidos, verás flechas animadas indicando dónde podés moverla.</p>
+                    <p><span class="bold">2. Arrastrá y soltá.</span> Mantené presionado el botón del mouse y arrastrá la ficha hacia una posición válida (donde aparezca una flecha).</p>
+                    <p><span class="bold">3. Saltá y eliminá.</span> Para mover una ficha, debés saltar sobre otra ficha adyacente hacia un espacio vacío. La ficha saltada se elimina del tablero.</p>
+                    <p><span class="bold">4. Ganá con estrategia.</span> El objetivo es eliminar todas las fichas menos una, que debe quedar en el centro del tablero.</p>
+                    <p>¡Es un juego de estrategia pura! Pensá bien cada movimiento, porque algunos pueden bloquear tu camino hacia la victoria.</p>
                 </div>
                 <div class="controles-juego">
                     <h2>Controles</h2>
                     <div class="control-mouse">
-                        <img src="./img/raton-de-computadora.png" alt="">
-                        <p>Seleccionar</p>
+                        <p><span class="bold">Click izquierdo:</span> Selecciona una ficha y muestra movimientos válidos.</p>
+                        <p><span class="bold">Arrastrar y soltar:</span> Mueve la ficha seleccionada a una posición válida.</p>
+                        <p><span class="bold">Movimientos válidos:</span> Indicados con flechas animadas (⬆️⬇️⬅️➡️).</p>
                     </div>
                 </div>
             </div>
@@ -170,9 +220,9 @@
             <div class="content-multimedia">
                 <h2>Contenido multimedia</h2>
                 <div class="multimedia-files">
-                    <div class="media"><img src="./img/content-1.gif" alt=""></div>
-                    <div class="media"><img src="./img/french-peg-solitaire.png" alt=""></div>
-                    <div class="media"><img src="./img/content-2.jpg" alt=""></div>
+                    <div class="media"><img src="./img/contenido3.jpeg" alt=""></div>
+                    <div class="media"><img src="./img/contenido2.jpeg" alt=""></div>
+                    <div class="media"><img src="./img/contenido.jpeg" alt=""></div>
                 </div>
             </div>
 
@@ -194,39 +244,7 @@
                     <div class="review-header">
                         <img src="./img/mujer.png" alt="Usuario" class="user-avatar">
                         <div class="user-info">
-                            <span class="usuario">TostyXD</span>
-                            <span class="time">40 minutos</span>
-                        </div>
-                        <div class="stars">
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="review-text">
-                        Nunca había jugado al Peg Solitaire, está buenísimo😁. Lo mejor es que cada partida es diferente, ¡te obliga a pensar bien cada movimiento!
-                    </div>
-                    <div class="review-actions">
-                        <button class="action-btn">
-                            <img src="./img/me-gusta.png" alt="">
-                            <span class="count">126</span>
-                        </button>
-                        <button class="action-btn">
-                            <img class="no-like" src="./img/me-gusta.png" alt="">
-                            <span class="count">16</span>
-                        </button>
-                        <button class="action-btn">
-                            <img src="./img/volver-a-publicar.png" alt="">
-                            <span class="count">30</span>
-                        </button>
-                    </div>
-                
-                    <div class="review-header">
-                        <img src="./img/mujer.png" alt="Usuario" class="user-avatar">
-                        <div class="user-info">
-                            <span class="usuario">CactusLoco</span>
+                            <span class="usuario">StrategyMaster</span>
                             <span class="time">2 horas</span>
                         </div>
                         <div class="stars">
@@ -234,24 +252,56 @@
                             <span class="star filled">★</span>
                             <span class="star filled">★</span>
                             <span class="star filled">★</span>
-                            <span class="star">★</span>
+                            <span class="star filled">★</span>
                         </div>
                     </div>
                     <div class="review-text">
-                        Nunca pensé que un juego tan simple pudiera ser tan adictivo😅. Cada partida me hace pensar más la estrategia, y cuando logro dejar una sola ficha me siento un genio. Recomendado para ejercitar la mente👌
+                        Un clásico reinventado con estilo espacial 🚀. El drag and drop funciona perfecto y las animaciones de las flechas te ayudan mucho. ¡Muy adictivo!
                     </div>
                     <div class="review-actions">
                         <button class="action-btn">
                             <img src="./img/me-gusta.png" alt="">
-                            <span class="count">126</span>
+                            <span class="count">156</span>
                         </button>
                         <button class="action-btn">
                             <img class="no-like" src="./img/me-gusta.png" alt="">
-                            <span class="count">16</span>
+                            <span class="count">8</span>
                         </button>
                         <button class="action-btn">
                             <img src="./img/volver-a-publicar.png" alt="">
-                            <span class="count">30</span>
+                            <span class="count">42</span>
+                        </button>
+                    </div>
+                
+                    <div class="review-header">
+                        <img src="./img/mujer.png" alt="Usuario" class="user-avatar">
+                        <div class="user-info">
+                            <span class="usuario">PuzzleQueen</span>
+                            <span class="time">5 horas</span>
+                        </div>
+                        <div class="stars">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        Me encanta la temática espacial con los planetas y cohetes 🌟. Un poco difícil al principio, pero cuando le agarrás la mano es genial.
+                    </div>
+                    <div class="review-actions">
+                        <button class="action-btn">
+                            <img src="./img/me-gusta.png" alt="">
+                            <span class="count">98</span>
+                        </button>
+                        <button class="action-btn">
+                            <img class="no-like" src="./img/me-gusta.png" alt="">
+                            <span class="count">5</span>
+                        </button>
+                        <button class="action-btn">
+                            <img src="./img/volver-a-publicar.png" alt="">
+                            <span class="count">23</span>
                         </button>
                     </div>
 
@@ -310,47 +360,11 @@
         </p>
     </footer>
 
-    <!-- Scripts de PlayForge -->
-    <script src="./javascript/localStorage.js"></script>
     <script src="./javascript/menu.js"></script>
+    <script src="./javascript/modeloPegSolitaire.js"></script>
+    <script src="./javascript/controllerPegSolitaire.js"></script>
+    <script src="./javascript/vistaPegSolitaire.js"></script>
+    <script src="./javascript/main.js"></script>
     <script src="./javascript/estrellas.js"></script>
-
-    <!-- Scripts del juego Peg Solitaire -->
-    <script src="/TP4/model/modeloPegSolitaire.js"></script>
-    <script src="/TP4/view/vistaPegSolitaire.js"></script>
-    <script src="/TP4/controller/controllerPegSolitaire.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const playButton = document.getElementById('playButton');
-            const gamePreview = document.getElementById('gamePreview');
-            const gameCanvas = document.getElementById('gameCanvas');
-            const controles = document.getElementById('controles');
-            const btnVolver = document.getElementById('btnVolver');
-
-            // Cuando se presiona Play
-            playButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                gamePreview.classList.add('game-hidden');
-                gameCanvas.classList.remove('game-hidden');
-                controles.classList.remove('game-hidden');
-            });
-
-            // Botón volver
-            btnVolver.addEventListener('click', function() {
-                window.location.href = '../html/home.html';
-            });
-
-            // Pantalla completa
-            const fullscreenBtn = document.querySelector('.icono-game[alt="Pantalla completa"]');
-            if (fullscreenBtn) {
-                fullscreenBtn.addEventListener('click', function() {
-                    const canvas = document.getElementById('tableroCanvas');
-                    if (canvas && canvas.requestFullscreen) {
-                        canvas.requestFullscreen();
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>

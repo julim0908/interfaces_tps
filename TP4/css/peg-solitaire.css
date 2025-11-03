@@ -1,0 +1,116 @@
+/* CSS ESPECÍFICO PARA PEG SOLITAIRE - SE INTEGRA CON style.css */
+
+/* Estilos adicionales para el canvas del juego */
+.game-canvas {
+    border-radius: 10px;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1e 100%);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Contenedor de hints (flechas animadas) */
+.hints-container {
+    position: absolute;
+    font-size: 24px;
+    transform: translate(-50%, -50%);
+    animation: pulse 0.7s infinite alternate;
+    pointer-events: none;
+}
+
+/* Información de fichas */
+.pieces-info {
+    margin-top: 5px;
+}
+
+/* Modal de ayuda adaptado */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-content-large {
+    background: linear-gradient(135deg, #1a1f3a 0%, #2a1e3e 100%);
+    margin: 50px auto;
+    padding: 40px;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    border-radius: 20px;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    color: #ffd700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #ff6b6b;
+    transform: rotate(90deg);
+}
+
+.modal-title {
+    color: #ffd700;
+    font-size: 2em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Pantallas de victoria/derrota */
+.victory-message,
+.defeat-message {
+    font-size: 1.2em;
+    color: #ddd;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.victory-stats,
+.defeat-stats {
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.victory-stats p,
+.defeat-stats p {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: var(--acento_main);
+}
+
+.victory-stats span,
+.defeat-stats span {
+    font-weight: bold;
+    color: white;
+}
+
+/* Canvas del menú con animación de fondo */
+.menu-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
