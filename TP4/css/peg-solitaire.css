@@ -1,24 +1,17 @@
 /* CSS ESPECÍFICO PARA PEG SOLITAIRE - SE INTEGRA CON style.css */
 
 /* Estilos adicionales para el canvas del juego */
-.game-canvas {
-    border-radius: 10px;
-    background: radial-gradient(circle at center, #1a1a2e 0%, #0f0f1e 100%);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-}
-
-/* Contenedor de hints (flechas animadas) */
-.hints-container {
-    position: absolute;
-    font-size: 24px;
-    transform: translate(-50%, -50%);
-    animation: pulse 0.7s infinite alternate;
-    pointer-events: none;
-}
 
 /* Información de fichas */
 .pieces-info {
     margin-top: 5px;
+}
+.pieces-label {
+    color: white;
+}
+.pieces-count {
+    color: white;
+    font-weight: bold;
 }
 
 /* Modal de ayuda adaptado */

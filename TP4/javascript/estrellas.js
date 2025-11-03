@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             estrellas.forEach(function(e, i) {
                 if (i < rating) {
-                    e.src = '/img/logo_estrella_llena.svg';
+                    e.src = './img/logo_estrella_llena.svg';
                 } else {
-                    e.src = '/img/logo_estrella_vacia.svg';
+                    e.src = './img/logo_estrella_vacia.svg';
                 }
             });
         });

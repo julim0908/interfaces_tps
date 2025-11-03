@@ -9,8 +9,8 @@ class PegSolitaireView {
         this.hintsContainer = document.getElementById('hints');
         
         // Configurar tamaño del canvas
-        this.canvas.width = 560;  // 7 * 80
-        this.canvas.height = 560;
+        this.canvas.width = 600;
+        this.canvas.height = 600;
         
         // --- MODIFICACIÓN 2: Cargar imágenes PNG ---
         // En lugar de dibujar, cargamos las <img> del HTML
@@ -24,23 +24,14 @@ class PegSolitaireView {
         // Animaciones
         this.draggedPiece = null;
         this.stars = [];
+
+        this.backgroundImage = new Image();
+        this.backgroundImage.src = './img/background-peg.jpg';
     }
 
-    // --- MODIFICACIÓN 2: ---
-    // Se eliminaron las funciones:
-    // - generatePieceImages()
-    // - createPlanetImage()
-    // - createStarImage()
-    // - createRocketImage()
-    // Ya no son necesarias porque usamos PNGs.
-    // --- FIN MODIFICACIÓN 2 ---
-
     drawBoard(model) {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
-        this.drawStarryBackground(); // Fondo de estrellas (opcional, lo tenías)
-        // NOTA: Si quieres una IMAGEN de fondo, debes agregarla aquí
-        // Ejemplo: this.ctx.drawImage(this.imgFondo, 0, 0, this.canvas.width, this.canvas.height);
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);       
+        this.ctx.drawImage(this.backgroundImage, 0, 0, this.canvas.width, this.canvas.height);
         
         for (let row = 0; row < model.boardSize; row++) {
             for (let col = 0; col < model.boardSize; col++) {
@@ -64,21 +55,6 @@ class PegSolitaireView {
         }
     }
 
-    drawStarryBackground() {
-        // Esto dibuja un fondo simple. Puedes reemplazarlo por una imagen de fondo si lo prefieres.
-        const stars = 50;
-        this.ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-        for (let i = 0; i < stars; i++) {
-            const x = (i * 47 + 13) % this.canvas.width;
-            const y = (i * 71 + 29) % this.canvas.height;
-            const size = (i % 3) + 1;
-            
-            this.ctx.beginPath();
-            this.ctx.arc(x, y, size, 0, Math.PI * 2);
-            this.ctx.fill();
-        }
-    }
-
     drawCell(x, y, cell, selectedPiece, row, col) {
         const centerX = x + this.cellSize / 2;
         const centerY = y + this.cellSize / 2;
@@ -89,7 +65,7 @@ class PegSolitaireView {
         this.ctx.arc(centerX, centerY, this.pieceRadius, 0, Math.PI * 2);
         this.ctx.fill();
         
-        this.ctx.strokeStyle = 'rgba(78, 205, 196, 0.5)';
+        this.ctx.strokeStyle = 'rgba(197, 187, 187, 0.64)';
         this.ctx.lineWidth = 2;
         this.ctx.stroke();
         
@@ -114,16 +90,13 @@ class PegSolitaireView {
             this.ctx.shadowBlur = 20;
         }
         
-        // --- MODIFICACIÓN 2: Dibujar la imagen PNG ---
         const image = this.pieceImages[type];
-        if (image && image.complete) { // Verifica que la imagen esté cargada
-            const size = this.pieceRadius * 2; // 60px
-            // Dibuja la imagen centrada en (x, y)
+        if (image && image.complete) {
+            const size = this.pieceRadius * 2;
             this.ctx.drawImage(image, x - this.pieceRadius, y - this.pieceRadius, size, size);
         } else if (!image) {
             console.error(`Imagen para el tipo "${type}" no encontrada. Verifica los IDs en el HTML.`);
         }
-        // --- FIN MODIFICACIÓN 2 ---
         
         this.ctx.restore();
     }
