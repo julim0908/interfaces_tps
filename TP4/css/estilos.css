@@ -499,41 +499,103 @@ body {
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
-/* --- Estilos para el Contenedor del Botón Fullscreen --- */
+/* ============================================== */
+/* ESTILOS DE MODO PANTALLA COMPLETA (FULLSCREEN) */
+/* ============================================== */
 .fullscreen-container {
-    width: 620px; 
-    margin-top: 10px; 
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end;
+    margin-top: 16px;
+    padding-right: 8px;
 }
 
-/* --- Estilos para el Botón --- */
+/* 6. Estilo del botón fullscreen en modo normal */
 .btn-fullscreen {
-    background-color: transparent; /* Fondo transparente */
+    background: none;
     color: var(--blanco);
     border: none;
-    padding: 8px 15px;
+    padding: 8px;
     border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
     display: flex;
     align-items: center;
-    gap: 8px;
-    /* Puedes mantener una sombra sutil si quieres un poco de profundidad, o quitarla completamente */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.btn-fullscreen::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: var(--primario_2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.btn-fullscreen:hover::before {
+    opacity: 0.2;
 }
 
 .btn-fullscreen:hover {
-    background-color: rgba(255, 255, 255, 0.014); /* Un fondo muy sutil al pasar el mouse */
-    transform: translateY(-1px);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.btn-fullscreen:active {
+    transform: scale(0.95);
 }
 
 .icon-fullscreen {
-    width: 28px; /* Icono más grande */
-    height: 28px; /* Icono más grande */
+    width: 32px;
+    height: 32px;
     filter: brightness(0) invert(1);
+    position: relative;
+    z-index: 1;
+    transition: filter 0.3s ease;
+}
+
+.btn-fullscreen:hover .icon-fullscreen {
+    filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(199, 125, 255, 0.8));
+}
+
+/* 7. Reposicionar el Botón cuando está en Fullscreen */
+.fullscreen-mode .fullscreen-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10002;
+    margin-top: 0;
+    padding-right: 0;
+}
+
+/* 8. Estilo del Botón en modo Fullscreen */
+.fullscreen-mode .btn-fullscreen {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    backdrop-filter: blur(10px);
+}
+
+.fullscreen-mode .btn-fullscreen::before {
+    background: var(--blanco);
+    opacity: 0;
+}
+
+.fullscreen-mode .btn-fullscreen:hover::before {
+    opacity: 0.15;
+}
+
+.fullscreen-mode .btn-fullscreen:hover {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+.fullscreen-mode .icon-fullscreen {
+    width: 36px;
+    height: 36px;
+}
+
+.fullscreen-mode .btn-fullscreen:hover .icon-fullscreen {
+    filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
 }
 .play-button {
     position: absolute;

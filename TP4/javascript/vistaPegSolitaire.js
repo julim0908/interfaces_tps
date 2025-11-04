@@ -85,7 +85,7 @@ class PegSolitaireView {
         this.ctx.stroke();
 
         // --- Info de Piezas Restantes ---
-        this.ctx.font = '12px "Roboto", sans-serif';
+        this.ctx.font = '18px "Roboto", sans-serif';
         this.ctx.textAlign = 'center';
         this.ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
         this.ctx.fillText("PIEZAS:", centerX, 40); 
@@ -107,7 +107,7 @@ class PegSolitaireView {
         const secs = model.timeRemaining % 60;
         const timeStr = `${String(minutes).padStart(1, '0')}:${String(secs).padStart(2, '0')}`;
         
-        this.ctx.font = '12px "Roboto", sans-serif';
+        this.ctx.font = '18px "Roboto", sans-serif';
         this.ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
         this.ctx.fillText("TIEMPO:", centerX, 130);
         this.ctx.font = 'bold 30px "Montserrat", sans-serif';
@@ -120,10 +120,10 @@ class PegSolitaireView {
         const limitSecs = model.timeLimit % 60;
         const limitTimeStr = `${limitMinutes}:${String(limitSecs).padStart(2, '0')}`;
 
-        this.ctx.font = '10px "Roboto", sans-serif';
+        this.ctx.font = '15px "Roboto", sans-serif';
         this.ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
         this.ctx.fillText("LÍMITE:", centerX, 190);
-        this.ctx.font = '16px "Montserrat", sans-serif';
+        this.ctx.font = '17px "Montserrat", sans-serif';
         this.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
         this.ctx.fillText(limitTimeStr, centerX, 215);
 
@@ -135,24 +135,34 @@ class PegSolitaireView {
         this.ctx.stroke();
 
 
-        // --- Botones de Control (Posiciones Y se mantienen por ahora) ---
+        // --- Botones de Control (Estilo unificado) ---
         
-        // Botón 1: Reiniciar (Centro Y: 400)
-        this.drawButton(centerX, 400, 100, 45, '#32CD32', 'REINICIAR', '#FFFFFF', 16);
+        // Botón 1: Reiniciar (Centro Y: 400). Estilo btn-ver-mas (verde)
+        this.drawButton(centerX, 400, 100, 45, '#32CD32', 'Reiniciar', '#FFFFFF', 16, true);
 
-        // Botón 2: Inicio (Centro Y: 470)
-        this.drawButton(centerX, 470, 100, 45, '#FFFFFF', 'INICIO', '#1A002B', 16);
+        // Botón 2: Inicio (Centro Y: 470). Estilo btn-ver-mas (fondo blanco para contraste, texto oscuro)
+        this.drawButton(centerX, 470, 100, 45, '#FFFFFF', 'Inicio', '#1A002B', 16, true);
     }
 
     /**
-     * Dibuja un botón en el canvas.
+     * Dibuja un botón en el canvas con la opción de aplicar el estilo de sombra y radio de btn-ver-mas.
      */
-    drawButton(centerX, centerY, width, height, bgColor, text, textColor, fontSize) {
+    drawButton(centerX, centerY, width, height, bgColor, text, textColor, fontSize, applyBtnVerMasStyle = false) {
         const x = centerX - width / 2;
         const y = centerY - height / 2;
-        const radius = 8; 
+        
+        const radius = applyBtnVerMasStyle ? 25 : 8; 
 
-        // Dibuja el fondo del botón
+        // 1. Aplicar Sombra (Solo para botones estilo btn-ver-mas)
+        if (applyBtnVerMasStyle) {
+            this.ctx.shadowColor = 'rgba(50, 205, 50, 0.5)'; // Color verde principal
+            this.ctx.shadowBlur = 8;
+            this.ctx.shadowOffsetX = 0;
+            this.ctx.shadowOffsetY = 4;
+        }
+
+
+        // 2. Dibuja el fondo del botón (Rectángulo redondeado)
         this.ctx.fillStyle = bgColor;
         this.ctx.beginPath();
         // roundRect necesita ser soportado, asumiendo ambiente moderno
@@ -162,13 +172,23 @@ class PegSolitaireView {
             this.ctx.rect(x, y, width, height); // Fallback a rect normal
         }
         this.ctx.fill();
+        
+        // 3. Limpiar sombra para el texto
+        if (applyBtnVerMasStyle) {
+            this.ctx.shadowBlur = 0;
+            this.ctx.shadowOffsetX = 0;
+            this.ctx.shadowOffsetY = 0;
+        }
 
-        // Dibuja el texto
+        // 4. Dibuja el texto
         this.ctx.font = `bold ${fontSize}px "Montserrat", sans-serif`;
         this.ctx.fillStyle = textColor;
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
         this.ctx.fillText(text, centerX, centerY);
+        
+        // 5. Restaurar el estado 
+        this.ctx.textBaseline = 'alphabetic'; 
     }
     
     /**
@@ -259,8 +279,6 @@ class PegSolitaireView {
     hideHints() {
         this.activeHints = [];
     }
-    
-    // Los métodos updateTimer y updatePiecesCount han sido eliminados ya que la barra lateral los dibuja.
     
     showScreen(screenId) {
         const screens = ['gamePreview', 'gameScreen', 'victoryScreen', 'timeUpScreen', 'noMovesScreen', 'helpModal'];
