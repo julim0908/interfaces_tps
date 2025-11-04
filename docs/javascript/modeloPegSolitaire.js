@@ -1,43 +1,27 @@
 class PegSolitaireModel {
     constructor() {
         this.boardSize = 7;
-        this.cellSize = 70; // Reducido a 70px (7 * 70 = 490px)
-        this.pieceRadius = 25; // Reducido el radio
+        this.cellSize = 70;
+        this.pieceRadius = 25;
         this.board = [];
         this.selectedPiece = null;
         this.validMoves = [];
         
-        // --- Dimensiones del Canvas ---
+        // Dimensiones del Canvas
         this.canvasSizeX = 600;
         this.canvasSizeY = 600;
         
-        // --- Nuevo ancho de la barra lateral ---
-        this.sidebarWidth = 120; // Aumentado a 120px para los elementos
+        // ancho de la barra lateral
+        this.sidebarWidth = 120;
         
-        // --- Cálculo de Centrado para el Tablero ---
-        this.boardPixelSize = this.boardSize * this.cellSize; // 7 * 70 = 490px
+        // Cálculo de Centrado para el Tablero
+        this.boardPixelSize = this.boardSize * this.cellSize;
         
-        // Área de juego disponible para el tablero: canvasSizeX - sidebarWidth = 600 - 120 = 480px
-        // El tablero es 490px, así que no se centrará perfectamente, pero estará alineado a la derecha.
-        // Si quieres que el tablero se centre en los 480px, necesitaríamos reducir el cellSize o boardSize.
-        // Por ahora, asumimos que el tablero de 490px se extenderá un poco más allá de los 480px si es necesario,
-        // o que se ajustará si el canvas es más grande.
-        // **ACTUALIZACIÓN:** Para que quepa y se centre, la lógica es:
-        // Espacio disponible para el tablero = this.canvasSizeX - this.sidebarWidth = 480px
-        // Si this.boardPixelSize (490px) es mayor, el tablero no puede centrarse en ese espacio.
-        // Se sugiere ajustar `cellSize` a 60 para un tablero de 420x420, que sí cabría y se centraría.
-        // O dejarlo así y aceptar que el tablero se dibuje desde el borde del área de juego.
-        
-        // Vamos a mantener cellSize=70 y aceptamos que el tablero va de sidebarWidth a sidebarWidth + boardPixelSize
-        // y se centrará en Y.
-        
-        // Offset X: Inicio del área de juego principal es 'sidebarWidth'. El tablero empieza allí.
         this.boardOffsetX = this.sidebarWidth;
-        // Offset Y: (Canvas Alto - Tamaño del Tablero) / 2 = (600 - 490) / 2 = 55px
-        this.boardOffsetY = (this.canvasSizeY - this.boardPixelSize) / 2; // 55px
-        // ----------------------------------------------------------------------
+        
+        this.boardOffsetY = (this.canvasSizeY - this.boardPixelSize) / 2;
 
-        this.timeLimit = 180;     // 3 minutos (180 segundos)
+        this.timeLimit = 180;
         this.timeRemaining = this.timeLimit;
         
         this.gameOver = false;
@@ -46,17 +30,17 @@ class PegSolitaireModel {
         
         this.pieceTypes = ['pelota', 'star', 'rocket'];
         
-        this.initializeBoard();
+        this.inicializarTablero();
     }
 
-    initializeBoard() {
-        // Crear tablero en forma de cruz (estilo clásico Peg Solitaire)
+    inicializarTablero() {
+        // Crear tablero
         this.board = [];
         const pattern = [
             [0, 0, 1, 1, 1, 0, 0],
             [0, 0, 1, 1, 1, 0, 0],
             [1, 1, 1, 1, 1, 1, 1],
-            [1, 1, 1, 0, 1, 1, 1], // Centro vacío (0)
+            [1, 1, 1, 0, 1, 1, 1],
             [1, 1, 1, 1, 1, 1, 1],
             [0, 0, 1, 1, 1, 0, 0],
             [0, 0, 1, 1, 1, 0, 0]
@@ -87,25 +71,29 @@ class PegSolitaireModel {
         this.timeRemaining = this.timeLimit;
     }
 
-    selectPiece(row, col) {
+    //funcion que se llama cuando se hace click en una ficha
+    //determina si el movimiento es valido o invalido
+    seleccionarPieza(row, col) {
         if (this.gameOver) return false;
         
         const cell = this.board[row][col];
         if (!cell || cell.invalid || !cell.hasPiece) return false;
 
         this.selectedPiece = { row, col };
-        this.validMoves = this.getValidMovesForPiece(row, col);
+        // si es valido llama a obtener movimientos
+        this.validMoves = this.obtenerMovimientosValidosParaPieza(row, col);
         
         return this.validMoves.length > 0;
     }
 
-    getValidMovesForPiece(row, col) {
+    //calcula todos los mov. posibles para una ficha
+    obtenerMovimientosValidosParaPieza(row, col) {
         const moves = [];
         const directions = [
             { dr: -2, dc: 0, jumpR: -1, jumpC: 0 }, // Arriba
-            { dr: 2, dc: 0, jumpR: 1, jumpC: 0 },   // Abajo
+            { dr: 2, dc: 0, jumpR: 1, jumpC: 0 },   // Abajo
             { dr: 0, dc: -2, jumpR: 0, jumpC: -1 }, // Izquierda
-            { dr: 0, dc: 2, jumpR: 0, jumpC: 1 }    // Derecha
+            { dr: 0, dc: 2, jumpR: 0, jumpC: 1 }    // Derecha
         ];
 
         for (const dir of directions) {
@@ -114,7 +102,7 @@ class PegSolitaireModel {
             const jumpRow = row + dir.jumpR;
             const jumpCol = col + dir.jumpC;
 
-            if (this.isValidMove(row, col, newRow, newCol, jumpRow, jumpCol)) {
+            if (this.esMovimientoValido(row, col, newRow, newCol, jumpRow, jumpCol)) {
                 moves.push({
                     toRow: newRow,
                     toCol: newCol,
@@ -127,8 +115,8 @@ class PegSolitaireModel {
 
         return moves;
     }
-
-    isValidMove(fromRow, fromCol, toRow, toCol, jumpRow, jumpCol) {
+    //confirma si cada salto de ficha es legal
+    esMovimientoValido(fromRow, fromCol, toRow, toCol, jumpRow, jumpCol) {
         if (toRow < 0 || toRow >= this.boardSize || toCol < 0 || toCol >= this.boardSize) return false;
         if (!this.board[fromRow][fromCol].hasPiece) return false;
         
@@ -140,8 +128,9 @@ class PegSolitaireModel {
 
         return true;
     }
-
-    movePiece(toRow, toCol) {
+    // se llama cuando se suelta la ficha en una casilla
+    // si la pieza está en validMoves, se mueve
+    moverPieza(toRow, toCol) {
         if (!this.selectedPiece || this.gameOver) return false;
 
         const move = this.validMoves.find(m => m.toRow === toRow && m.toCol === toCol);
@@ -162,13 +151,14 @@ class PegSolitaireModel {
         this.selectedPiece = null;
         this.validMoves = [];
 
-        this.checkGameOver();
+        this.verificarFinDeJuego();
 
         return true;
     }
-
-    checkGameOver() {
-        const hasValidMoves = this.hasAnyValidMoves();
+    //verifica si el juego termina verificando si ya no hay mas tiempo
+    //o si hubo una victoria, o si no hay mas movimientos posibles
+    verificarFinDeJuego() {
+        const hasValidMoves = this.tieneMovimientosValidos();
         
         if (!hasValidMoves || this.piecesRemaining === 1 || this.timeRemaining <= 0) {
             this.gameOver = true;
@@ -178,11 +168,13 @@ class PegSolitaireModel {
         }
     }
 
-    hasAnyValidMoves() {
+    // verifica si una ficha tiene un movimiento valido y devuelve true
+    //si ninguna ficha se puede mover, devuelve false
+    tieneMovimientosValidos() {
         for (let row = 0; row < this.boardSize; row++) {
             for (let col = 0; col < this.boardSize; col++) {
                 if (this.board[row][col].hasPiece) {
-                    const moves = this.getValidMovesForPiece(row, col);
+                    const moves = this.obtenerMovimientosValidosParaPieza(row, col);
                     if (moves.length > 0) {
                         return true;
                     }
@@ -192,7 +184,8 @@ class PegSolitaireModel {
         return false;
     }
 
-    startTimer(callback) {
+    //inicia el temporizador de juego
+    iniciarTemporizador(callback) {
         if (this.timer) {
             clearInterval(this.timer);
         }
@@ -210,19 +203,23 @@ class PegSolitaireModel {
         }, 1000);
     }
 
-    stopTimer() {
+    // detiene el temporizador
+    detenerTemporizador() {
         if (this.timer) {
             clearInterval(this.timer);
             this.timer = null;
         }
     }
 
-    reset() {
-        this.stopTimer();
-        this.initializeBoard();
+    // reinicia el juego deteniendo el temporizador y reiniciar el tablero
+    reiniciar() {
+        this.detenerTemporizador();
+        this.inicializarTablero();
     }
 
-    getGameStatus() {
+    // devuelve si hay victoria, si se termino el tiempo o si no hay movimientos
+    // para saber qué pantalla mostrar
+    obtenerEstadoDelJuego() {
         if (this.gameOver) {
             if (this.piecesRemaining === 1) {
                 return 'victory';
@@ -235,30 +232,20 @@ class PegSolitaireModel {
         return 'playing';
     }
 
-    /**
-     * Devuelve las coordenadas del centro de la celda, aplicando el desplazamiento de centrado.
-     * @param {number} row 
-     * @param {number} col 
-     * @returns {{x: number, y: number}}
-     */
-    getCellPosition(row, col) {
-        // Devuelve el centro de la celda, aplicando el desplazamiento
-        // (x) Columna * tamaño de celda + OffsetX + mitad del tamaño de celda
-        // (y) Fila * tamaño de celda + OffsetY + mitad del tamaño de celda
+
+    // Devuelve el centro de la celda, aplicando el desplazamiento
+    // (x) Columna * tamaño de celda + OffsetX + mitad del tamaño de celda
+    // (y) Fila * tamaño de celda + OffsetY + mitad del tamaño de celda
+    obtenerPosicionDeCelda(row, col) {
         return {
             x: col * this.cellSize + this.boardOffsetX + this.cellSize / 2,
             y: row * this.cellSize + this.boardOffsetY + this.cellSize / 2
         };
     }
 
-    /**
-     * Convierte coordenadas de la pantalla (mouse/touch) a filas/columnas.
-     * Resta el desplazamiento de centrado antes de calcular.
-     * @param {number} x 
-     * @param {number} y 
-     * @returns {{row: number, col: number} | null}
-     */
-    getBoardCell(x, y) {
+    //convierte coordenadas de pixeles en un clic
+    //lo inverso al anterior
+    obtenerCeldaDelTablero(x, y) {
         // Ignorar clics si están en el área de la barra lateral
         if (x < this.sidebarWidth) return null; 
         
@@ -274,8 +261,8 @@ class PegSolitaireModel {
         }
         return null;
     }
-
-    getTimeUsed() {
+    //calcula el tiempo total que se tardó en jugar
+    obtenerTiempoUsado() {
         return this.timeLimit - this.timeRemaining;
     }
 }

@@ -2,14 +2,14 @@ class PegSolitaireView {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
         this.ctx = this.canvas.getContext('2d');
-        this.cellSize = 70; // Debe coincidir con el Modelo
-        this.pieceRadius = 25; // Debe coincidir con el Modelo
+        this.cellSize = 70;
+        this.pieceRadius = 25;
         this.activeHints = [];
 
-        this.canvas.width = 620; // MODIFICADO: Aumentado el ancho para centrar el tablero (500px área de juego + 120px sidebar)
+        this.canvas.width = 620;
         this.canvas.height = 600;
         
-        // Carga de imágenes (asume que los IDs img-pelota, etc., existen en el HTML)
+        // Carga de imágenes
         this.pieceImages = {};
         this.pieceImages.pelota = document.getElementById('img-pelota');
         this.pieceImages.star = document.getElementById('img-piece-star');
@@ -22,69 +22,65 @@ class PegSolitaireView {
         this.backgroundImage.src = './img/background-peg.jpg';
     }
 
-    drawBoard(model) {
-        const sidebarWidth = model.sidebarWidth; // 120px
-        const gameAreaWidth = this.canvas.width - sidebarWidth; // 500px
+    // se encarga de dibujar el tablero y se va llamando cada vez q el tiempo cambia,
+    // se mueve una ficha, etc
+    dibujarTablero(model) {
+        const sidebarWidth = model.sidebarWidth;
+        const gameAreaWidth = this.canvas.width - sidebarWidth;
 
-        // 1. Limpia el canvas completo
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);       
+        // Limpia el canvas completo
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);       
         
-        // 2. Dibuja el fondo del juego solo en el área de juego (a partir de X=120)
-        // Esto asegura que el fondo esté centrado con el tablero y no se dibuje bajo la barra lateral.
-        this.ctx.drawImage(this.backgroundImage, 
-                            sidebarWidth, 0, // Posición de inicio en el canvas
-                            gameAreaWidth, this.canvas.height); // Dimensiones de la porción a dibujar
+        // Dibuja el fondo del juego solo en el área de juego
+        this.ctx.drawImage(this.backgroundImage, sidebarWidth, 0, gameAreaWidth, this.canvas.height);
         
-        // 3. Dibuja la barra lateral SÓLIDA con controles
-        this.drawSidebarUI(model);
+        // Dibuja la barra lateral SÓLIDA con controles
+        this.dibujarUIBarraLateral(model);
         
-        // 4. Dibuja el tablero.
+        // Dibuja el tablero.
         for (let row = 0; row < model.boardSize; row++) {
             for (let col = 0; col < model.boardSize; col++) {
                 const cell = model.board[row][col];
-                
-                // Obtiene la posición del centro (ya incluye el offset del modelo)
-                const centerPos = model.getCellPosition(row, col);
-                // Calcula la esquina superior izquierda a partir del centro
+                const centerPos = model.obtenerPosicionDeCelda(row, col);
                 const x = centerPos.x - (this.cellSize / 2); 
                 const y = centerPos.y - (this.cellSize / 2); 
 
                 if (!cell.invalid) {
-                    this.drawCell(x, y, cell, model.selectedPiece, row, col);
+                    this.dibujarCelda(x, y, cell, model.selectedPiece, row, col);
                 }
             }
         }
         
-        // 5. Dibuja la pieza arrastrada encima de todo
+        // Dibuja la pieza arrastrada encima de todo
         if (this.draggedPiece) {
-            this.drawPiece(
+            this.dibujarPieza(
                 this.draggedPiece.x,
                 this.draggedPiece.y,
                 this.draggedPiece.type,
-                true // isDragging = true
+                true
             );
         }
     }
 
-    drawSidebarUI(model) {
-        const sidebarWidth = model.sidebarWidth; // 120px
+    //interfaz de la izquierda con tiempo, btn reiniciar y btn de inicio
+    dibujarUIBarraLateral(model) {
+        const sidebarWidth = model.sidebarWidth;
         const centerX = sidebarWidth / 2;
         const margin = 10; 
 
-        // --- Fondo de la barra lateral (sólido) ---
-        // Usando el color primario más oscuro para el fondo
+        //Fondo de la barra lateral
         this.ctx.fillStyle = '#1a002b'; 
         this.ctx.fillRect(0, 0, sidebarWidth, this.canvas.height);
         
-        // --- Borde sutil a la derecha de la barra lateral ---
-        this.ctx.strokeStyle = 'rgba(157, 78, 221, 0.5)'; // Color primario más claro
+        // Borde a la derecha de la barra lateral
+        this.ctx.strokeStyle = 'rgba(157, 78, 221, 0.5)';
         this.ctx.lineWidth = 2;
         this.ctx.beginPath();
         this.ctx.moveTo(sidebarWidth, 0);
         this.ctx.lineTo(sidebarWidth, this.canvas.height);
         this.ctx.stroke();
 
-        // --- Info de Piezas Restantes ---
+        // Info de Piezas Restantes
         this.ctx.font = '18px "Roboto", sans-serif';
         this.ctx.textAlign = 'center';
         this.ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
@@ -93,7 +89,7 @@ class PegSolitaireView {
         this.ctx.fillStyle = 'white';
         this.ctx.fillText(model.piecesRemaining, centerX, 70); 
         
-        // --- Separador ---
+        // Separador
         this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
         this.ctx.lineWidth = 1;
         this.ctx.beginPath();
@@ -101,8 +97,7 @@ class PegSolitaireView {
         this.ctx.lineTo(sidebarWidth - margin, 100);
         this.ctx.stroke();
 
-
-        // --- Temporizador Actual ---
+        //  Temporizador Actual
         const minutes = Math.floor(model.timeRemaining / 60);
         const secs = model.timeRemaining % 60;
         const timeStr = `${String(minutes).padStart(1, '0')}:${String(secs).padStart(2, '0')}`;
@@ -115,7 +110,7 @@ class PegSolitaireView {
         this.ctx.fillStyle = model.timeRemaining <= 30 ? 'red' : '#FF6B35'; 
         this.ctx.fillText(timeStr, centerX, 165);
 
-        // --- Info de Tiempo Límite ---
+        // Info de Tiempo Límite 
         const limitMinutes = Math.floor(model.timeLimit / 60);
         const limitSecs = model.timeLimit % 60;
         const limitTimeStr = `${limitMinutes}:${String(limitSecs).padStart(2, '0')}`;
@@ -127,74 +122,65 @@ class PegSolitaireView {
         this.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
         this.ctx.fillText(limitTimeStr, centerX, 215);
 
-
-        // --- Separador (Ajustado a la nueva altura) ---
+        // Separador
         this.ctx.beginPath();
-        this.ctx.moveTo(margin, 240); // Nuevo Y
-        this.ctx.lineTo(sidebarWidth - margin, 240); // Nuevo Y
+        this.ctx.moveTo(margin, 240);
+        this.ctx.lineTo(sidebarWidth - margin, 240);
         this.ctx.stroke();
 
-
-        // --- Botones de Control (Estilo unificado) ---
+        // Botones de Control
         
-        // Botón 1: Reiniciar (Centro Y: 400). Estilo btn-ver-mas (verde)
-        this.drawButton(centerX, 400, 100, 45, '#32CD32', 'Reiniciar', '#FFFFFF', 16, true);
+        // Botón 1: Reiniciar
+        this.dibujarBoton(centerX, 400, 100, 45, '#32CD32', 'Reiniciar', '#FFFFFF', 16, true);
 
-        // Botón 2: Inicio (Centro Y: 470). Estilo btn-ver-mas (fondo blanco para contraste, texto oscuro)
-        this.drawButton(centerX, 470, 100, 45, '#FFFFFF', 'Inicio', '#1A002B', 16, true);
+        // Botón 2: Inicio
+        this.dibujarBoton(centerX, 470, 100, 45, '#FFFFFF', 'Inicio', '#1A002B', 16, true);
     }
 
-    /**
-     * Dibuja un botón en el canvas con la opción de aplicar el estilo de sombra y radio de btn-ver-mas.
-     */
-    drawButton(centerX, centerY, width, height, bgColor, text, textColor, fontSize, applyBtnVerMasStyle = false) {
+    //sirve para los btn de la barra lateral
+    dibujarBoton(centerX, centerY, width, height, bgColor, text, textColor, fontSize, applyBtnVerMasStyle = false) {
         const x = centerX - width / 2;
         const y = centerY - height / 2;
         
         const radius = applyBtnVerMasStyle ? 25 : 8; 
-
-        // 1. Aplicar Sombra (Solo para botones estilo btn-ver-mas)
         if (applyBtnVerMasStyle) {
-            this.ctx.shadowColor = 'rgba(50, 205, 50, 0.5)'; // Color verde principal
+            this.ctx.shadowColor = 'rgba(50, 205, 50, 0.5)';
             this.ctx.shadowBlur = 8;
             this.ctx.shadowOffsetX = 0;
             this.ctx.shadowOffsetY = 4;
         }
 
-
-        // 2. Dibuja el fondo del botón (Rectángulo redondeado)
+        // Dibuja el fondo del botón
         this.ctx.fillStyle = bgColor;
         this.ctx.beginPath();
-        // roundRect necesita ser soportado, asumiendo ambiente moderno
         if (typeof this.ctx.roundRect === 'function') {
             this.ctx.roundRect(x, y, width, height, radius);
         } else {
-            this.ctx.rect(x, y, width, height); // Fallback a rect normal
+            this.ctx.rect(x, y, width, height);
         }
         this.ctx.fill();
         
-        // 3. Limpiar sombra para el texto
+        // Limpiar sombra para el texto
         if (applyBtnVerMasStyle) {
             this.ctx.shadowBlur = 0;
             this.ctx.shadowOffsetX = 0;
             this.ctx.shadowOffsetY = 0;
         }
 
-        // 4. Dibuja el texto
+        // Dibuja el texto
         this.ctx.font = `bold ${fontSize}px "Montserrat", sans-serif`;
         this.ctx.fillStyle = textColor;
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
         this.ctx.fillText(text, centerX, centerY);
         
-        // 5. Restaurar el estado 
+        // Restaurar el estado 
         this.ctx.textBaseline = 'alphabetic'; 
     }
     
-    /**
-     * Dibuja la celda y el hueco. Incluye la lógica del borde de hint.
-     */
-    drawCell(x, y, cell, selectedPiece, row, col) {
+
+    // Dibuja la celda y el hueco. Incluye la lógica del borde de hint.
+    dibujarCelda(x, y, cell, selectedPiece, row, col) {
         const centerX = x + this.cellSize / 2;
         const centerY = y + this.cellSize / 2;
 
@@ -209,15 +195,15 @@ class PegSolitaireView {
         this.ctx.arc(centerX, centerY, this.pieceRadius, 0, Math.PI * 2);
         this.ctx.fill();
         
-        // Borde del hueco por defecto: discreto
+        // Borde del hueco por defecto
         this.ctx.strokeStyle = 'rgba(150, 150, 150, 0.5)';
         this.ctx.lineWidth = 1;
         this.ctx.stroke();
 
         // DIBUJA EL HINT (Borde Dorado)
         if (!cell.hasPiece && isHintTarget) {
-            this.ctx.strokeStyle = 'rgba(255, 215, 0, 1.0)'; // Dorado puro
-            this.ctx.lineWidth = 5; // Borde grueso
+            this.ctx.strokeStyle = 'rgba(255, 215, 0, 1.0)';
+            this.ctx.lineWidth = 5;
             
             this.ctx.beginPath();
             this.ctx.arc(centerX, centerY, this.pieceRadius + 2, 0, Math.PI * 2);
@@ -232,13 +218,15 @@ class PegSolitaireView {
         
         // Dibuja la pieza si existe y no es la que se está arrastrando
         if (cell.hasPiece && !(this.draggedPiece && this.draggedPiece.fromRow === row && this.draggedPiece.fromCol === col)) {
-            this.drawPiece(centerX, centerY, cell.type, false);
+            this.dibujarPieza(centerX, centerY, cell.type, false);
         }
         
         this.ctx.shadowBlur = 0;
     }
 
-    drawPiece(x, y, type, isDragging) {
+    //dibuja la imagen de la ficha (cualq. de las tres)
+    //y detalles en dorado para la ficha que esta siendo clickeable
+    dibujarPieza(x, y, type, isDragging) {
         this.ctx.save();
         
         if (isDragging) {
@@ -258,10 +246,9 @@ class PegSolitaireView {
         this.ctx.restore();
     }
 
-    /**
-     * Almacena las coordenadas de los movimientos válidos para que drawCell los pinte.
-     */
-    showHints(model) {
+
+    //muestra los movimientos validos que tiene cada piezqa que está siendo clickeada
+    mostrarHints(model) {
         if (!model.selectedPiece || model.validMoves.length === 0) {
             this.activeHints = [];
             return;
@@ -273,14 +260,14 @@ class PegSolitaireView {
         }));
     }
 
-    /**
-     * Limpia la lista de hints activos.
-     */
-    hideHints() {
+
+    //Limpia la lista de hints activos.
+    ocultarHints() {
         this.activeHints = [];
     }
     
-    showScreen(screenId) {
+    //para verificar qué pantalla mostrar, si la del menu, la de juego, etc.
+    mostrarPantalla(screenId) {
         const screens = ['gamePreview', 'gameScreen', 'victoryScreen', 'timeUpScreen', 'noMovesScreen', 'helpModal'];
         screens.forEach(id => {
             const element = document.getElementById(id);
@@ -295,7 +282,8 @@ class PegSolitaireView {
         }
     }
 
-    showVictoryScreen(piecesRemaining, timeUsed) {
+    //pantalla si se gana el juego
+    mostrarPantallaVictoria(piecesRemaining, timeUsed) {
         const minutes = Math.floor(timeUsed / 60);
         const seconds = timeUsed % 60;
         
@@ -303,15 +291,17 @@ class PegSolitaireView {
         document.getElementById('victoryTime').textContent = 
             `${minutes}:${String(seconds).padStart(2, '0')}`;
         
-        this.showScreen('victoryScreen');
+        this.mostrarPantalla('victoryScreen');
     }
 
-    showTimeUpScreen(piecesRemaining) {
+    //pantalla si se termina el tiempo de juego
+    mostrarPantallaTiempoAgotado(piecesRemaining) {
         document.getElementById('timeUpPieces').textContent = piecesRemaining;
-        this.showScreen('timeUpScreen');
+        this.mostrarPantalla('timeUpScreen');
     }
 
-    showNoMovesScreen(piecesRemaining, timeUsed) {
+    //pantalla si no hay movimientos posibles
+    mostrarPantallaSinMovimientos(piecesRemaining, timeUsed) {
         const minutes = Math.floor(timeUsed / 60);
         const seconds = timeUsed % 60;
         
@@ -319,14 +309,14 @@ class PegSolitaireView {
         document.getElementById('noMovesTime').textContent = 
             `${minutes}:${String(seconds).padStart(2, '0')}`;
         
-        this.showScreen('noMovesScreen');
+        this.mostrarPantalla('noMovesScreen');
     }
-
-    setDraggedPiece(x, y, type, fromRow, fromCol) {
+    //guarda la ficha que esta siendo clickeada
+    establecerPiezaArrastrada(x, y, type, fromRow, fromCol) {
         this.draggedPiece = { x, y, type, fromRow, fromCol };
     }
-
-    clearDraggedPiece() {
+    //cuando se suelta una ficha
+    limpiarPiezaArrastrada() {
         this.draggedPiece = null;
     }
 }
