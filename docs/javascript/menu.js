@@ -33,7 +33,7 @@
         
         console.log('Intentando redirigir...');
         // Redirige al index para login/registro si el usuario no está registrado
-        window.location.href = './index.html'; 
+        window.location.href = '#'; 
     }
 
 
@@ -45,7 +45,7 @@
         
         // 2. REDIRECCIÓN INMEDIATA
         // Usamos la ruta absoluta '/index.html' para asegurar que siempre apunta a la raíz.
-        window.location.href = '/index.html'; 
+        window.location.href = '#'; 
 
         // Las siguientes funciones ya no son estrictamente necesarias 
         // porque la página va a recargarse en el index, pero no causan daño:
