@@ -28,7 +28,7 @@ class PegSolitaireModel {
         this.timer = null;
         this.piecesRemaining = 0;
         
-        this.pieceTypes = ['pelota', 'star', 'rocket'];
+        this.pieceTypes = ['pelota', 'cup', 'afa'];
         
         this.inicializarTablero();
     }

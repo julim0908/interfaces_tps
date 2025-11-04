@@ -12,8 +12,8 @@ class PegSolitaireView {
         // Carga de imágenes
         this.pieceImages = {};
         this.pieceImages.pelota = document.getElementById('img-pelota');
-        this.pieceImages.star = document.getElementById('img-piece-star');
-        this.pieceImages.rocket = document.getElementById('img-piece-rocket');
+        this.pieceImages.cup = document.getElementById('img-piece-cup');
+        this.pieceImages.afa = document.getElementById('img-piece-afa');
         
         this.draggedPiece = null;
         this.stars = [];
