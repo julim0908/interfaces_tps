@@ -15,7 +15,10 @@ class PegSolitaireController {
         this.inicializarEventListeners();
     }
 
-    // liseteners del html
+    //el controlador se encarga de los estados del juego 
+
+    // listeners del html
+    //es para la interaccion que tiene el usuario con las fichas
     inicializarEventListeners() {
         // Listener del botón de inicio de juego (HTML)
         document.getElementById('playButton').addEventListener('click', () => {
@@ -30,7 +33,7 @@ class PegSolitaireController {
         canvas.addEventListener('mouseup', this.manejarMouseUp.bind(this));
         canvas.addEventListener('mouseleave', this.manejarMouseLeave.bind(this));
         
-        // Botones de pantallas de fin de juego
+        //  pantallas de fin de juego
         this.configurarBotonesFinDeJuego('Victory');
         this.configurarBotonesFinDeJuego('TimeUp');
         this.configurarBotonesFinDeJuego('NoMoves');

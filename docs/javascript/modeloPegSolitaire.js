@@ -46,6 +46,8 @@ class PegSolitaireModel {
             [0, 0, 1, 1, 1, 0, 0]
         ];
 
+        //recorre la matriz que representa el tablero
+        //define las fichas segun el el numero de posicion que tenga el tablero
         this.piecesRemaining = 0;
         for (let row = 0; row < this.boardSize; row++) {
             this.board[row] = [];
@@ -95,12 +97,13 @@ class PegSolitaireModel {
             { dr: 0, dc: -2, jumpR: 0, jumpC: -1 }, // Izquierda
             { dr: 0, dc: 2, jumpR: 0, jumpC: 1 }    // Derecha
         ];
-
+ //nuevo movimiento para las fichas
         for (const dir of directions) {
             const newRow = row + dir.dr;
             const newCol = col + dir.dc;
             const jumpRow = row + dir.jumpR;
             const jumpCol = col + dir.jumpC;
+            
 
             if (this.esMovimientoValido(row, col, newRow, newCol, jumpRow, jumpCol)) {
                 moves.push({
@@ -236,6 +239,7 @@ class PegSolitaireModel {
     // Devuelve el centro de la celda, aplicando el desplazamiento
     // (x) Columna * tamaño de celda + OffsetX + mitad del tamaño de celda
     // (y) Fila * tamaño de celda + OffsetY + mitad del tamaño de celda
+    //vista
     obtenerPosicionDeCelda(row, col) {
         return {
             x: col * this.cellSize + this.boardOffsetX + this.cellSize / 2,
@@ -243,13 +247,14 @@ class PegSolitaireModel {
         };
     }
 
-    //convierte coordenadas de pixeles en un clic
+    //convierte coordenadas de pixeles en un clicks
     //lo inverso al anterior
+    //se usa para saber que celda fue seleccionada
     obtenerCeldaDelTablero(x, y) {
         // Ignorar clics si están en el área de la barra lateral
         if (x < this.sidebarWidth) return null; 
         
-        // Restar el offset de centrado a las coordenadas de clic
+        // Restar el offset de centrado a las coordenadas de clicks
         const adjustedX = x - this.boardOffsetX;
         const adjustedY = y - this.boardOffsetY;
 

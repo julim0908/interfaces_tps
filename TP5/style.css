@@ -1,0 +1,249 @@
+ /* --- CONFIGURACIÓN BASE --- */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; 
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            background-color: #111;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .parallax-wrapper {
+            position: relative;
+            width: 60vw; 
+            height: 60vh;
+            border: 5px solid #fff; 
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        /* --- ESTILOS COMUNES DE CAPAS PARALLAX --- */
+        .parallax-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background-size: 50% 100%;
+            background-repeat: repeat-x;
+            background-position: 0 bottom;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-name: scrollContinuous;
+        }
+
+        @keyframes scrollContinuous {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes moonCross {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-150%); }
+        }
+
+        @keyframes moveCrystal {
+            from { left: 100%; }
+            to { left: -120px; }
+        }
+
+        @keyframes fly {
+            0% { background-position: 0 0; }
+            100% { background-position: -1200px 0; }
+        }
+
+        @keyframes shadowPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.5; }
+            50% { transform: translateX(-50%) scale(0.85); opacity: 0.35; }
+        }
+
+        /* --- CAPAS PARALLAX --- */
+        .layer-1 {
+            background-image: url('img/0.png');
+            width: 100%;
+            animation: none;
+            z-index: 1; 
+        }
+
+        .layer-2 { 
+            background-image: url('img/1.png'); 
+            animation: scrollContinuous 15s linear infinite;
+            z-index: 7;
+        }
+
+        .layer-3 { 
+            background-image: url('img/2.png'); 
+            animation: scrollContinuous 20s linear infinite;
+            z-index: 6;
+        }
+
+        .layer-4 { 
+            background-image: url('img/3.png'); 
+            animation: scrollContinuous 28s linear infinite;
+            z-index: 5;
+        }
+
+        .layer-5 { 
+            background-image: url('img/4.png'); 
+            animation: scrollContinuous 36s linear infinite;
+            z-index: 4;
+        }
+
+        .layer-6 { 
+            background-image: url('img/5.png'); 
+            animation: scrollContinuous 45s linear infinite;
+            z-index: 3;
+        }
+
+        .layer-7 { 
+            background-image: url('img/6.png');
+            background-repeat: no-repeat;
+            background-size: auto 40%;
+            background-position: left center;
+            width: 100%;
+            animation: moonCross 90s linear infinite;
+            z-index: 2;
+        }
+
+        .layer-8 { 
+            background-image: url('img/7.png'); 
+            animation: scrollContinuous 70s linear infinite;
+            z-index: 1;
+        }
+
+        /* --- PERSONAJE VOLADOR (BÚHO) --- */
+        .flying-character {
+            position: absolute;
+            width: 200px;
+            height: 160px;
+            left: 15%;
+            background-image: url('img/buho.png');
+            background-repeat: no-repeat;
+            background-size: 1200px 160px;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.4));
+            animation: fly 0.6s steps(6) infinite;
+            z-index: 9;
+            transition: transform 0.1s;
+        }
+
+        .flying-character::after {
+            content: '';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 20px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.5) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: shadowPulse 4s ease-in-out infinite;
+        }
+
+        /* --- CRISTALES --- */
+        .crystal {
+            position: absolute;
+            bottom: -9%;
+            left: 100%;
+            width: 500px;
+            height: 320px;
+            background-image: url('img/arbolViejo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            image-rendering: pixelated;
+            z-index: 9;
+            animation: moveCrystal 8s linear infinite;
+        }
+
+        .crystal-1 { animation-delay: 0s; }
+        .crystal-2 { animation-delay: 2.7s; }
+        .crystal-3 { animation-delay: 5.4s; }
+
+        /* --- ARAÑA FIJA --- */
+        .spider-container {
+            position: absolute;
+            right: 25%; 
+            z-index: 8;
+        }
+
+        .spider-thread {
+            position: relative;
+            width: 3px;
+            height: 100px;
+            background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(255, 255, 255));
+            margin: 0 auto;
+        }
+
+        .spider {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            background-image: url('img/araña (2).png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            image-rendering: pixelated;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+        }
+
+        /* --- UI DEL JUEGO --- */
+        .game-ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 24px;
+            z-index: 100;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            z-index: 101;
+            display: none;
+        }
+
+        .game-over h2 {
+            margin: 0 0 20px 0;
+            font-size: 36px;
+        }
+
+        .game-over button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .game-over button:hover {
+            background: #45a049;
+        }
+
+        .start-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            z-index: 100;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
