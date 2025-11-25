@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlayForge - Owl Flight</title>
+    <title>PlayForge - Peg Solitaire</title>
     <link rel="icon" href="./img/logo_64x64.png">
     <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/peg-solitaire.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -69,54 +70,95 @@
             </aside>
             
             <div class="breadcrumbs">
-                <p>Destacados > Flappy Owl</p>
+                <p>Destacados > Peg Solitaire</p>
             </div>
             
-           <div class="game-full">
-    <h1 class="game-title">Flappy Owl Adventure</h1>
-    <div id="gameContainer" class="bg-gray-900 relative">
-        <canvas id="gameCanvas" width="1200" height="700"></canvas>
-        
-        <div id="startScreenOverlay" class="start-screen-overlay active">
-            <div class="start-screen-content">
-                
-                <h1 class="title-overlay">FLAPPY OWL</h1> 
+            <div class="game-full">
+                <h1 class="game-title">Football Peg Solitaire</h1>
+                <div class="game-cover" id="gamePreview">
+                    <img src="./img/pegSolitaire_resized.png" class="img-juego" alt="Peg Solitaire Preview">
+                    <div class="play-button" id="playButton">
+                        <img src="./img/tocar (2).png" alt="Play">
+                    </div>
+                </div>
+                <div id="gameAssets" style="display: none;">
+                    <img id = "img-pelota" src="./img/brazuca.png" alt="Ficha Pelota">
+                    <img id="img-piece-cup" src="./img/worldcupficha.png" alt="Ficha Estrella">
+                    <img id="img-piece-afa" src="./img/afa.png" alt="Ficha Cohete">
+                </div>
 
-                <img src="./img/portadaflappyowl.png" alt="Búho" class="start-screen-owl">
+                <div id="gameScreen" class="screen hidden">
+                    <div class="game-container">
+                        <div class="game-info">
+                            <div class="info-left">
+                                </div>
+                                <div class="pieces-info">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="gameCanvas" class="game-canvas"></canvas>
+                            <div id="hints" class="hints-container"></div>
+                        </div>
 
-                <p class="start-text">Haz clic o presiona ESPACIO para volar</p>
-                <p class="start-text">Evita los troncos y las arañas</p>
-                <p class="start-text warning">¡Las arañas son MORTALES!</p>
-                
-                <button id="startButton" class="btn-start">COMENZAR</button>
+                        <div class="fullscreen-container fullscreen-game">
+                            <button id="fullscreenButton" class="btn-fullscreen">
+                                <img src="./img/pantalla-completa (1).png" alt="Icono de Pantalla Completa" class="icon-fullscreen">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div id="victoryScreen" class="completed-screen hidden">
+                <div class="completed-card">
+                    <h2 class="completed-title">¡VICTORIA!</h2>
+                    <p class="victory-message">¡Felicitaciones! Has completado el juego exitosamente.</p>
+                    <div class="victory-stats">
+                        <p><strong>Fichas Restantes:</strong> <span id="victoryPieces">1</span></p>
+                        <p><strong>Tiempo Usado:</strong> <span id="victoryTime">0:00</span></p>
+                    </div>
+                    <div class="completed-buttons">
+                        <button id="btnMenuVictory" class="btn-menu">Volver al Inicio</button>
+                        <button id="btnPlayAgainVictory" class="btn-next">Jugar de Nuevo</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="timeUpScreen" class="completed-screen hidden">
+                <div class="completed-card">
+                    <h2 class="completed-title">¡Tiempo Agotado!</h2>
+                    <p class="defeat-message">Se acabó el tiempo. ¡Inténtalo de nuevo!</p>
+                    <div class="defeat-stats">
+                        <p><strong>Fichas Restantes:</strong> <span id="timeUpPieces">0</span></p>
+                    </div>
+                    <div class="completed-buttons">
+                        <button id="btnMenuTimeUp" class="btn-menu">Volver al Inicio</button>
+                        <button id="btnRetryTimeUp" class="btn-retry">Reintentar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="noMovesScreen" class="completed-screen hidden">
+                <div class="completed-card">
+                    <h2 class="completed-title">Fin del Juego</h2>
+                    <p class="defeat-message">No hay más movimientos posibles.</p>
+                    <div class="defeat-stats">
+                        <p><strong>Fichas Restantes:</strong> <span id="noMovesPieces">0</span></p>
+                        <p><strong>Tiempo Usado:</strong> <span id="noMovesTime">0:00</span></p>
+                    </div>
+                    <div class="completed-buttons">
+                        <button id="btnMenuNoMoves" class="btn-menu">Volver al Inicio</button>
+                        <button id="btnRetryNoMoves" class="btn-retry">Reintentar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
             <aside class="similares-section">
                 <h2 class="similares-title">Similares</h2>
                 <div class="game-similar">
-                    <img src="./img/flappyb.jpg" alt="Flappy Bird">
-                    <div class="game-overlay">
-                        <div class="play-button-small">
-                            <div class="play-icon-small"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="game-similar">
-                    <img src="./img/jetpack.jpg" alt="Jetpack Joyride">
-                    <div class="game-overlay">
-                        <div class="play-button-small">
-                            <div class="play-icon-small"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="game-similar">
-                    <img src="./img/geometry.jpg" alt="Geometry Dash">
+                    <img src="./img/solitario-spider.png" alt="Solitario Spider">
                     <div class="game-overlay">
                         <div class="play-button-small">
                             <div class="play-icon-small"></div>
@@ -132,24 +174,41 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="game-similar">
+                    <img src="./img/tetris.png" alt="Tetris">
+                    <div class="game-overlay">
+                        <div class="play-button-small">
+                            <div class="play-icon-small"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-similar">
+                    <img src="./img/bubble-shooter.png" alt="Bubble Shooter">
+                    <div class="game-overlay">
+                        <div class="play-button-small">
+                            <div class="play-icon-small"></div>
+                        </div>
+                    </div>
+                </div>
             </aside>
 
             <div class="info-juego">
                 <div class="reglas-juego">
-                    <h2>¿Cómo jugar Flappy Owl?</h2>
-                    <p>Flappy Owl es un juego de habilidad donde controlas a un búho que vuela a través de un bosque místico lleno de obstáculos.</p>
-                    <p><span class="bold">1. Controla al búho.</span> Usa el ratón o la barra espaciadora para hacer que el búho vuele hacia arriba. Suelta para que descienda.</p>
-                    <p><span class="bold">2. Evita obstáculos.</span> Esquiva las arañas que cuelgan de los árboles y otros peligros del bosque.</p>
-                    <p><span class="bold">3. Recoge cristales.</span> Los cristales brillantes te dan puntos extras. ¡Intenta recoger todos los que puedas!</p>
-                    <p><span class="bold">4. Sobrevive el mayor tiempo posible.</span> El juego se vuelve más rápido y difícil con el tiempo. ¿Cuánto podrás durar?</p>
-                    <p>¡La práctica hace al maestro! Cada intento te ayudará a mejorar tus reflejos y estrategia.</p>
+                    <h2>¿Cómo jugar Peg Solitaire?</h2>
+                    <p>El Peg Solitaire es un clásico juego de ingenio donde debes eliminar todas las fichas excepto una.</p>
+                    <p><span class="bold">1. Seleccioná una ficha.</span> Hacé click sobre cualquier ficha del tablero. Si tiene movimientos válidos, verás flechas animadas indicando dónde podés moverla.</p>
+                    <p><span class="bold">2. Arrastrá y soltá.</span> Mantené presionado el botón del mouse y arrastrá la ficha hacia una posición válida (donde aparezca una flecha).</p>
+                    <p><span class="bold">3. Saltá y eliminá.</span> Para mover una ficha, debés saltar sobre otra ficha adyacente hacia un espacio vacío. La ficha saltada se elimina del tablero.</p>
+                    <p><span class="bold">4. Ganá con estrategia.</span> El objetivo es eliminar todas las fichas menos una, que debe quedar en el centro del tablero.</p>
+                    <p>¡Es un juego de estrategia pura! Pensá bien cada movimiento, porque algunos pueden bloquear tu camino hacia la victoria.</p>
                 </div>
                 <div class="controles-juego">
                     <h2>Controles</h2>
                     <div class="control-mouse">
-                        <p><span class="bold">Click izquierdo:</span> Hace que el búho vuele hacia arriba.</p>
-                        <p><span class="bold">Barra espaciadora:</span> Hace que el búho vuele hacia arriba.</p>
-                        <p><span class="bold">Soltar:</span> El búho desciende por gravedad.</p>
+                        <p><span class="bold">Click izquierdo:</span> Selecciona una ficha y muestra movimientos válidos.</p>
+                        <p><span class="bold">Arrastrar y soltar:</span> Mueve la ficha seleccionada a una posición válida.</p>
                     </div>
                 </div>
             </div>
@@ -181,8 +240,8 @@
                     <div class="review-header">
                         <img src="./img/mujer.png" alt="Usuario" class="user-avatar">
                         <div class="user-info">
-                            <span class="usuario">NightFlyer92</span>
-                            <span class="time">1 hora</span>
+                            <span class="usuario">StrategyMaster</span>
+                            <span class="time">2 horas</span>
                         </div>
                         <div class="stars">
                             <span class="star filled">★</span>
@@ -193,28 +252,28 @@
                         </div>
                     </div>
                     <div class="review-text">
-                        El efecto parallax es espectacular. Me encanta la atmósfera del bosque y los detalles de animación. ¡Súper adictivo!
+                        Un clásico reinventado con el fútbol. El drag and drop funciona perfecto y las animaciones de las flechas te ayudan mucho. ¡Muy adictivo!
                     </div>
                     <div class="review-actions">
                         <button class="action-btn">
                             <img src="./img/me-gusta.png" alt="">
-                            <span class="count">234</span>
+                            <span class="count">156</span>
                         </button>
                         <button class="action-btn">
                             <img class="no-like" src="./img/me-gusta.png" alt="">
-                            <span class="count">3</span>
+                            <span class="count">8</span>
                         </button>
                         <button class="action-btn">
                             <img src="./img/volver-a-publicar.png" alt="">
-                            <span class="count">67</span>
+                            <span class="count">42</span>
                         </button>
                     </div>
                 
                     <div class="review-header">
                         <img src="./img/mujer.png" alt="Usuario" class="user-avatar">
                         <div class="user-info">
-                            <span class="usuario">GameMaster</span>
-                            <span class="time">3 horas</span>
+                            <span class="usuario">PuzzleQueen</span>
+                            <span class="time">5 horas</span>
                         </div>
                         <div class="stars">
                             <span class="star filled">★</span>
@@ -225,20 +284,20 @@
                         </div>
                     </div>
                     <div class="review-text">
-                        Muy divertido y con gráficos hermosos. Al principio es fácil pero después se pone desafiante. Perfecto para pasar el rato.
+                        Me encanta la temática especial de fútbol con la copa del mundo!. Un poco difícil al principio, pero cuando le agarrás la mano es genial.
                     </div>
                     <div class="review-actions">
                         <button class="action-btn">
                             <img src="./img/me-gusta.png" alt="">
-                            <span class="count">187</span>
+                            <span class="count">98</span>
                         </button>
                         <button class="action-btn">
                             <img class="no-like" src="./img/me-gusta.png" alt="">
-                            <span class="count">12</span>
+                            <span class="count">5</span>
                         </button>
                         <button class="action-btn">
                             <img src="./img/volver-a-publicar.png" alt="">
-                            <span class="count">45</span>
+                            <span class="count">23</span>
                         </button>
                     </div>
 
@@ -296,10 +355,12 @@
             Agosto 2025
         </p>
     </footer>
-    
-    <script src="./js/menu.js"></script>
-    <script src="./js/estrellas.js"></script>
-    <script src="./js/main.js"></script>
-    <script src="./js/flappyOwl.js"></script>
+    <script src="./javascript/fullScreenHandler.js"></script>
+    <script src="./javascript/menu.js"></script>
+    <script src="./javascript/modeloPegSolitaire.js"></script>
+    <script src="./javascript/controllerPegSolitaire.js"></script>
+    <script src="./javascript/vistaPegSolitaire.js"></script>
+    <script src="./javascript/main.js"></script>
+    <script src="./javascript/estrellas.js"></script>
 </body>
 </html>
