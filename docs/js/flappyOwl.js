@@ -31,7 +31,7 @@ function loadImages() {
             }
         };
         images[name].onerror = () => {
-            console.error(`❌ No se pudo cargar: ${imageSources[name]}`);
+            console.error(`No se pudo cargar: ${imageSources[name]}`);
             imagesLoaded++;
             if (imagesLoaded === totalImages) {
                 setupGame();
@@ -49,8 +49,9 @@ let gameRunning = false;
 let gameStarted = false;
 let frameCount = 0;
 
-const gravity = 0.5;
-const jumpStrength = -9;
+
+const gravity = 0.6;
+const jumpStrength = -10;
 
 const OWL_WIDTH = 225;
 const OWL_HEIGHT = 162;
@@ -62,16 +63,16 @@ const OWL_HITBOX_OFFSET_X = 70;
 const OWL_HITBOX_OFFSET_Y = 55;
 
 const PIPE_WIDTH = 85;
-const obstacleSpeed = 3;
+const obstacleSpeed = 4;      
 let obstacleTimer = 0;
-const obstacleInterval = 100;
+const obstacleInterval = 90;  
 let obstacles = [];
 
 const OWL_SPRITE_WIDTH = 150;
 const OWL_SPRITE_HEIGHT = 108;
 const OWL_SPRITE_FRAMES = 6;
 let owlFrame = 0;
-const OWL_FLAP_FRAME_RATE = 5;
+const OWL_FLAP_FRAME_RATE = 4; 
 let owlFrameCounter = 0;
 
 const SPIDER_SIZE = 70;
@@ -275,8 +276,7 @@ function updateGame() {
             obstacles.splice(i, 1);
         }
     }
-
-    const parallaxSpeeds = [0.2, 0.4, 0.6, 0.9, 1.3, 1.8, 2.4];
+    const parallaxSpeeds = [0.1, 0.2, 0.4, 0.6, 1.0, 1.2, 1.4];
     for(let i = 0; i < parallaxOffsets.length; i++) {
         parallaxOffsets[i] = (parallaxOffsets[i] + parallaxSpeeds[i]) % CANVAS_WIDTH;
     }
