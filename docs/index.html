@@ -1,305 +1,426 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PlayForge - Flappy Owl</title>
-    <link rel="icon" href="./img/logo_64x64.png">
-    <link rel="stylesheet" href="./css/estilos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="icon" href="./img/logo_64x64.png" />
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header class="header">
-        <div id="menuToggle" class="menu-toggle">
-            <span class="menu-icon" id="menuIcon">☰</span>
+      <div id="menuToggle" class="menu-toggle">
+        <span class="menu-icon" id="menuIcon">☰</span>
+      </div>
+      <div class="header-center">
+        <a href="#"
+          ><img src="./img/logo_64x64.png" alt="" /><span class="logo-text"
+            >PlayForge</span
+          ></a
+        >
+      </div>
+
+      <div class="header-right">
+        <div class="search-input">
+          <input type="text" placeholder="Buscar un juego" />
+          <img src="./img/lupa.png" class="logo_buscador" alt="logo_buscador" />
         </div>
-        <div class="header-center">
-            <a href="#"><img src="./img/logo_64x64.png" alt=""><span class="logo-text">PlayForge</span></a>
-        </div>
-        
-        <div class="header-right">
-            <div class="search-input">
-                <input type="text" placeholder="Buscar un juego">
-                <img src="./img/lupa.png" class="logo_buscador" alt="logo_buscador">
-            </div>
-        </div>
+      </div>
     </header>
 
     <div id="overlay" class="overlay"></div>
 
     <div id="sidebarMenu" class="sidebar">
-        <div id="userProfile" class="user-profile hidden">
-            <div class="avatar">
-                <img class="icon-sidebar" src="./img/usuario.png">
-            </div>
-            <span class="username">Usuario</span>
-            <button class="edit-profile">Editar perfil</button>
+      <div id="userProfile" class="user-profile hidden">
+        <div class="avatar">
+          <img class="icon-sidebar" src="./img/usuario.png" />
         </div>
+        <span class="username">Usuario</span>
+        <button class="edit-profile">Editar perfil</button>
+      </div>
 
-        <nav class="menu-nav">
-            <ul>
-                <li><a href="#"><img class="icon-sidebar" src="./img/hogar.png"> Inicio</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/aplicaciones.png"> Mi biblioteca</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/deportes.png"> Deportes</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/estrategia.png"> Estrategia</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/escudo-espada.png"> Acción</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/descuento.png"> Ofertas</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/regalo.png"> Gratuitos</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/favorito.png"> Destacados</a></li>
-                <li><a href="#"><img class="icon-sidebar" src="./img/carrito-de-compras (1).png"> Carrito</a></li>
-            </ul>
-        </nav>
+      <nav class="menu-nav">
+        <ul>
+          <li>
+            <a href="#"
+              ><img class="icon-sidebar" src="./img/hogar.png" /> Inicio</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><img class="icon-sidebar" src="./img/aplicaciones.png" /> Mi
+              biblioteca</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><img class="icon-sidebar" src="./img/deportes.png" /> Deportes</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><img class="icon-sidebar" src="./img/estrategia.png" />
+              Estrategia</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><img class="icon-sidebar" src="./img/escudo-espada.png" />
+              Acción</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><img class="icon-sidebar" src="./img/descuento.png" /> Ofertas</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><img class="icon-sidebar" src="./img/regalo.png" /> Gratuitos</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><img class="icon-sidebar" src="./img/favorito.png" />
+              Destacados</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><img
+                class="icon-sidebar"
+                src="./img/carrito-de-compras (1).png"
+              />
+              Carrito</a
+            >
+          </li>
+        </ul>
+      </nav>
 
-        <div class="action-buttons">
-            <button id="registerBtn" class="btn-register">Registrate</button>
-            <button id="logoutBtn" class="btn-logout hidden">Cerrar sesión</button>
-        </div>
+      <div class="action-buttons">
+        <button id="registerBtn" class="btn-register">Registrate</button>
+        <button id="logoutBtn" class="btn-logout hidden">Cerrar sesión</button>
+      </div>
 
-        <div class="logo-section">
-            <span class="logo-text">PlayForge</span>
-            <img src="./img/logo_64x64.png" alt="">
-        </div>
+      <div class="logo-section">
+        <span class="logo-text">PlayForge</span>
+        <img src="./img/logo_64x64.png" alt="" />
+      </div>
     </div>
-    
-    <section class="contenido-principal">
-        <article class="content">
-            <aside class="publicidad">
-                <img src="./img/publicity_1.png" alt="">
-                <img src="./img/publicity_2.png" alt="">
-            </aside>
-            
-            <div class="breadcrumbs">
-                <p>Destacados > Flappy Owl</p>
-            </div>
-            
-           <div class="game-full">
-    <h1 class="game-title">Flappy Owl Adventure</h1>
-    <div id="gameContainer" class="bg-gray-900 relative">
-        <canvas id="gameCanvas" width="1200" height="700"></canvas>
-        
-        <div id="startScreenOverlay" class="start-screen-overlay active">
-            <div class="start-screen-content">
-                
-                <h1 class="title-overlay">FLAPPY OWL</h1> 
 
-                <img src="./img/portadaflappyowl.png" alt="Búho" class="start-screen-owl">
+    <section class="contenido-principal">
+      <article class="content">
+        <aside class="publicidad">
+          <img src="./img/publicity_1.png" alt="" />
+          <img src="./img/publicity_2.png" alt="" />
+        </aside>
+
+        <div class="breadcrumbs">
+          <p>Destacados > Flappy Owl</p>
+        </div>
+
+        <div class="game-full">
+          <h1 class="game-title">Flappy Owl Adventure</h1>
+          <div id="gameContainer" class="bg-gray-900 relative">
+            <canvas id="gameCanvas" width="1200" height="700"></canvas>
+
+            <div id="startScreenOverlay" class="start-screen-overlay active">
+              <div class="start-screen-content">
+                <h1 class="title-overlay">FLAPPY OWL</h1>
+
+                <img
+                  src="./img/portadaflappyowl.png"
+                  alt="Búho"
+                  class="start-screen-owl"
+                />
 
                 <p class="start-text">Haz clic o presiona ESPACIO para volar</p>
                 <p class="start-text">¡Suma puntos con los cristales!</p>
                 <p class="start-text">Evita los troncos y las arañas</p>
                 <p class="start-text warning">¡Las arañas son MORTALES!</p>
-                
+
                 <button id="startButton" class="btn-start">COMENZAR</button>
-
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
 
-            <aside class="similares-section">
-                <h2 class="similares-title">Similares</h2>
-                <div class="game-similar">
-                    <img src="./img/flappyb.jpg" alt="Flappy Bird">
-                    <div class="game-overlay">
-                        <div class="play-button-small">
-                            <div class="play-icon-small"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="game-similar">
-                    <img src="./img/jetpack.jpg" alt="Jetpack Joyride">
-                    <div class="game-overlay">
-                        <div class="play-button-small">
-                            <div class="play-icon-small"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="game-similar">
-                    <img src="./img/geometry.jpg" alt="Geometry Dash">
-                    <div class="game-overlay">
-                        <div class="play-button-small">
-                            <div class="play-icon-small"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="game-similar">
-                    <img src="./img/super-puzzle-rpg.jpg" alt="Super Puzzle RPG">
-                    <div class="game-overlay">
-                        <div class="play-button-small">
-                            <div class="play-icon-small"></div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
+        <aside class="similares-section">
+          <h2 class="similares-title">Similares</h2>
+          <div class="game-similar">
+            <img src="./img/flappyb.jpg" alt="Flappy Bird" />
+            <div class="game-overlay">
+              <div class="play-button-small">
+                <div class="play-icon-small"></div>
+              </div>
+            </div>
+          </div>
 
-            <div class="info-juego">
-                <div class="reglas-juego">
-                    <h2>¿Cómo jugar Flappy Owl?</h2>
-                    <p>Flappy Owl es un juego de habilidad donde controlas a un búho que vuela a través de un bosque místico lleno de obstáculos.</p>
-                    <p><span class="bold">1. Controla al búho.</span> Usa el ratón o la barra espaciadora para hacer que el búho vuele hacia arriba. Suelta para que descienda.</p>
-                    <p><span class="bold">2. Evita obstáculos.</span> Esquiva las arañas que cuelgan de los árboles y otros peligros del bosque.</p>
-                    <p><span class="bold">3. Recoge cristales.</span> Los cristales brillantes te dan puntos extras. ¡Intenta recoger todos los que puedas!</p>
-                    <p><span class="bold">4. Sobrevive el mayor tiempo posible.</span> El juego se vuelve más rápido y difícil con el tiempo. ¿Cuánto podrás durar?</p>
-                    <p>¡La práctica hace al maestro! Cada intento te ayudará a mejorar tus reflejos y estrategia.</p>
-                </div>
-                <div class="controles-juego">
-                    <h2>Controles</h2>
-                    <div class="control-mouse">
-                        <p><span class="bold">Click izquierdo:</span> Hace que el búho vuele hacia arriba.</p>
-                        <p><span class="bold">Barra espaciadora:</span> Hace que el búho vuele hacia arriba.</p>
-                        <p><span class="bold">Soltar:</span> El búho desciende por gravedad.</p>
-                    </div>
-                </div>
+          <div class="game-similar">
+            <img src="./img/jetpack.jpg" alt="Jetpack Joyride" />
+            <div class="game-overlay">
+              <div class="play-button-small">
+                <div class="play-icon-small"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-similar">
+            <img src="./img/geometry.jpg" alt="Geometry Dash" />
+            <div class="game-overlay">
+              <div class="play-button-small">
+                <div class="play-icon-small"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="game-similar">
+            <img src="./img/super-puzzle-rpg.jpg" alt="Super Puzzle RPG" />
+            <div class="game-overlay">
+              <div class="play-button-small">
+                <div class="play-icon-small"></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="info-juego">
+          <div class="reglas-juego">
+            <h2>¿Cómo jugar Flappy Owl?</h2>
+            <p>
+              Flappy Owl es un juego de habilidad donde controlas a un búho que
+              vuela a través de un bosque místico lleno de obstáculos.
+            </p>
+            <p>
+              <span class="bold">1. Controla al búho.</span> Usa el ratón o la
+              barra espaciadora para hacer que el búho vuele hacia arriba.
+              Suelta para que descienda.
+            </p>
+            <p>
+              <span class="bold">2. Evita obstáculos.</span> Esquiva las arañas
+              que cuelgan de los árboles y otros peligros del bosque.
+            </p>
+            <p>
+              <span class="bold">3. Recoge cristales.</span> Los cristales
+              brillantes te dan puntos extras. ¡Intenta recoger todos los que
+              puedas!
+            </p>
+            <p>
+              <span class="bold">4. Sobrevive el mayor tiempo posible.</span> El
+              juego se vuelve más rápido y difícil con el tiempo. ¿Cuánto podrás
+              durar?
+            </p>
+            <p>
+              ¡La práctica hace al maestro! Cada intento te ayudará a mejorar
+              tus reflejos y estrategia.
+            </p>
+          </div>
+          <div class="controles-juego">
+            <h2>Controles</h2>
+            <div class="control-mouse">
+              <p>
+                <span class="bold">Click izquierdo:</span> Hace que el búho
+                vuele hacia arriba.
+              </p>
+              <p>
+                <span class="bold">Barra espaciadora:</span> Hace que el búho
+                vuele hacia arriba.
+              </p>
+              <p>
+                <span class="bold">Soltar:</span> El búho desciende por
+                gravedad.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-multimedia">
+          <h2>Contenido multimedia</h2>
+          <div class="multimedia-files">
+            <div class="media"><img src="./img/multimedia1.png" alt="" /></div>
+            <div class="media"><img src="./img/multimedia2.png" alt="" /></div>
+            <div class="media"><img src="./img/multimedia3.png" alt="" /></div>
+          </div>
+        </div>
+
+        <div class="section-opiniones">
+          <div class="rating">
+            <img
+              src="./img/logo_estrella_vacia.svg"
+              id="star-1"
+              class="star crystal-star"
+              alt="Star"
+            />
+            <img
+              src="./img/logo_estrella_vacia.svg"
+              id="star-2"
+              class="star crystal-star"
+              alt="Star"
+            />
+            <img
+              src="./img/logo_estrella_vacia.svg"
+              id="star-3"
+              class="star crystal-star"
+              alt="Star"
+            />
+            <img
+              src="./img/logo_estrella_vacia.svg"
+              id="star-4"
+              class="star crystal-star"
+              alt="Star"
+            />
+            <img
+              src="./img/logo_estrella_vacia.svg"
+              id="star-5"
+              class="star crystal-star"
+              alt="Star"
+            />
+          </div>
+          <p class="texto-opinion">¡Contanos tu experiencia!</p>
+          <form class="form-opinion">
+            <textarea
+              placeholder="Dejá tu comentario..."
+              class="input-opinion"
+              required
+            ></textarea>
+            <button class="btn-enviar-comentario">Enviar comentario</button>
+          </form>
+
+          <div class="reviews-container">
+            <div class="review-header">
+              <img src="./img/mujer.png" alt="Usuario" class="user-avatar" />
+              <div class="user-info">
+                <span class="usuario">NightFlyer92</span>
+                <span class="time">1 hora</span>
+              </div>
+              <div class="stars">
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+              </div>
+            </div>
+            <div class="review-text">
+              El efecto parallax es espectacular. Me encanta la atmósfera del
+              bosque y los detalles de animación. ¡Súper adictivo!
+            </div>
+            <div class="review-actions">
+              <button class="action-btn">
+                <img src="./img/me-gusta.png" alt="" />
+                <span class="count">234</span>
+              </button>
+              <button class="action-btn">
+                <img class="no-like" src="./img/me-gusta.png" alt="" />
+                <span class="count">3</span>
+              </button>
+              <button class="action-btn">
+                <img src="./img/volver-a-publicar.png" alt="" />
+                <span class="count">67</span>
+              </button>
             </div>
 
-            <div class="content-multimedia">
-                <h2>Contenido multimedia</h2>
-                <div class="multimedia-files">
-                    <div class="media"><img src="./img/multimedia1.png" alt=""></div>
-                    <div class="media"><img src="./img/multimedia2.png" alt=""></div>
-                    <div class="media"><img src="./img/multimedia3.png" alt=""></div>
-                </div>
+            <div class="review-header">
+              <img src="./img/mujer.png" alt="Usuario" class="user-avatar" />
+              <div class="user-info">
+                <span class="usuario">GameMaster</span>
+                <span class="time">3 horas</span>
+              </div>
+              <div class="stars">
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star filled">★</span>
+                <span class="star">★</span>
+              </div>
+            </div>
+            <div class="review-text">
+              Muy divertido y con gráficos hermosos. Al principio es fácil pero
+              después se pone desafiante. Perfecto para pasar el rato.
+            </div>
+            <div class="review-actions">
+              <button class="action-btn">
+                <img src="./img/me-gusta.png" alt="" />
+                <span class="count">187</span>
+              </button>
+              <button class="action-btn">
+                <img class="no-like" src="./img/me-gusta.png" alt="" />
+                <span class="count">12</span>
+              </button>
+              <button class="action-btn">
+                <img src="./img/volver-a-publicar.png" alt="" />
+                <span class="count">45</span>
+              </button>
             </div>
 
-            <div class="section-opiniones">
-                <div class="rating">
-                    <img src="./img/logo_estrella_vacia.svg" id="star-1" class="star crystal-star" alt="Star">
-                    <img src="./img/logo_estrella_vacia.svg" id="star-2" class="star crystal-star" alt="Star">
-                    <img src="./img/logo_estrella_vacia.svg" id="star-3" class="star crystal-star" alt="Star">
-                    <img src="./img/logo_estrella_vacia.svg" id="star-4" class="star crystal-star" alt="Star">
-                    <img src="./img/logo_estrella_vacia.svg" id="star-5" class="star crystal-star" alt="Star">
-                </div>
-                <p class="texto-opinion">¡Contanos tu experiencia!</p>
-                <form class="form-opinion">
-                    <textarea placeholder="Dejá tu comentario..." class="input-opinion" required></textarea>
-                    <button class="btn-enviar-comentario">Enviar comentario</button>
-                </form>
-                
-                <div class="reviews-container">
-                    <div class="review-header">
-                        <img src="./img/mujer.png" alt="Usuario" class="user-avatar">
-                        <div class="user-info">
-                            <span class="usuario">NightFlyer92</span>
-                            <span class="time">1 hora</span>
-                        </div>
-                        <div class="stars">
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                        </div>
-                    </div>
-                    <div class="review-text">
-                        El efecto parallax es espectacular. Me encanta la atmósfera del bosque y los detalles de animación. ¡Súper adictivo!
-                    </div>
-                    <div class="review-actions">
-                        <button class="action-btn">
-                            <img src="./img/me-gusta.png" alt="">
-                            <span class="count">234</span>
-                        </button>
-                        <button class="action-btn">
-                            <img class="no-like" src="./img/me-gusta.png" alt="">
-                            <span class="count">3</span>
-                        </button>
-                        <button class="action-btn">
-                            <img src="./img/volver-a-publicar.png" alt="">
-                            <span class="count">67</span>
-                        </button>
-                    </div>
-                
-                    <div class="review-header">
-                        <img src="./img/mujer.png" alt="Usuario" class="user-avatar">
-                        <div class="user-info">
-                            <span class="usuario">GameMaster</span>
-                            <span class="time">3 horas</span>
-                        </div>
-                        <div class="stars">
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star filled">★</span>
-                            <span class="star">★</span>
-                        </div>
-                    </div>
-                    <div class="review-text">
-                        Muy divertido y con gráficos hermosos. Al principio es fácil pero después se pone desafiante. Perfecto para pasar el rato.
-                    </div>
-                    <div class="review-actions">
-                        <button class="action-btn">
-                            <img src="./img/me-gusta.png" alt="">
-                            <span class="count">187</span>
-                        </button>
-                        <button class="action-btn">
-                            <img class="no-like" src="./img/me-gusta.png" alt="">
-                            <span class="count">12</span>
-                        </button>
-                        <button class="action-btn">
-                            <img src="./img/volver-a-publicar.png" alt="">
-                            <span class="count">45</span>
-                        </button>
-                    </div>
-
-                    <button class="btn-ver-mas">Ver más</button>
-                </div>
-            </div>
-        </article>
+            <button class="btn-ver-mas">Ver más</button>
+          </div>
+        </div>
+      </article>
     </section>
 
     <footer>
-        <section>
-            <h3>Sobre nosotros</h3>
-            <ul>
-                <li><a href="#">Contáctanos</a></li>
-                <li><a href="#">Nuestro equipo</a></li>
-            </ul>
-        </section>
-        <section>
-            <h3>Ayuda</h3>
-            <ul>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Soporte</a></li>
-            </ul>
-        </section>
-        <section>
-            <h3>Categorías</h3>
-            <ul>
-                <li><a href="#">Destacados</a></li>
-                <li><a href="#">Ofertas</a></li>
-                <li><a href="#">Gratuitos</a></li>
-                <li><a href="#">Deportes</a></li>
-                <li><a href="#">Estrategia</a></li>
-                <li><a href="#">Acción</a></li>
-            </ul>
-        </section>
-        <section>
-            <h3>Unite</h3>
-            <ul>
-                <li><a href="#">Registrarse</a></li>
-                <li><a href="#">Iniciar sesión</a></li>
-            </ul>
-        </section>
-        <section>
-            <h3>Nuestras redes</h3>
-            <ul>
-                <li><a href="#"><img src="./img/instagram-circle (1).png" alt="Instagram"></a></li>
-                <li><a href="#"><img src="./img/twitter-alt-circle.png" alt="X"></a></li>
-                <li><a href="#"><img src="./img/facebook.png" alt="Facebook"></a></li>
-            </ul>
-        </section>
-        <p>
-            Copyright © | Todos los derechos reservados |
-            <a href="#">Términos y condiciones</a> |
-            <a href="#">Política de privacidad</a> |
-            Agosto 2025
-        </p>
+      <section>
+        <h3>Sobre nosotros</h3>
+        <ul>
+          <li><a href="#">Contáctanos</a></li>
+          <li><a href="#">Nuestro equipo</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Ayuda</h3>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Soporte</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Categorías</h3>
+        <ul>
+          <li><a href="#">Destacados</a></li>
+          <li><a href="#">Ofertas</a></li>
+          <li><a href="#">Gratuitos</a></li>
+          <li><a href="#">Deportes</a></li>
+          <li><a href="#">Estrategia</a></li>
+          <li><a href="#">Acción</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Unite</h3>
+        <ul>
+          <li><a href="#">Registrarse</a></li>
+          <li><a href="#">Iniciar sesión</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3>Nuestras redes</h3>
+        <ul>
+          <li>
+            <a href="#"
+              ><img src="./img/instagram-circle (1).png" alt="Instagram"
+            /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./img/twitter-alt-circle.png" alt="X" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="./img/facebook.png" alt="Facebook" /></a>
+          </li>
+        </ul>
+      </section>
+      <p>
+        Copyright © | Todos los derechos reservados |
+        <a href="#">Términos y condiciones</a> |
+        <a href="#">Política de privacidad</a> | Agosto 2025
+      </p>
     </footer>
-    
+
     <script src="./js/menu.js"></script>
     <script src="./js/estrellas.js"></script>
     <script type="module" src="js/flappyOwl.js"></script>
-</body>
+  </body>
 </html>
