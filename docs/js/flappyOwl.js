@@ -15,6 +15,7 @@ const imageSources = {
     layer1: 'img/1.png',
     owlSprite: 'img/buho.png',
     explosionSprite: 'img/explosion2.png',
+    cristal: 'img/cristalMagico.png',
     spider: 'img/araña (2).png',
 };
 

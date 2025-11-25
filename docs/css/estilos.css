@@ -352,6 +352,10 @@ body {
     font-family: var(--font_roboto);
 }
 
+
+
+
+/* ESTILOS PARA EL JUEGO*/
 .game-title {
     color: white;
     text-align: center;
@@ -392,7 +396,7 @@ body {
     transition: transform 0.1s ease, filter 0.5s ease;
 }
 
-/* --- ANIMACIONES GENERALES --- */
+/*Animacion para la explosion*/
 @keyframes explosion-shake {
     0%, 100% { transform: translate(0, 0); }
     10% { transform: translate(-8px, -8px); }
@@ -410,7 +414,7 @@ body {
     animation: explosion-shake 0.5s ease-in-out;
 }
 
-/* --- ESTILOS DE LA PORTADA --- */
+/* Estilos para la portada */
 #gameCanvas {
     background-image: url('../img/portada.png');    
     background-size: cover;
@@ -509,7 +513,7 @@ body {
     box-shadow: 0 8px 20px rgba(9, 94, 9, 0.7);
 }
 
-/* --- ESTILOS VARIOS DE JUEGO Y CONTENIDO --- */
+/* INFO DE JUEGO Y CONTROLES */
 .info-juego {
     display: flex;
     margin-top: 20px;
@@ -548,7 +552,9 @@ body {
     flex-direction: column;
     gap: 8px;
 }
+ 
 
+/* Contenido multimedia */
 .content-multimedia {
     margin-top: 30px;
     color: var(--blanco);
@@ -567,7 +573,7 @@ body {
     display: flex;
     flex-direction: row;
     padding: 10px;
-    justify-content: center;
+    justify-content: space-evenly;
     gap: 24px;
 }
 
@@ -576,8 +582,8 @@ body {
 }
 
 .media img {
-    width: 200px;
-    height: 200px;
+    width:350px;
+    height: 290px;
     border-radius: 8px;
 }
 
@@ -671,7 +677,7 @@ body {
     margin-left: 4px;
 }
 
-/* --- OPINIONES --- */
+/* --- COMENTARIOS --- */
 .rating {
     display: flex;
     align-items: center;
@@ -695,8 +701,8 @@ body {
 }
 
 .section-opiniones {
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 10px;
+    padding: 12px;
     background-color: var(--primario_5);
     box-shadow: var(--primario_2) 0px 0px 4px;
     border-radius: 8px;
@@ -715,11 +721,12 @@ body {
 
 .form-opinion {
     width: 100%;
-    max-width: 600px;
+    max-width:900px;
+    padding: 4px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 5px;
 }
 
 .form-opinion .btn-enviar-comentario {
@@ -730,12 +737,12 @@ body {
     background-color: var(--blanco);
     border: 0;
     outline: 0;
-    width: 100%;
+    width: 100;
     padding: 5px;
-    height: 70px;
+    height: 120px;
     border-radius: 8px;
     font-family: var(--font_montserrat);
-    font-weight: 300;
+    font-weight: 500;
     letter-spacing: 1px;
     resize: none;
 }
@@ -760,7 +767,7 @@ body {
 }
 
 .reviews-container {
-    max-width: 600px;
+    max-width: 900px;
     width: 100%;
     margin: 40px auto 0;
     display: flex;
@@ -889,7 +896,7 @@ body {
     box-shadow: 0 6px 16px rgba(50, 205, 50, 0.4);
 }
 
-/* ------------------------------------ FOOTER ------------------------------------ */
+/* FOOTER */
 footer {
     background-color: #2b0040;
     color: white;
