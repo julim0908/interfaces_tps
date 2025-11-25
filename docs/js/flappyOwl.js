@@ -64,9 +64,9 @@ const OWL_HITBOX_OFFSET_X = 70;
 const OWL_HITBOX_OFFSET_Y = 55;
 
 const PIPE_WIDTH = 85;
-const obstacleSpeed = 4;      
+const obstacleSpeed = 4; 
 let obstacleTimer = 0;
-const obstacleInterval = 90;  
+const obstacleInterval = 90; 
 let obstacles = [];
 
 const OWL_SPRITE_WIDTH = 150;
@@ -96,6 +96,13 @@ let showGameOver = false;
 
 const startScreenOverlay = document.getElementById('startScreenOverlay');
 const startButton = document.getElementById('startButton');
+
+/* -------------------- CRISTALES BONUS -------------------- */
+let crystals = [];
+const CRYSTAL_SIZE = 80; // TAMAÑO AUMENTADO
+const CRYSTAL_CHANCE = 0.002;
+let crystalFloatOffset = 0;
+let crystalFloatDirection = 1;
 
 class Button {
     constructor(text, x, y, width, height, onClick, color = '#4CAF50') {
@@ -185,6 +192,7 @@ function startGame() {
     owlY = 300;
     velocity = 0;
     obstacles = [];
+    crystals = []; // Reiniciar cristales
     frameCount = 0;
     owlFrame = 0;
     owlFrameCounter = 0;
@@ -277,6 +285,35 @@ function updateGame() {
             obstacles.splice(i, 1);
         }
     }
+    
+    /* --------- GENERACIÓN DE CRISTALES --------- */
+    if (Math.random() < CRYSTAL_CHANCE) {
+        crystals.push({
+            x: CANVAS_WIDTH,
+            y: Math.random() * (CANVAS_HEIGHT - 200) + 80,
+            collected: false
+        });
+    }
+
+    /* --------- MOVER CRISTALES --------- */
+    for (let i = crystals.length - 1; i >= 0; i--) {
+        const c = crystals[i];
+        c.x -= obstacleSpeed;
+
+        // Si pasa de largo desaparece
+        if (c.x < -CRYSTAL_SIZE) {
+            crystals.splice(i, 1);
+            continue;
+        }
+
+        // Chequear colisión con el búho
+        if (checkCrystalCollision(OWL_X, owlY, c)) {
+            c.collected = true;
+            score += 2;
+            crystals.splice(i, 1);
+        }
+    }
+
     const parallaxSpeeds = [0.1, 0.2, 0.4, 0.6, 1.0, 1.2, 1.4];
     for(let i = 0; i < parallaxOffsets.length; i++) {
         parallaxOffsets[i] = (parallaxOffsets[i] + parallaxSpeeds[i]) % CANVAS_WIDTH;
@@ -387,6 +424,16 @@ function draw() {
             ctx.drawImage(layer.img, CANVAS_WIDTH - offset, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         });
         
+        /* -------- DIBUJAR CRISTALES -------- */
+        crystalFloatOffset += crystalFloatDirection * 0.3;
+        if (crystalFloatOffset > 5 || crystalFloatOffset < -5) {
+            crystalFloatDirection *= -1;
+        }
+
+        crystals.forEach(c => {
+            drawCrystal(c.x, c.y + crystalFloatOffset);
+        });
+        
         obstacles.forEach(obs => {
             drawPipe(obs.x, 0, obs.topHeight, 'top');
             drawPipe(obs.x, obs.topHeight + obs.gap, CANVAS_HEIGHT - obs.topHeight - obs.gap, 'bottom');
@@ -442,10 +489,12 @@ function drawPipe(x, y, height, type) {
 function drawSpider(x, y) {
     if (images.spider && images.spider.complete) {
         ctx.save();
-        const sway = Math.sin(frameCount * 0.1) * 2;
+        // Animación de balanceo de la araña (usando JS para Canvas)
+        const sway = Math.sin(frameCount * 0.1) * 2; 
         ctx.drawImage(images.spider, x + sway, y, SPIDER_SIZE, SPIDER_SIZE);
         ctx.restore();
     } else {
+        // fallback simple si falla la imagen
         ctx.save();
         ctx.fillStyle = '#000000';
         ctx.shadowColor = '#ff0000';
@@ -472,6 +521,23 @@ function drawSpider(x, y) {
             ctx.lineTo(centerX - Math.cos(angle) * legLength, centerY + Math.sin(angle) * legLength);
             ctx.stroke();
         }
+        ctx.restore();
+    }
+}
+
+function drawCrystal(x, y) {
+    if (images.cristal && images.cristal.complete) {
+        ctx.save();
+        ctx.globalAlpha = 0.9;
+        ctx.drawImage(images.cristal, x, y, CRYSTAL_SIZE, CRYSTAL_SIZE);
+        ctx.restore();
+    } else {
+        // fallback simple si falla la imagen
+        ctx.save();
+        ctx.fillStyle = "#00eaff";
+        ctx.beginPath();
+        ctx.arc(x + CRYSTAL_SIZE/2, y + CRYSTAL_SIZE/2, CRYSTAL_SIZE/2, 0, Math.PI*2);
+        ctx.fill();
         ctx.restore();
     }
 }
@@ -665,6 +731,28 @@ function checkSpiderCollision(owlX, owlY, spider) {
            owlRect.y < spiderRect.y + spiderRect.height &&
            owlRect.y + owlRect.height > spiderRect.y;
 }
+
+function checkCrystalCollision(owlX, owlY, crystal) {
+    const owlRect = {
+        x: owlX + OWL_HITBOX_OFFSET_X,
+        y: owlY + OWL_HITBOX_OFFSET_Y,
+        width: OWL_HITBOX_WIDTH,
+        height: OWL_HITBOX_HEIGHT
+    };
+
+    const crystalRect = {
+        x: crystal.x,
+        y: crystal.y,
+        width: CRYSTAL_SIZE,
+        height: CRYSTAL_SIZE
+    };
+
+    return owlRect.x < crystalRect.x + crystalRect.width &&
+           owlRect.x + owlRect.width > crystalRect.x &&
+           owlRect.y < crystalRect.y + crystalRect.y &&
+           owlRect.y + owlRect.height > crystalRect.y;
+}
+
 
 function jump() {
     if (showStartScreen) {

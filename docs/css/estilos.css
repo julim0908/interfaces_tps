@@ -329,8 +329,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    position: absolute;    
-    right: calc(50% + 650px);    
+    position: absolute; 	
+    right: calc(50% + 650px); 	
     top: 30px;
 }
 
@@ -344,7 +344,7 @@ body {
     transform: scale(1.05);
     transition: transform 0.5s ease;
     cursor: pointer;
-}    
+} 	
 
 .breadcrumbs {
     margin-bottom: 10px;
@@ -361,8 +361,8 @@ body {
     text-align: center;
     display: flex;
     flex-direction: row;
-    justify-content: center;    
-    margin-bottom: 10px;    
+    justify-content: center; 	
+    margin-bottom: 10px; 	
     font-size: 28px;
 }
 
@@ -375,18 +375,18 @@ body {
     flex-direction: column;
     align-items: center;
     width: fit-content;
-    margin: 0 auto;    
+    margin: 0 auto; 	
 }
 
 #gameContainer {
     width: 1200px;
     height: 700px;
-    margin: 0 auto;    
-    box-shadow: inset 0 0 15px var(--primario_6);    
-    background-color: var(--primario_6);    
-    position: relative;    
+    margin: 0 auto; 	
+    box-shadow: inset 0 0 15px var(--primario_6); 	
+    background-color: var(--primario_6); 	
+    position: relative; 	
     border-radius: 4px;
-    overflow: hidden;    
+    overflow: hidden; 	
 }
 
 #gameCanvas {
@@ -416,14 +416,14 @@ body {
 
 /* Estilos para la portada */
 #gameCanvas {
-    background-image: url('../img/portada.png');    
+    background-image: url('../img/portada.png'); 	
     background-size: cover;
     background-position: center;
-    filter: blur(2px) brightness(0.4);    
+    filter: blur(2px) brightness(0.4); 	
 }
 
 #gameCanvas.game-active {
-    filter: none;    
+    filter: none; 	
     background-image: none;
 }
 
@@ -433,8 +433,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10;    
-    background-color: rgba(0, 0, 0, 0.4);    
+    z-index: 10; 	
+    background-color: rgba(0, 0, 0, 0.4); 	
     transition: opacity 0.5s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -453,7 +453,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    position: relative;    
+    position: relative; 	
     height: 100%;
     width: 100%;
 }
@@ -461,18 +461,18 @@ body {
 .title-overlay {
     color: var(--blanco);
     font-size: 60px;
-    position: absolute;    
+    position: absolute; 	
     top: 67px;
     filter: drop-shadow(0 0 10px rgba(77, 2, 128, 0.664));
 }
 
 .start-screen-owl {
-    width: 250px;    
+    width: 250px; 	
     height: 250px;
-    margin-top: 40px;    
+    margin-top: 40px; 	
     margin-bottom: 10px;
     filter: drop-shadow(0 0 10px rgba(32, 1, 58, 0.664));
-    animation: owl-pulse 2s infinite ease-in-out;    
+    animation: owl-pulse 2s infinite ease-in-out; 	
 }
 
 @keyframes owl-pulse {
@@ -489,7 +489,7 @@ body {
 }
 
 .start-text.warning {
-    color: #FFD700;    
+    color: #FFD700; 	
     font-weight: bold;
 }
 
@@ -552,7 +552,7 @@ body {
     flex-direction: column;
     gap: 8px;
 }
- 
+	
 
 /* Contenido multimedia */
 .content-multimedia {
@@ -597,7 +597,7 @@ body {
     padding: 15px;
     margin-top: 32px;
     height: fit-content;
-    position: absolute;    
+    position: absolute; 	
     left: calc(50% + 650px);
     top: 30px;
 }
@@ -615,20 +615,6 @@ body {
 
 .game-similar:hover {
     transform: translateY(-4px);
-}
-
-.game-similar img {
-    width: 100%;
-    height: 100%;
-}
-
-.similares-title {
-    color: var(--blanco);
-    font-size: 24px;
-    text-align: center;
-    font-weight: 700;
-    margin-bottom: 20px;
-    font-family: var(--font_montserrat);
 }
 
 .game-overlay {
@@ -692,7 +678,13 @@ body {
 }
 
 .rating img:hover {
-    animation: star-bounce 0.5s ease forwards;
+    /* Aplicamos la animación de balanceo solo en el hover */
+    animation: star-bounce 0.5s ease forwards, crystal-glow 3s infinite ease-in-out;
+}
+
+/* Clase para aplicar resplandor persistente si se desea */
+.crystal-star {
+    animation: crystal-glow 3s infinite ease-in-out;
 }
 
 @keyframes star-bounce {
@@ -780,7 +772,7 @@ body {
 
 .review-header {
     display: flex;
-    align-items: center;    
+    align-items: center; 	
     gap: 10px;
 }
 
@@ -969,4 +961,29 @@ footer p a {
 
 footer p a:hover {
     text-decoration: underline;
+}
+
+/* ------------------------------------ ANIMACIONES ADICIONALES ------------------------------------ */
+
+/* Animación de Resplandor (para cristales/estrellas) */
+@keyframes crystal-glow {
+    0% {
+        filter: brightness(1) drop-shadow(0 0 5px var(--primario_2));
+    }
+    50% {
+        filter: brightness(1.2) drop-shadow(0 0 15px var(--primario_3));
+    }
+    100% {
+        filter: brightness(1) drop-shadow(0 0 5px var(--primario_2));
+    }
+}
+
+/* Animación de balanceo para la Araña (Principalmente un estándar si usara DOM, aunque en Canvas se maneja con JS) */
+@keyframes spider-sway {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(3px) rotate(1deg);
+    }
 }
