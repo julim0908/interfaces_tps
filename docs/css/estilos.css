@@ -636,6 +636,14 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
 }
+.game-similar img{
+    width: 160px;
+    height: 97px;
+}
+.similares-title{
+    color: var(--blanco);
+    margin-left: 18px;
+}
 
 .game-similar:hover {
   transform: translateY(-4px);
@@ -791,6 +799,7 @@ body {
   max-width: 900px;
   width: 100%;
   margin: 40px auto 0;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
